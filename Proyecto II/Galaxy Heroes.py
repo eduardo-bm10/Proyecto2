@@ -87,8 +87,8 @@ def juego(Modo):
     Exit = tk.Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
 
-    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png')
-    BgFondo = Bg.create_image(600, 325, image=fondojuego)
+    """fondojuego = Imagenes('Imagenes\\Background\\GameBG.png')
+    BgFondo = Bg.create_image(600, 325, image=fondojuego)"""
 
     """
     Spaceship3 = Imagenes('Imagenes\\Spaceship\\playership3.png')
@@ -102,6 +102,19 @@ def juego(Modo):
     Spaceship = sprites('Imagenes/Spaceship/playership*.png')
     Right = sprites('Imagenes/Spaceship/right*.png')
     Left = sprites('Imagenes/Spaceship/left*.png')
+
+    Asteroide = Bg.create_image(404, 300, tags=('AST'))
+    Asteroids = sprites('Imagenes/Asteroids and obstacles/ast*.png')
+    
+
+    def ast_3D(i):
+        if i==6:
+            return Bg.delete('AST')
+        else:
+            Bg.itemconfig('AST', image=Asteroids[i])
+            return ast_3D(i+1)
+
+    ast_3D(0)
 
     def anim(i):
         global OPEN
@@ -164,7 +177,7 @@ def juego(Modo):
     Pant.bind('<w>',arriba)
     Pant.bind('<s>',abajo)
     Pant.bind('<d>',derecha)
-    Pant.bind('<a>',izquierda)
+    Pant.bind('<a>',izquierda)        
 
     Pant.mainloop()
 
