@@ -80,6 +80,8 @@ def juego(Mode):
     Display.place(x=0, y=0)
 
     def back():
+        global OPEN
+        OPEN=False
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
         Menu.deiconify()
@@ -146,39 +148,52 @@ def juego(Mode):
         Asteroids = sprites('Imagenes/Asteroids and obstacles/ast*.png')
 
         def generate_ast(t):
-            if t==5:
-                Asteroid = Bg.create_image(random.uniform(50,1150), random.uniform(50,600), tags=('ast'))
-                ast_3D(0)
-                return generate_ast(0)
-            else:
-                time.sleep(1)
-                t+=1
-                return generate_ast(t)
+            global OPEN
+            if OPEN==True:
+                if t==5:
+                    Asteroid = Bg.create_image(random.uniform(100,1100), random.uniform(100,500), tags=('ast'))
+                    ast_3D(0)
+                    return generate_ast(0)
+                else:
+                    time.sleep(1)
+                    t+=1
+                    return generate_ast(t)
     
         def ast_3D(i):
             if i==6:
                 return Bg.delete('ast')
             else:
                 Bg.itemconfig('ast', image=Asteroids[i])
-                time.sleep(0.5)
+                time.sleep(0.3)
                 return ast_3D(i+1)
 
         Thread(target=generate_ast, args=(0,)).start()
 
     if Mode==2:
-        Anillo = Bg.create_image(400,500, tags=('RING'))
         Anillos = sprites('Imagenes/Asteroids and obstacles/Ring*.png')
 
-        def anillo_3D(i):
+        def generate_ring(t):
+            global OPEN
+            if OPEN==True:
+                if t==3:
+                    Anillo = Bg.create_image(random.uniform(100,1100),random.uniform(100,550), tags=('RING'))
+                    ring_3D(0)
+                    return generate_ring(0)
+                else:
+                    time.sleep(0.5)
+                    t+=1
+                    return generate_ring(t)
+                    
+        def ring_3D(i):
             if i==5:
                 return Bg.delete('RING')
             else:
                 Bg.itemconfig('RING',image=Anillos[i])
-                time.sleep(2)
+                time.sleep(0.3)
                 i+=1
-                return anillo_3D(i)
+                return ring_3D(i)
 
-        anillo_3D(0)
+        Thread(target=generate_ring, args=(0,)).start()
 
     Pant.bind('<w>',arriba)
     Pant.bind('<s>',abajo)
@@ -188,9 +203,13 @@ def juego(Mode):
     Pant.mainloop()
 
 def select_juego1():
+    global OPEN
+    OPEN=True
     return juego(1)
 
 def select_juego2():
+    global OPEN
+    OPEN=True
     return juego(2)
 
 def config():
@@ -251,7 +270,7 @@ def about():
     def back_about():
         info.destroy()
         Menu.deiconify()        
-    quit_info = tk.Button(info,text = 'Volver al inicio',command=back_about)
+    quit_info = Button(info,text = 'Volver al inicio',command=back_about)
     quit_info.place(x=0,y=0)
     Menu.withdraw()
 
