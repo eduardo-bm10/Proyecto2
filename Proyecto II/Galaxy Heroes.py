@@ -62,7 +62,7 @@ def mov_fondo():
 
 mov_fondo()
 
-def juego(Modo):
+def juego(Mode):
     Pant = tk.Toplevel()
     Pant.minsize(1200,650)
     Pant.resizable(False, False)
@@ -87,34 +87,14 @@ def juego(Modo):
     Exit = tk.Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
 
-    """fondojuego = Imagenes('Imagenes\\Background\\GameBG.png')
-    BgFondo = Bg.create_image(600, 325, image=fondojuego)"""
-
-    """
-    Spaceship3 = Imagenes('Imagenes\\Spaceship\\playership3.png')
-    Spaceship4 = Imagenes('Imagenes\\Spaceship\\playership4.png')
-    Spaceship5 = Imagenes('Imagenes\\Spaceship\\playership4.png')
-    Spaceship6 = Imagenes('Imagenes\\Asteroids and obstacles\\xy_st3boss_asteroid01.gif')
-    Spaceship7 = Imagenes('Imagenes\\Spaceship\\playership2.png')"""
+    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png')
+    BgFondo = Bg.create_image(600, 325, image=fondojuego)
     
     Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
 
     Spaceship = sprites('Imagenes/Spaceship/playership*.png')
     Right = sprites('Imagenes/Spaceship/right*.png')
     Left = sprites('Imagenes/Spaceship/left*.png')
-
-    Asteroide = Bg.create_image(404, 300, tags=('AST'))
-    Asteroids = sprites('Imagenes/Asteroids and obstacles/ast*.png')
-    
-
-    def ast_3D(i):
-        if i==6:
-            return Bg.delete('AST')
-        else:
-            Bg.itemconfig('AST', image=Asteroids[i])
-            return ast_3D(i+1)
-
-    ast_3D(0)
 
     def anim(i):
         global OPEN
@@ -158,20 +138,20 @@ def juego(Modo):
             Bg.coords('MYSHIP', Ubi[0]-25, Ubi[1])
             if (Ubi[0]-25)==100:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-    """
-    def cambio_img():
-        Ubi = Bg.coords('MYSHIP')
-        if 400<Ubi[0]<800:
-            Bg.itemconfig('MYSHIP', image=Spaceship0)
-        if Ubi[0]>800:
-            Bg.itemconfig('MYSHIP', image=Spaceship2)
-        if Ubi[0]<400:
-            Bg.itemconfig('MYSHIP', image=Spaceship1)
-        def call():
-            cambio_img()
-        Bg.after(20,call)
 
-    cambio_img()"""
+    if Mode==1:
+        Asteroide = Bg.create_image(404, 300, tags=('AST'))
+        Asteroids = sprites('Imagenes/Asteroids and obstacles/ast*.png')
+    
+        def ast_3D(i):
+            if i==6:
+                return Bg.delete('AST')
+            else:
+                Bg.itemconfig('AST', image=Asteroids[i])
+                return ast_3D(i+1)
+
+        ast_3D(0)
+    
     anim(0)
 
     Pant.bind('<w>',arriba)
