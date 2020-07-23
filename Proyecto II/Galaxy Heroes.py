@@ -148,9 +148,24 @@ def juego(Mode):
                 return Bg.delete('AST')
             else:
                 Bg.itemconfig('AST', image=Asteroids[i])
-                return ast_3D(i+1)
+                time.sleep(2)
+                Thread(target=ast_3D, args=(i+1,)).start()
 
         ast_3D(0)
+
+    if Mode==2:
+        Anillo = Bg.create_image(400,500, tags=('RING'))
+        Anillos = sprites('Imagenes/Asteroids and obstacles/Ring*.png')
+
+        def anillo_3D(i):
+            if i==5:
+                return Bg.delete('RING')
+            else:
+                Bg.itemconfig('RING',image=Anillos[i])
+                time.sleep(2)
+                Thread(target=anillo_3D, args=(i+1,)).start()
+
+        anillo_3D(0)
     
     anim(0)
 
