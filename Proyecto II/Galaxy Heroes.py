@@ -201,11 +201,48 @@ def scores():
     Pant.mainloop()
 
 def about():
-    Pant = tk.Toplevel()
-    Pant.minsize(700,500)
-    Pant.resizable(False, False)
-    Pant.title('Galaxy Heroes')
-    Pant.iconbitmap('Imagenes/Icono.ico')
+    info = tk.Toplevel()
+    info.minsize(700,500)
+    info.resizable(False, False)
+    info.title('Galaxy Heroes')
+    info.iconbitmap('Imagenes/Icono.ico')
+    
+    C_info = tk.Canvas(info,width=700,height=500,bg='white')
+    C_info.place(x=0,y=0)
+
+    C_info.image1 = Imagenes('imagenes/backgrounds/playbg.png')
+    imgCanvas_info = C_info.create_image(0,0,anchor=NW,image= C_info.image1)    
+
+    Label1 = tk.Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
+    Label1.place(x=50,y=50)
+
+    Label2 = tk.Label(C_info,text = "Ingeniería en Computadores", font =('Times New Roman',12))
+    Label2.place(x=50,y=100)
+
+    Label3 = tk.Label(C_info,text = "Profesor: Milton Villegas Lemus", font =('Times New Roman',12))
+    Label3.place(x=50,y=150)
+
+    Label4 = tk.Label(C_info,text = "Autores", font =('Times New Roman',12))
+    Label4.place(x=400,y=25)
+
+    Label5 = tk.Label(C_info,text = "Max Garro Mora", font =('Times New Roman',12))
+    Label5.place(x=300,y=150)
+
+    Label6 = tk.Label(C_info,text = "Eduardo Bolívar Minguet", font =('Times New Roman',12))
+    Label6.place(x=425,y=150)
+
+    maxgm = Imagenes('imagenes/FOTO.png')
+    maxgm_image = C_info.create_image(350, 100, image=maxgm)
+
+    eduardobm = Imagenes('imagenes/FOTO2.png')
+    eduardobm_image = C_info.create_image(500, 100, image=eduardobm)
+
+    def back_about():
+        info.destroy()
+        Menu.deiconify()        
+    quit_info = Button(info,text = 'Volver al inicio',command=back_about)
+    quit_info.place(x=0,y=0)
+    Menu.withdraw()
 
     Pant.mainloop()
 
