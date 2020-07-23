@@ -130,7 +130,7 @@ def MainWindow():
             Ubi = Bg.coords('MYSHIP')
             if Ubi!=[]:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1]+25)
-                if (Ubi[1]+25)==605:
+                if (Ubi[1]+25)==600:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
         def derecha(event):
