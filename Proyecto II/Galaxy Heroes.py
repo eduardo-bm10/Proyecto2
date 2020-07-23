@@ -1,4 +1,4 @@
-import tkinter as tk
+from tkinter import *
 import pygame as pg
 import os
 import glob
@@ -9,7 +9,7 @@ OPEN=True
 
 def Imagenes(Ubicacion):
     Ruta = os.path.join(Ubicacion)
-    Img = tk.PhotoImage(file=Ruta)
+    Img = PhotoImage(file=Ruta)
     return Img
 
 def musica(archivo):
@@ -24,7 +24,7 @@ def ImagenesAnim(x, Result):
     if x==[]:
         return Result
     else:
-        Result.append(tk.PhotoImage(file=x[0]))
+        Result.append(PhotoImage(file=x[0]))
         return ImagenesAnim(x[1:],Result)
 
 def sprites(Ruta):
@@ -33,7 +33,7 @@ def sprites(Ruta):
     return ImagenesAnim(x,[])
     
     
-Menu = tk.Tk()
+Menu = Tk()
 Menu.minsize(1200, 650)
 Menu.resizable(False, False)
 Menu.title('Galaxy Heroes')
@@ -41,10 +41,10 @@ Menu.iconbitmap('Imagenes/Icono.ico')
 
 musica('Audio\\MainTheme.mp3')
 
-Fondo = tk.Canvas(Menu, width=1200, height=650, bg='black')
+Fondo = Canvas(Menu, width=1200, height=650, bg='black')
 Fondo.place(x=0, y=0)
 
-MainTitle = tk.Label(Menu, width=15, text='GALAXY HEROES', font=('Georgia',40), fg='lemonchiffon', bg='maroon')
+MainTitle = Label(Menu, width=15, text='GALAXY HEROES', font=('Georgia',40), fg='lemonchiffon', bg='maroon')
 MainTitle.place(x=350, y=80)
 
 FondoImg = Imagenes('Imagenes\\Background\\FondoMenu.png')
@@ -63,7 +63,7 @@ def mov_fondo():
 mov_fondo()
 
 def juego(Mode):
-    Pant = tk.Toplevel()
+    Pant = Toplevel()
     Pant.minsize(1200,650)
     Pant.resizable(False, False)
     Pant.title('Galaxy Heroes')
@@ -72,10 +72,10 @@ def juego(Mode):
     Menu.withdraw()
     musica(1)
 
-    Bg = tk.Canvas(Pant, width=1200, height=650, bg='black')
+    Bg = Canvas(Pant, width=1200, height=650, bg='black')
     Bg.place(x=0,y=0)
 
-    Display = tk.Canvas(Pant, width=1200, height=60, bg='olive')
+    Display = Canvas(Pant, width=1200, height=60, bg='olive')
     Display.place(x=0, y=0)
 
     def back():
@@ -84,7 +84,7 @@ def juego(Mode):
         Menu.deiconify()
         
 
-    Exit = tk.Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
+    Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
 
     fondojuego = Imagenes('Imagenes\\Background\\GameBG.png')
@@ -183,7 +183,7 @@ def select_juego2():
     return juego(2)
 
 def config():
-    Pant = tk.Toplevel()
+    Pant = Toplevel()
     Pant.minsize(700,500)
     Pant.resizable(False, False)
     Pant.title('Galaxy Heroes')
@@ -192,7 +192,7 @@ def config():
     Pant.mainloop()
 
 def scores():
-    Pant = tk.Toplevel()
+    Pant = Toplevel()
     Pant.minsize(700,500)
     Pant.resizable(False, False)
     Pant.title('Galaxy Heroes')
@@ -201,34 +201,34 @@ def scores():
     Pant.mainloop()
 
 def about():
-    info = tk.Toplevel()
+    info = Toplevel()
     info.minsize(700,500)
     info.resizable(False, False)
     info.title('Galaxy Heroes')
     info.iconbitmap('Imagenes/Icono.ico')
     
-    C_info = tk.Canvas(info,width=700,height=500,bg='white')
+    C_info = Canvas(info,width=700,height=500,bg='white')
     C_info.place(x=0,y=0)
 
     C_info.image1 = Imagenes('Imagenes/Background/playbg.png')
     imgCanvas_info = C_info.create_image(0,0,anchor=NW,image= C_info.image1)    
 
-    Label1 = tk.Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
+    Label1 = Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
     Label1.place(x=50,y=50)
 
-    Label2 = tk.Label(C_info,text = "Ingeniería en Computadores", font =('Times New Roman',12))
+    Label2 = Label(C_info,text = "Ingeniería en Computadores", font =('Times New Roman',12))
     Label2.place(x=50,y=100)
 
-    Label3 = tk.Label(C_info,text = "Profesor: Milton Villegas Lemus", font =('Times New Roman',12))
+    Label3 = Label(C_info,text = "Profesor: Milton Villegas Lemus", font =('Times New Roman',12))
     Label3.place(x=50,y=150)
 
-    Label4 = tk.Label(C_info,text = "Autores", font =('Times New Roman',12))
+    Label4 = Label(C_info,text = "Autores", font =('Times New Roman',12))
     Label4.place(x=400,y=25)
 
-    Label5 = tk.Label(C_info,text = "Max Garro Mora", font =('Times New Roman',12))
+    Label5 = Label(C_info,text = "Max Garro Mora", font =('Times New Roman',12))
     Label5.place(x=300,y=150)
 
-    Label6 = tk.Label(C_info,text = "Eduardo Bolívar Minguet", font =('Times New Roman',12))
+    Label6 = Label(C_info,text = "Eduardo Bolívar Minguet", font =('Times New Roman',12))
     Label6.place(x=425,y=150)
 
     maxgm = Imagenes('Imagenes/FOTO.png')
@@ -250,22 +250,22 @@ def salida():
     musica(1)
     Menu.destroy()
 
-ModoJuego1 = tk.Button(Fondo, width=27, text='Destrucción de asteroides', command=select_juego1, font=('Times',15), fg='gold', bg='firebrick')
+ModoJuego1 = Button(Fondo, width=27, text='Destrucción de asteroides', command=select_juego1, font=('Times',15), fg='gold', bg='firebrick')
 ModoJuego1.place(x=180, y=300)
 
-ModoJuego2 = tk.Button(Fondo, width=27, text='Maniobras de prueba', command=select_juego2, font=('Times',15), fg='gold', bg='firebrick')
+ModoJuego2 = Button(Fondo, width=27, text='Maniobras de prueba', command=select_juego2, font=('Times',15), fg='gold', bg='firebrick')
 ModoJuego2.place(x=690, y=300)
 
-Confi = tk.Button(Fondo, width=17, text='Configuración', command=config, font=('Times',15), fg='gold', bg='firebrick')
+Confi = Button(Fondo, width=17, text='Configuración', command=config, font=('Times',15), fg='gold', bg='firebrick')
 Confi.place(x=490, y=400)
 
-Puntajes = tk.Button(Fondo, width=17, text='Altos puntajes', command=scores, font=('Times',15), fg='gold', bg='firebrick')
+Puntajes = Button(Fondo, width=17, text='Altos puntajes', command=scores, font=('Times',15), fg='gold', bg='firebrick')
 Puntajes.place(x=490, y=450)
 
-About = tk.Button(Fondo, width=17, text='Acerca de', command=about, font=('Times',15), fg='gold', bg='firebrick')
+About = Button(Fondo, width=17, text='Acerca de', command=about, font=('Times',15), fg='gold', bg='firebrick')
 About.place(x=490, y=500)
 
-Cerrar = tk.Button(Fondo, width=17, text='Salir del juego', command=salida, font=('Times',15), fg='gold', bg='firebrick')
+Cerrar = Button(Fondo, width=17, text='Salir del juego', command=salida, font=('Times',15), fg='gold', bg='firebrick')
 Cerrar.place(x=490, y=550)
 
 Menu.mainloop()
