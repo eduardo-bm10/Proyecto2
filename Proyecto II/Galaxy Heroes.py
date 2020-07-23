@@ -4,6 +4,7 @@ import os
 import glob
 import time
 from threading import Thread
+import random
 
 OPEN=True
 
@@ -122,7 +123,7 @@ def juego(Mode):
         Ubi = Bg.coords('MYSHIP')
         if Ubi!=[]:
             Bg.coords('MYSHIP', Ubi[0], Ubi[1]+25)
-            if (Ubi[1]+25)==605:
+            if (Ubi[1]+25)==575:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
     def derecha(event):
@@ -138,20 +139,31 @@ def juego(Mode):
             Bg.coords('MYSHIP', Ubi[0]-25, Ubi[1])
             if (Ubi[0]-25)==100:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+    
+    anim(0)
 
     if Mode==1:
-        Asteroide = Bg.create_image(404, 300, tags=('AST'))
         Asteroids = sprites('Imagenes/Asteroids and obstacles/ast*.png')
+
+        def generate_ast(t):
+            if t==5:
+                Asteroid = Bg.create_image(random.uniform(50,1150), random.uniform(50,600), tags=('ast'))
+                ast_3D(0)
+                return generate_ast(0)
+            else:
+                time.sleep(1)
+                t+=1
+                return generate_ast(t)
     
         def ast_3D(i):
             if i==6:
-                return Bg.delete('AST')
+                return Bg.delete('ast')
             else:
-                Bg.itemconfig('AST', image=Asteroids[i])
-                time.sleep(2)
-                Thread(target=ast_3D, args=(i+1,)).start()
+                Bg.itemconfig('ast', image=Asteroids[i])
+                time.sleep(0.5)
+                return ast_3D(i+1)
 
-        ast_3D(0)
+        Thread(target=generate_ast, args=(0,)).start()
 
     if Mode==2:
         Anillo = Bg.create_image(400,500, tags=('RING'))
@@ -163,11 +175,10 @@ def juego(Mode):
             else:
                 Bg.itemconfig('RING',image=Anillos[i])
                 time.sleep(2)
-                Thread(target=anillo_3D, args=(i+1,)).start()
+                i+=1
+                return anillo_3D(i)
 
         anillo_3D(0)
-    
-    anim(0)
 
     Pant.bind('<w>',arriba)
     Pant.bind('<s>',abajo)
@@ -211,7 +222,7 @@ def about():
     C_info.place(x=0,y=0)
 
     C_info.image1 = Imagenes('Imagenes/Background/playbg.png')
-    imgCanvas_info = C_info.create_image(0,0,anchor=NW,image= C_info.image1)    
+    imgCanvas_info = C_info.create_image(350,250,image= C_info.image1)    
 
     Label1 = tk.Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
     Label1.place(x=50,y=50)
@@ -240,11 +251,11 @@ def about():
     def back_about():
         info.destroy()
         Menu.deiconify()        
-    quit_info = Button(info,text = 'Volver al inicio',command=back_about)
+    quit_info = tk.Button(info,text = 'Volver al inicio',command=back_about)
     quit_info.place(x=0,y=0)
     Menu.withdraw()
 
-    Pant.mainloop()
+    info.mainloop()
 
 def salida():
     musica(1)
