@@ -1,3 +1,5 @@
+#////////////////////// BIBLIOTECAS //////////////////////////////////////////////////////////
+
 from tkinter import *
 import pygame as pg
 import os
@@ -6,7 +8,11 @@ import time
 from threading import Thread
 import random
 
+#////////////////// GLOBALES ////////////////////////////////////////////////////////////////
+
 OPEN=True
+
+#////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
 
 def Imagenes(Ubicacion):
     Ruta = os.path.join(Ubicacion)
@@ -33,7 +39,9 @@ def sprites(Ruta):
     x.sort()
     return ImagenesAnim(x,[])
     
-    
+
+#////////////////////// VENTANA PRINCIPAL //////////////////////////////////////////////////////////////////////////////
+
 Menu = Tk()
 Menu.minsize(1200, 650)
 Menu.resizable(False, False)
@@ -63,6 +71,8 @@ def mov_fondo():
 
 mov_fondo()
 
+#///////////////////////////// PANTALLA DE JUEGO //////////////////////////////////////////////////////////////////////////
+
 def juego(Mode):
     Pant = Toplevel()
     Pant.minsize(1200,650)
@@ -79,7 +89,7 @@ def juego(Mode):
     Display = Canvas(Pant, width=1200, height=60, bg='olive')
     Display.place(x=0, y=0)
 
-    def back():
+    def back():         #<== RETORNO
         global OPEN
         OPEN=False
         Pant.destroy()
@@ -90,6 +100,8 @@ def juego(Mode):
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
 
+    #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
+
     fondojuego = Imagenes('Imagenes\\Background\\GameBG.png')
     BgFondo = Bg.create_image(600, 325, image=fondojuego)
     
@@ -99,7 +111,9 @@ def juego(Mode):
     Right = sprites('Imagenes/Spaceship/right*.png')
     Left = sprites('Imagenes/Spaceship/left*.png')
 
-    def anim(i):
+    #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
+
+    def anim(i):        #<== ANIMACION DE NAVE
         global OPEN
         if i==2:
             i=0
@@ -114,40 +128,40 @@ def juego(Mode):
             time.sleep(0.15)
             Thread(target=anim, args=(i+1,)).start()
 
-    def arriba(event):
+    def arriba(event):      #<== MOVER HACIA ARRIBA
         Ubi = Bg.coords('MYSHIP')
         if Ubi!=[]:
             Bg.coords('MYSHIP', Ubi[0], Ubi[1]-25)
             if (Ubi[1]-25)==125:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
-    def abajo(event):
+    def abajo(event):       #<== MOVER HACIA ABAJO
         Ubi = Bg.coords('MYSHIP')
         if Ubi!=[]:
             Bg.coords('MYSHIP', Ubi[0], Ubi[1]+25)
             if (Ubi[1]+25)==575:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
-    def derecha(event):
+    def derecha(event):     #<== MOVER A LA DERECHA
         Ubi = Bg.coords('MYSHIP')
         if Ubi!=[]:
             Bg.coords('MYSHIP', Ubi[0]+25, Ubi[1])
             if (Ubi[0]+25)==1100:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
-    def izquierda(event):
+    def izquierda(event):   #<== MOVER A LA IZQUIERDA
         Ubi = Bg.coords('MYSHIP')
         if Ubi!=[]:
             Bg.coords('MYSHIP', Ubi[0]-25, Ubi[1])
             if (Ubi[0]-25)==100:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-    
-    anim(0)
 
+    #///////////////////////////////////// MODOS DE JUEGO //////////////////////////////////////////////////////////////
+    #MODO DESTRUCCION DE ASTEROIDES
     if Mode==1:
         Asteroids = sprites('Imagenes/Asteroids and obstacles/ast*.png')
 
-        def generate_ast(t):
+        def generate_ast(t):        #<== GENERAR ASTEROIDE
             global OPEN
             if OPEN==True:
                 if t==5:
@@ -159,7 +173,7 @@ def juego(Mode):
                     t+=1
                     return generate_ast(t)
     
-        def ast_3D(i):
+        def ast_3D(i):              #<== MOVER ASTEROIDE
             if i==6:
                 return Bg.delete('ast')
             else:
@@ -169,10 +183,11 @@ def juego(Mode):
 
         Thread(target=generate_ast, args=(0,)).start()
 
+    #MODO MANIOBRA DE PRUEBAS
     if Mode==2:
         Anillos = sprites('Imagenes/Asteroids and obstacles/Ring*.png')
 
-        def generate_ring(t):
+        def generate_ring(t):       #<== GENERAR ANILLO
             global OPEN
             if OPEN==True:
                 if t==3:
@@ -184,7 +199,7 @@ def juego(Mode):
                     t+=1
                     return generate_ring(t)
                     
-        def ring_3D(i):
+        def ring_3D(i):             #<== MOVER ANILLO
             if i==5:
                 return Bg.delete('RING')
             else:
@@ -195,12 +210,18 @@ def juego(Mode):
 
         Thread(target=generate_ring, args=(0,)).start()
 
+    #//////////////////////////////////////////// BINDS Y LLAMADAS ///////////////////////////////////////////////////////////
+
+    anim(0)
+
     Pant.bind('<w>',arriba)
     Pant.bind('<s>',abajo)
     Pant.bind('<d>',derecha)
     Pant.bind('<a>',izquierda)        
 
     Pant.mainloop()
+
+#//////////////////////////////////// SELECCION DE MODO DE JUEGO ///////////////////////////////////////////////////////////////
 
 def select_juego1():
     global OPEN
@@ -212,6 +233,8 @@ def select_juego2():
     OPEN=True
     return juego(2)
 
+#/////////////////////////////////// PANTALLA DE CONFIGURACION ////////////////////////////////////////////////////////////////
+
 def config():
     Pant = Toplevel()
     Pant.minsize(700,500)
@@ -221,6 +244,8 @@ def config():
 
     Pant.mainloop()
 
+#/////////////////////////////////// PANTALLA DE PUNTAJES ////////////////////////////////////////////////////////////////////////
+
 def scores():
     Pant = Toplevel()
     Pant.minsize(700,500)
@@ -229,6 +254,8 @@ def scores():
     Pant.iconbitmap('Imagenes/Icono.ico')
 
     Pant.mainloop()
+
+#//////////////////////////////////// PANTALLA DE INFORMACION /////////////////////////////////////////////////////////////////////
 
 def about():
     info = Toplevel()
@@ -267,7 +294,7 @@ def about():
     eduardobm = Imagenes('Imagenes/FOTO2.png')
     eduardobm_image = C_info.create_image(500, 100, image=eduardobm)
 
-    def back_about():
+    def back_about():       #<== VOLVER AL MENU PRINCIPAL
         info.destroy()
         Menu.deiconify()        
     quit_info = Button(info,text = 'Volver al inicio',command=back_about)
@@ -276,11 +303,11 @@ def about():
 
     info.mainloop()
 
-def salida():
+def salida():       #<== CERRAR DEL JUEGO
     musica(1)
     Menu.destroy()
 
-ModoJuego1 = Button(Fondo, width=27, text='Destrucción de asteroides', command=select_juego1, font=('Times',15), fg='gold', bg='firebrick')
+ModoJuego1 = Button(Fondo, width=27, text='Destrucción de asteroides', command=select_juego1, font=('Times',15), fg='gold', bg='firebrick')     #BOTONES DE MENU
 ModoJuego1.place(x=180, y=300)
 
 ModoJuego2 = Button(Fondo, width=27, text='Maniobras de prueba', command=select_juego2, font=('Times',15), fg='gold', bg='firebrick')
