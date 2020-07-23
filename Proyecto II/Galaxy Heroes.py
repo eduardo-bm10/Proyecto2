@@ -210,7 +210,7 @@ def about():
     C_info = tk.Canvas(info,width=700,height=500,bg='white')
     C_info.place(x=0,y=0)
 
-    C_info.image1 = Imagenes('imagenes/backgrounds/playbg.png')
+    C_info.image1 = Imagenes('Imagenes/backgrounds/playbg.png')
     imgCanvas_info = C_info.create_image(0,0,anchor=NW,image= C_info.image1)    
 
     Label1 = tk.Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
@@ -231,10 +231,10 @@ def about():
     Label6 = tk.Label(C_info,text = "Eduardo Bolívar Minguet", font =('Times New Roman',12))
     Label6.place(x=425,y=150)
 
-    maxgm = Imagenes('imagenes/FOTO.png')
+    maxgm = Imagenes('Imagenes/FOTO.png')
     maxgm_image = C_info.create_image(350, 100, image=maxgm)
 
-    eduardobm = Imagenes('imagenes/FOTO2.png')
+    eduardobm = Imagenes('Imagenes/FOTO2.png')
     eduardobm_image = C_info.create_image(500, 100, image=eduardobm)
 
     def back_about():
