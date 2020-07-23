@@ -210,7 +210,7 @@ def about():
     C_info = tk.Canvas(info,width=700,height=500,bg='white')
     C_info.place(x=0,y=0)
 
-    C_info.image1 = Imagenes('Imagenes/backgrounds/playbg.png')
+    C_info.image1 = Imagenes('Imagenes/Background/playbg.png')
     imgCanvas_info = C_info.create_image(0,0,anchor=NW,image= C_info.image1)    
 
     Label1 = tk.Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
