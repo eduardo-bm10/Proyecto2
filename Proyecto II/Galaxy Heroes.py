@@ -102,14 +102,14 @@ def juego(Mode):
 
     #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
 
-    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png')
+    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png') #<== Imagen del fondo de la pantalla de juego
     BgFondo = Bg.create_image(600, 325, image=fondojuego)
     
     Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
 
-    Spaceship = sprites('Imagenes/Spaceship/playership*.png')
-    Right = sprites('Imagenes/Spaceship/right*.png')
-    Left = sprites('Imagenes/Spaceship/left*.png')
+    Spaceship = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
+    Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
+    Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
 
     #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
 
