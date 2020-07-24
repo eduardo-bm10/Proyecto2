@@ -94,7 +94,21 @@ def juego(Mode):
         OPEN=False
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
-        Menu.deiconify()
+        Menu.deiconify()   
+
+    #//////////////////////////////////////////Función para el temporizador///////////////////////////////////////////        
+    def tiempo(Seg):
+        global OPEN
+        if OPEN == True:
+            try:
+                time.sleep(1)
+                time_label = Label(Pant, text='Tiempo:'+ str(Seg))
+                time_label.place(x=700,y=30)
+                Thread(target=tiempo,args=(Seg+1,)).start()
+            except:
+                return
+            
+    Thread(target = tiempo, args = (0,)).start()
         
 
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
@@ -271,24 +285,53 @@ def select_juego2():
 #/////////////////////////////////// PANTALLA DE CONFIGURACION ////////////////////////////////////////////////////////////////
 
 def config():
-    Pant = Toplevel()
-    Pant.minsize(700,500)
-    Pant.resizable(False, False)
-    Pant.title('Galaxy Heroes')
-    Pant.iconbitmap('Imagenes/Icono.ico')
+    Config = Toplevel()
+    Config.minsize(700,500)
+    Config.resizable(False, False)
+    Config.title('Galaxy Heroes')
+    Config.iconbitmap('Imagenes/Icono.ico')
+    
+    C_config = Canvas(Config,width=700,height=500,bg='white')
+    C_config.place(x=0,y=0)
 
-    Pant.mainloop()
+    C_config.image1 = Imagenes('Imagenes/Background/playbg.png')
+    imgCanvas_config = C_config.create_image(350,250,image= C_config.image1)    
+
+    
+    def back_config():       #<== VOLVER AL MENU PRINCIPAL
+        Config.destroy()
+        Menu.deiconify()        
+    quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
+    quit_config.place(x=0,y=0)
+    Menu.withdraw()
+
+    Config.mainloop()
 
 #/////////////////////////////////// PANTALLA DE PUNTAJES ////////////////////////////////////////////////////////////////////////
 
 def scores():
-    Pant = Toplevel()
-    Pant.minsize(700,500)
-    Pant.resizable(False, False)
-    Pant.title('Galaxy Heroes')
-    Pant.iconbitmap('Imagenes/Icono.ico')
+    Scores = Toplevel()
+    Scores.minsize(700,500)
+    Scores.resizable(False, False)
+    Scores.title('Galaxy Heroes')
+    Scores.iconbitmap('Imagenes/Icono.ico')
+    
+    C_scores = Canvas(Scores,width=700,height=500,bg='white')
+    C_scores.place(x=0,y=0)
 
-    Pant.mainloop()
+    C_scores.image1 = Imagenes('Imagenes/Background/playbg.png')
+    imgCanvas_Scores = C_scores.create_image(350,250,image= C_scores.image1)    
+
+    
+    def back_scores():       #<== VOLVER AL MENU PRINCIPAL
+        Scores.destroy()
+        Menu.deiconify()        
+    quit_scores = Button(Scores,text = 'Volver al inicio',command=back_scores)
+    quit_scores.place(x=0,y=0)
+    Menu.withdraw()
+
+
+    Scores.mainloop()
 
 #//////////////////////////////////// PANTALLA DE INFORMACION /////////////////////////////////////////////////////////////////////
 
