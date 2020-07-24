@@ -83,10 +83,10 @@ def juego(Mode):
     Menu.withdraw()
     musica(1)
 
-    Bg = Canvas(Pant, width=1200, height=650, bg='black')
+    Bg = Canvas(Pant, width=1200, height=650, bg='maroon')
     Bg.place(x=0,y=0)
 
-    Display = Canvas(Pant, width=1200, height=60, bg='olive')
+    Display = Canvas(Pant, width=1200, height=60, bg='silver')
     Display.place(x=0, y=0)
 
     def back():         #<== RETORNO
@@ -159,7 +159,8 @@ def juego(Mode):
     #///////////////////////////////////// MODOS DE JUEGO //////////////////////////////////////////////////////////////
     #MODO DESTRUCCION DE ASTEROIDES
     if Mode==1:
-        Asteroids = sprites('Imagenes/Asteroids and obstacles/ast*.png')
+        
+        SpritesAst=sprites('Imagenes/Asteroides/ast*.png')
 
         def generate_ast(t):        #<== GENERAR ASTEROIDE
             global OPEN
@@ -174,10 +175,10 @@ def juego(Mode):
                     return generate_ast(t)
     
         def ast_3D(i):              #<== MOVER ASTEROIDE
-            if i==6:
+            if i==12:
                 return Bg.delete('ast')
             else:
-                Bg.itemconfig('ast', image=Asteroids[i])
+                Bg.itemconfig('ast', image=SpritesAst[i])
                 time.sleep(0.3)
                 return ast_3D(i+1)
 
@@ -185,7 +186,7 @@ def juego(Mode):
 
     #MODO MANIOBRA DE PRUEBAS
     if Mode==2:
-        Anillos = sprites('Imagenes/Asteroids and obstacles/Ring*.png')
+        Anillos=sprites('Imagenes/Anillos/Ring*.png')
 
         def generate_ring(t):       #<== GENERAR ANILLO
             global OPEN
@@ -196,8 +197,7 @@ def juego(Mode):
                     return generate_ring(0)
                 else:
                     time.sleep(0.5)
-                    t+=1
-                    return generate_ring(t)
+                    return generate_ring(t+1)
                     
         def ring_3D(i):             #<== MOVER ANILLO
             if i==5:
@@ -205,8 +205,7 @@ def juego(Mode):
             else:
                 Bg.itemconfig('RING',image=Anillos[i])
                 time.sleep(0.3)
-                i+=1
-                return ring_3D(i)
+                return ring_3D(i+1)
 
         Thread(target=generate_ring, args=(0,)).start()
 
