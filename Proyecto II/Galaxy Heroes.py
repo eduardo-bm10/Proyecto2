@@ -93,7 +93,21 @@ def juego(Mode):
         OPEN=False
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
-        Menu.deiconify()
+        Menu.deiconify()   
+
+    #//////////////////////////////////////////Función para el temporizador///////////////////////////////////////////        
+    def tiempo(Seg):
+        global OPEN
+        if OPEN == True:
+            try:
+                time.sleep(1)
+                time_label = Label(Pant, text='Tiempo:'+ str(Seg))
+                time_label.place(x=100,y=0)
+                Thread(target=tiempo,args=(Seg+1,)).start()
+            except:
+                return
+            
+    Thread(target = tiempo, args = (0,)).start()
         
 
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
