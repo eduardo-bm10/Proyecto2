@@ -102,7 +102,7 @@ def juego(Mode):
             try:
                 time.sleep(1)
                 time_label = Label(Pant, text='Tiempo:'+ str(Seg))
-                time_label.place(x=100,y=0)
+                time_label.place(x=700,y=30)
                 Thread(target=tiempo,args=(Seg+1,)).start()
             except:
                 return
