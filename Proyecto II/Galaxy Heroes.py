@@ -1,5 +1,4 @@
 #////////////////////// BIBLIOTECAS //////////////////////////////////////////////////////////
-
 from tkinter import *
 import pygame as pg
 import os
@@ -100,79 +99,25 @@ def juego(Mode):
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
 
-    #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
-
-    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png') #<== Imagen del fondo de la pantalla de juego
-    BgFondo = Bg.create_image(600, 325, image=fondojuego)
-    
-    Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
-
-    Spaceship = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
-    Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
-    Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
-
-    #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
-
-    def anim(i):        #<== ANIMACION DE NAVE
-        global OPEN
-        if i==2:
-            i=0
-        if OPEN==True:
-            loc = Bg.coords('MYSHIP')
-            if 400<loc[0]<800:
-                Bg.itemconfig('MYSHIP', image=Spaceship[i])
-            if loc[0]<=400:
-                Bg.itemconfig('MYSHIP', image=Right[i])
-            if loc[0]>=800:
-                Bg.itemconfig('MYSHIP', image=Left[i])
-            time.sleep(0.15)
-            Thread(target=anim, args=(i+1,)).start()
-
-    def arriba(event):      #<== MOVER HACIA ARRIBA
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0], Ubi[1]-25)
-            if (Ubi[1]-25)==125:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-
-    def abajo(event):       #<== MOVER HACIA ABAJO
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0], Ubi[1]+25)
-            if (Ubi[1]+25)==575:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-
-    def derecha(event):     #<== MOVER A LA DERECHA
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0]+25, Ubi[1])
-            if (Ubi[0]+25)==1100:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-
-    def izquierda(event):   #<== MOVER A LA IZQUIERDA
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0]-25, Ubi[1])
-            if (Ubi[0]-25)==100:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-
     #///////////////////////////////////// MODOS DE JUEGO //////////////////////////////////////////////////////////////
     #MODO DESTRUCCION DE ASTEROIDES
     if Mode==1:
-        
         SpritesAst=sprites('Imagenes/Asteroides/ast*.png')
 
         def generate_ast(t):        #<== GENERAR ASTEROIDE
             global OPEN
             if OPEN==True:
-                if t==5:
-                    Asteroid = Bg.create_image(random.uniform(100,1100), random.uniform(100,500), tags=('ast'))
-                    ast_3D(0)
-                    return generate_ast(0)
-                else:
-                    time.sleep(1)
-                    t+=1
-                    return generate_ast(t)
+                try:
+                    if t==5:
+                        Bg.Asteroid = Bg.create_image(random.uniform(100,1100), random.uniform(100,500), tags=('ast'))
+                        ast_3D(0)
+                        return generate_ast(0)
+                    else:
+                        time.sleep(1)
+                        t+=1
+                        return generate_ast(t)
+                except:
+                    return None
     
         def ast_3D(i):              #<== MOVER ASTEROIDE
             if i==12:
@@ -208,6 +153,62 @@ def juego(Mode):
                 return ring_3D(i+1)
 
         Thread(target=generate_ring, args=(0,)).start()
+
+    #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
+
+    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png') #<== Imagen del fondo de la pantalla de juego
+    BgFondo = Bg.create_image(600, 325, image=fondojuego)
+    
+    Bg.Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
+
+    Bg.Spaceship = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
+    Bg.Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
+    Bg.Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
+
+    #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
+
+    def anim(i):        #<== ANIMACION DE NAVE
+        global OPEN
+        if i==2:
+            i=0
+        if OPEN==True:
+            loc = Bg.coords('MYSHIP')
+            if 400<loc[0]<800:
+                Bg.itemconfig('MYSHIP', image=Bg.Spaceship[i])
+            if loc[0]<=400:
+                Bg.itemconfig('MYSHIP', image=Bg.Right[i])
+            if loc[0]>=800:
+                Bg.itemconfig('MYSHIP', image=Bg.Left[i])
+            time.sleep(0.15)
+            Thread(target=anim, args=(i+1,)).start()
+
+    def arriba(event):      #<== MOVER HACIA ARRIBA
+        Ubi = Bg.coords('MYSHIP')
+        if Ubi!=[]:
+            Bg.coords('MYSHIP', Ubi[0], Ubi[1]-25)
+            if (Ubi[1]-25)==125:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+
+    def abajo(event):       #<== MOVER HACIA ABAJO
+        Ubi = Bg.coords('MYSHIP')
+        if Ubi!=[]:
+            Bg.coords('MYSHIP', Ubi[0], Ubi[1]+25)
+            if (Ubi[1]+25)==575:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+
+    def derecha(event):     #<== MOVER A LA DERECHA
+        Ubi = Bg.coords('MYSHIP')
+        if Ubi!=[]:
+            Bg.coords('MYSHIP', Ubi[0]+25, Ubi[1])
+            if (Ubi[0]+25)==1100:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+
+    def izquierda(event):   #<== MOVER A LA IZQUIERDA
+        Ubi = Bg.coords('MYSHIP')
+        if Ubi!=[]:
+            Bg.coords('MYSHIP', Ubi[0]-25, Ubi[1])
+            if (Ubi[0]-25)==100:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
     #//////////////////////////////////////////// BINDS Y LLAMADAS ///////////////////////////////////////////////////////////
 
