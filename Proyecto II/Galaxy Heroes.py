@@ -90,8 +90,9 @@ def juego(Mode):
     Display.place(x=0, y=0)
 
     def back():         #<== RETORNO
-        global OPEN
+        global OPEN, BATTERY
         OPEN=False
+        BATTERY=100
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
         Menu.deiconify()   
@@ -102,8 +103,8 @@ def juego(Mode):
         if OPEN == True:
             try:
                 time.sleep(1)
-                time_label = Label(Pant, text='Tiempo:'+ str(Seg))
-                time_label.place(x=700,y=30)
+                time_label = Label(Pant, text='Tiempo:'+ str(Seg), font=('Georgia',20), fg='gold', bg='darkslategray')
+                time_label.place(x=650,y=20)
                 Thread(target=tiempo,args=(Seg+1,)).start()
             except:
                 return
