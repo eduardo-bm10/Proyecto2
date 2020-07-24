@@ -10,6 +10,7 @@ import random
 #////////////////// GLOBALES ////////////////////////////////////////////////////////////////
 
 OPEN=True
+BATTERY=100
 
 #////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
 
@@ -209,6 +210,40 @@ def juego(Mode):
             Bg.coords('MYSHIP', Ubi[0]-25, Ubi[1])
             if (Ubi[0]-25)==100:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+
+    #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
+
+    BatteryFull = Imagenes('Imagenes\\Spaceship\\Battery1.png')
+    BatteryMedium = Imagenes('Imagenes\\Spaceship\\Battery2.png')
+    BatteryMedium1 = Imagenes('Imagenes\\Spaceship\\Battery3.png')
+    BatteryEmpty = Imagenes('Imagenes\\Spaceship\\Battery4.png')
+    BatteryDead = Imagenes('Imagenes\\Spaceship\\Battery5.png')
+    
+    Battery = Display.create_image(500, 30, tags=('battery'), image=BatteryFull)
+    
+    def empty_battery():
+        global BATTERY
+        if BATTERY==0:
+            Display.itemconfig('battery',image=BatteryDead)
+            return 'Game Over'
+        elif 75<BATTERY<=100:
+            BATTERY-=1
+            return Display.after(1000,empty_battery)
+        elif 50<BATTERY<=75:
+            Display.itemconfig('battery',image=BatteryMedium)
+            BATTERY-=1
+            return Display.after(1000,empty_battery)
+        elif 25<BATTERY<=50:
+            Display.itemconfig('battery',image=BatteryMedium1)
+            BATTERY-=1
+            return Display.after(1000,empty_battery)
+        elif 0<BATTERY<=25:
+            Display.itemconfig('battery',image=BatteryEmpty)
+            BATTERY-=1
+            return Display.after(1000,empty_battery)
+
+    empty_battery()
+        
 
     #//////////////////////////////////////////// BINDS Y LLAMADAS ///////////////////////////////////////////////////////////
 
