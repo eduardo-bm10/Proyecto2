@@ -310,14 +310,62 @@ def config():
     C_config.place(x=0,y=0)
 
     C_config.image1 = Imagenes('Imagenes/Background/playbg.png')
-    imgCanvas_config = C_config.create_image(350,250,image= C_config.image1)    
+    imgCanvas_config = C_config.create_image(350,250,image= C_config.image1)
 
+    Pilot1img = Imagenes('Imagenes/Pilotos/Piloto1.png')
+    Pilot2img = Imagenes('Imagenes/Pilotos/Piloto2.png')
+    Pilot3img = Imagenes('Imagenes/Pilotos/Piloto3.png')
+    Pilot4img = Imagenes('Imagenes/Pilotos/Piloto4.png')
+    Pilot5img = Imagenes('Imagenes/Pilotos/Piloto5.png')
+    Pilot6img = Imagenes('Imagenes/Pilotos/Piloto6.png')
+    Pilot7img = Imagenes('Imagenes/Pilotos/Piloto7.png')
+    Pilot8img = Imagenes('Imagenes/Pilotos/Piloto8.png')
+    Pilot9img = Imagenes('Imagenes/Pilotos/Piloto9.png')
+    Pilot10img = Imagenes('Imagenes/Pilotos/Piloto10.png')
     
+    Pilot1 = C_config.create_image(180, 150, tags=('pilot1'), image=Pilot1img)
+    Pilot1 = C_config.create_image(360, 150, tags=('pilot2'), image=Pilot2img)
+    Pilot1 = C_config.create_image(540, 150, tags=('pilot3'), image=Pilot3img)
+    Pilot1 = C_config.create_image(270, 310, tags=('pilot4'), image=Pilot4img)
+    Pilot1 = C_config.create_image(450, 310, tags=('pilot5'), image=Pilot5img)
+
+    NEXT=True
+
+    def next_page():
+        nonlocal NEXT
+        if NEXT==True:
+            C_config.itemconfig('pilot1', image=Pilot6img)
+            C_config.itemconfig('pilot2', image=Pilot7img)
+            C_config.itemconfig('pilot3', image=Pilot8img)
+            C_config.itemconfig('pilot4', image=Pilot9img)
+            C_config.itemconfig('pilot5', image=Pilot10img)
+            NEXT=False
+        else:
+            return None
+    def back_page():
+        nonlocal NEXT
+        if NEXT==False:
+            C_config.itemconfig('pilot1', image=Pilot1img)
+            C_config.itemconfig('pilot2', image=Pilot2img)
+            C_config.itemconfig('pilot3', image=Pilot3img)
+            C_config.itemconfig('pilot4', image=Pilot4img)
+            C_config.itemconfig('pilot5', image=Pilot5img)
+            NEXT=True
+            
     def back_config():       #<== VOLVER AL MENU PRINCIPAL
         Config.destroy()
-        Menu.deiconify()        
+        Menu.deiconify()
+        
     quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
     quit_config.place(x=0,y=0)
+
+    NextPilot = Button(Config, text='Siguiente', command=next_page)
+    NextPilot.place(x=640, y=310)
+
+    PrevPilot = Button(Config, text='Anterior', command=back_page)
+    PrevPilot.place(x=60, y=310)
+
+
     Menu.withdraw()
 
     Config.mainloop()
