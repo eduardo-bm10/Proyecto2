@@ -110,8 +110,22 @@ def juego(Mode):
                 return
             
     Thread(target = tiempo, args = (0,)).start()
+    
+    def generate_battery(t):
+        global OPEN
+        if OPEN == True:
+            try:
+                if t == 25:
+                    Bg.BatteryFull = Bg.create_image(random.uniform(100,1100),random.uniform(100,500),tags=('battery'))
+                    return generate_battery(0)
+                else:
+                    time.sleep(1)
+                    return generate_battery(t+1)
+            except:
+                return
+            
+    Thread(target = generate_battery, args = (0,)).start()
         
-
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
 
