@@ -116,7 +116,7 @@ def juego(Mode):
         if OPEN == True:
             try:
                 if t == 25:
-                    Bg.BatteryFull = Bg.create_image(random.uniform(100,1100),random.uniform(100,500),tags=('battery'))
+                    Bg.BatteryFull = Bg.create_image(random.uniform(100,1100),random.uniform(100,500),tags=('battery'),image = BatteryFull)
                     return generate_battery(0)
                 else:
                     time.sleep(1)
