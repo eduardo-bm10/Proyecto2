@@ -111,20 +111,32 @@ def juego(Mode):
             
     Thread(target = tiempo, args = (0,)).start()
     
+    SpriteBattery = sprites('Imagenes/Spaceship/Fullbattery*.png')
+    
     def generate_battery(t):
         global OPEN
         if OPEN == True:
             try:
                 if t == 25:
-                    Bg.BatteryFull = Bg.create_image(random.uniform(100,1100),random.uniform(100,500),tags=('battery'),image = BatteryFull)
+                    Bg.BatteryFull = Bg.create_image(random.uniform(100,1100),random.uniform(100,500),tags=('battery'))
+                    move_fullbattery(0)
                     return generate_battery(0)
                 else:
                     time.sleep(1)
                     return generate_battery(t+1)
             except:
-                return
-            
-    Thread(target = generate_battery, args = (0,)).start()
+                return           
+    
+    def move_fullbattery(i):              #<== MOVER SOBRECARGA DE BATERÍA
+            if i==12:
+                return Bg.delete('battery')
+            else:
+                Bg.itemconfig('battery', image=Fullbattery[i])
+                time.sleep(1)
+                return move_fullbattery(i+1)
+
+    Thread(target=move_fullbattery, args=(0,)).start()
+    
         
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
