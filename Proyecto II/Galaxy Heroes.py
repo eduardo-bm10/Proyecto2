@@ -336,27 +336,38 @@ def config():
     Pilot10img = Imagenes('Imagenes/Pilotos/Piloto10.png')
     
     Pilot1 = C_config.create_image(180, 150, tags=('pilot1'), image=Pilot1img)
-    Pilot1 = C_config.create_image(360, 150, tags=('pilot2'), image=Pilot2img)
-    Pilot1 = C_config.create_image(540, 150, tags=('pilot3'), image=Pilot3img)
-    Pilot1 = C_config.create_image(270, 310, tags=('pilot4'), image=Pilot4img)
-    Pilot1 = C_config.create_image(450, 310, tags=('pilot5'), image=Pilot5img)
+    Pilot2 = C_config.create_image(360, 150, tags=('pilot2'), image=Pilot2img)
+    Pilot3 = C_config.create_image(540, 150, tags=('pilot3'), image=Pilot3img)
+    Pilot4 = C_config.create_image(270, 310, tags=('pilot4'), image=Pilot4img)
+    Pilot5 = C_config.create_image(450, 310, tags=('pilot5'), image=Pilot5img)
 
     NEXT=True
 
     def next_page():
         nonlocal NEXT
         if NEXT==True:
-            C_config.itemconfig('pilot1', image=Pilot6img)
-            C_config.itemconfig('pilot2', image=Pilot7img)
-            C_config.itemconfig('pilot3', image=Pilot8img)
-            C_config.itemconfig('pilot4', image=Pilot9img)
-            C_config.itemconfig('pilot5', image=Pilot10img)
+            C_config.delete('pilot1')
+            C_config.delete('pilot2')
+            C_config.delete('pilot3')
+            C_config.delete('pilot4')
+            C_config.delete('pilot5')
+            Pilot6 = C_config.create_image(180, 150, tags=('pilot6'), image=Pilot6img)
+            Pilot7 = C_config.create_image(360, 150, tags=('pilot7'), image=Pilot7img)
+            Pilot8 = C_config.create_image(540, 150, tags=('pilot8'), image=Pilot8img)
+            Pilot9 = C_config.create_image(270, 310, tags=('pilot9'), image=Pilot9img)
+            Pilot10 = C_config.create_image(450, 310, tags=('pilot10'), image=Pilot10img)         
             NEXT=False
         else:
             return None
+    
     def back_page():
         nonlocal NEXT
         if NEXT==False:
+            C_config.delete('pilot6')
+            C_config.delete('pilot7')
+            C_config.delete('pilot8')
+            C_config.delete('pilot9')
+            C_config.delete('pilot10')
             C_config.itemconfig('pilot1', image=Pilot1img)
             C_config.itemconfig('pilot2', image=Pilot2img)
             C_config.itemconfig('pilot3', image=Pilot3img)
