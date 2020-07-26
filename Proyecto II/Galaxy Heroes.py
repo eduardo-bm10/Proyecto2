@@ -87,17 +87,18 @@ def juego(Mode):
     Bg = Canvas(Pant, width=1200, height=650, bg='maroon')
     Bg.place(x=0,y=0)
 
-    Display = Canvas(Pant, width=1200, height=60, bg='silver')
+    Display = Canvas(Pant, width=1200, height=90, bg='silver')
     Display.place(x=0, y=0)
 
     def show_player():
         global PLAYERSHOW
-        Display.create_image(500, 70, image=PLAYERSHOW)
+        Display.create_image(500, 50, image=PLAYERSHOW)
 
     def back():         #<== RETORNO
-        global OPEN, BATTERY
+        global OPEN, BATTERY, PLAYERSHOW
         OPEN=False
         BATTERY=100
+        PLAYERSHOW=[]
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
         Menu.deiconify()   
@@ -114,7 +115,7 @@ def juego(Mode):
             except:
                 return
     
-    Fullbattery = sprites('Imagenes/Spaceship/Fullbattery*.png')
+    Fullbattery = sprites('Imagenes/Spaceship/Combustible/Fullbattery*.png')
     
     def generate_battery(t):
         global OPEN
@@ -133,7 +134,7 @@ def juego(Mode):
     def move_fullbattery(i):                #<== MOVER SOBRECARGA DE BATERÍA
         Coord = Bg.coords('battery')
         if Coord!=[]:
-            if i==3:
+            if i==6:
                 return Bg.delete('battery')
             else:
                 Bg.itemconfig('battery', image=Fullbattery[i])
@@ -235,7 +236,7 @@ def juego(Mode):
         Ubi = Bg.coords('MYSHIP')
         if Ubi!=[]:
             Bg.coords('MYSHIP', Ubi[0], Ubi[1]-25)
-            if (Ubi[1]-25)==125:
+            if (Ubi[1]-25)==150:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
     def abajo(event):       #<== MOVER HACIA ABAJO
@@ -261,11 +262,11 @@ def juego(Mode):
 
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
 
-    BatteryFull = Imagenes('Imagenes\\Spaceship\\Battery1.png')
-    BatteryMedium = Imagenes('Imagenes\\Spaceship\\Battery2.png')
-    BatteryMedium1 = Imagenes('Imagenes\\Spaceship\\Battery3.png')
-    BatteryEmpty = Imagenes('Imagenes\\Spaceship\\Battery4.png')
-    BatteryDead = Imagenes('Imagenes\\Spaceship\\Battery5.png')
+    BatteryFull = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery1.png')
+    BatteryMedium = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery2.png')
+    BatteryMedium1 = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery3.png')
+    BatteryEmpty = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery4.png')
+    BatteryDead = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery5.png')
     
     Battery = Display.create_image(800, 30, tags=('battery'), image=BatteryFull)
     
@@ -309,14 +310,20 @@ def juego(Mode):
 #//////////////////////////////////// SELECCION DE MODO DE JUEGO ///////////////////////////////////////////////////////////////
 
 def select_juego1():
-    global OPEN
-    OPEN=True
-    return juego(1)
+    global OPEN, PLAYERSHOW
+    if PLAYERSHOW==[]:
+        return print('ELIJA UN PILOTO EN CONFIGURACION')
+    else:
+        OPEN=True
+        return juego(1)
 
 def select_juego2():
-    global OPEN
-    OPEN=True
-    return juego(2)
+    global OPEN, PLAYERSHOW
+    if PLAYERSHOW==[]:
+        return print('ELIJA UN PILOTO EN CONFIGURACION')
+    else:
+        OPEN=True
+        return juego(2)
 
 #/////////////////////////////////// PANTALLA DE CONFIGURACION ////////////////////////////////////////////////////////////////
 
@@ -330,9 +337,10 @@ def config():
     C_config = Canvas(Config,width=700,height=500,bg='white')
     C_config.place(x=0,y=0)
 
-    C_config.image1 = Imagenes('Imagenes/Background/playbg.png')
-    imgCanvas_config = C_config.create_image(350,250,image= C_config.image1)
+    ImgFondo = Imagenes('Imagenes/Background/playbg.png')
+    imgCanvas_config = C_config.create_image(350,250,image= ImgFondo)
 
+    #/////////////////////////////////////////// CARGAR PILOTOS ////////////////////////////////////////////////////////
     Eduardo = Imagenes('Imagenes/Pilotos/Eduardo.png')
     Max = Imagenes('Imagenes/Pilotos/Max.png')
     Pilot1img = Imagenes('Imagenes/Pilotos/Piloto1.png')
@@ -349,59 +357,135 @@ def config():
     Select = Label(C_config, text='Selecciona un piloto', font=('Georgia',20), fg='lemonchiffon', bg='maroon')
     Select.place(x=240, y=30)
 
+    #////////////////////////////////////////// SELECCIONAR PILOTOS //////////////////////////////////////////////////////
     def edu():
         global PLAYERSHOW
-        nonlocal Select
-        Select.configure(text='Piloto Eduardo Seleccionado')
+        print('Eduardo Seleccionado')
         PLAYERSHOW = Eduardo
+    def maX():
+        global PLAYERSHOW
+        print('Max Seleccionado')
+        PLAYERSHOW = Max
+    def pilot1():
+        global PLAYERSHOW
+        print('Piloto 1 Seleccionado')
+        PLAYERSHOW = Pilot1img
+    def pilot2():
+        global PLAYERSHOW
+        print('Piloto 2 Seleccionado')
+        PLAYERSHOW = Pilot2img
+    def pilot3():
+        global PLAYERSHOW
+        print('Piloto 3 Seleccionado')
+        PLAYERSHOW = Pilot3img
+    def pilot4():
+        global PLAYERSHOW
+        print('Piloto 4 Seleccionado')
+        PLAYERSHOW = Pilot4img
+    def pilot5():
+        global PLAYERSHOW
+        print('Piloto 5 seleccionado')
+        PLAYERSHOW = Pilot5img
+    def pilot6():
+        global PLAYERSHOW
+        print('Piloto 6 seleccionado')
+        PLAYERSHOW = Pilot6img
+    def pilot7():
+        global PLAYERSHOW
+        print('Piloto 7 seleccionado')
+        PLAYERSHOW = Pilot7img
+    def pilot8():
+        global PLAYERSHOW
+        print('Piloto 8 seleccionado')
+        PLAYERSHOW = Pilot8img
+    def pilot9():
+        global PLAYERSHOW
+        print('Piloto 9 seleccionado')
+        PLAYERSHOW = Pilot9img
+    def pilot10():
+        global PLAYERSHOW
+        print('Piloto 10 seleccionado')
+        PLAYERSHOW = Pilot10img
         
     
     PilotEdu = Button(C_config, command=edu, image=Eduardo)
     PilotEdu.place(x=100, y=85)
-    PilotMax = Button(C_config, image=Max)
+    PilotMax = Button(C_config, command=maX, image=Max)
     PilotMax.place(x=300, y=85)
-    Pilot1 = Button(C_config, image=Pilot1img)
+    Pilot1 = Button(C_config, command=pilot1, image=Pilot1img)
     Pilot1.place(x=500, y=85)
-    Pilot2 = Button(C_config, image=Pilot2img)
+    Pilot2 = Button(C_config, command=pilot2, image=Pilot2img)
     Pilot2.place(x=100, y=285)
-    Pilot3 = Button(C_config, image=Pilot3img)
+    Pilot3 = Button(C_config, command=pilot3, image=Pilot3img)
     Pilot3.place(x=300, y=285)
-    Pilot4 = Button(C_config, image=Pilot4img)
+    Pilot4 = Button(C_config, command=pilot4, image=Pilot4img)
     Pilot4.place(x=500, y=285)
 
     NEXT=True
 
+    #//////////////////////////////////////////// CAMBIAR CONJUNTO DE PILOTOS ////////////////////////////////////////////////
     def next_page():
-        nonlocal NEXT
-        C_config.delete(PilotEdu)
-        C_config.delete(PilotMax)
-        C_config.delete(Pilot1)
-        C_config.delete(Pilot2)
-        C_config.delete(Pilot3)
-        C_config.delete(Pilot4)
-        Pilot5 = C_config.create_image(180, 150, tags=('pilot5'), image=Pilot5img)
-        Pilot6 = C_config.create_image(350, 150, tags=('pilot6'), image=Pilot6img)
-        Pilot7 = C_config.create_image(520, 150, tags=('pilot7'), image=Pilot7img)
-        Pilot8 = C_config.create_image(180, 310, tags=('pilot8'), image=Pilot8img)
-        Pilot9 = C_config.create_image(350, 310, tags=('pilot9'), image=Pilot9img)
-        Pilot10 = C_config.create_image(520, 310, tags=('pilot10'), image=Pilot10img)
-        NEXT=False
+        nonlocal NEXT,ImgFondo
+        if NEXT==True:
+            Set2 = Canvas(Config, width=700, height=500, bg='white')
+            Set2.place(x=0, y=0)
+
+            Select = Label(Set2, text='Selecciona un piloto', font=('Georgia',20), fg='lemonchiffon', bg='maroon')
+            Select.place(x=240, y=30)
+            
+            Pilot5 = Button(Set2, command=pilot5, image=Pilot5img)
+            Pilot5.place(x=100, y=85)
+            Pilot6 = Button(Set2, command=pilot6, image=Pilot6img)
+            Pilot6.place(x=300, y=85)
+            Pilot7 = Button(Set2, command=pilot7, image=Pilot7img)
+            Pilot7.place(x=500, y=85)
+            Pilot8 = Button(Set2, command=pilot8, image=Pilot8img)
+            Pilot8.place(x=100, y=285)
+            Pilot9 = Button(Set2, command=pilot9, image=Pilot9img)
+            Pilot9.place(x=300, y=285)
+            Pilot10 = Button(Set2, command=pilot10, image=Pilot10img)
+            Pilot10.place(x=500, y=285)
+
+            Fondo = Set2.create_image(350,250,image=ImgFondo)
+
+            PrevPilot = Button(Set2, text='Anterior', command=back_page)
+            PrevPilot.place(x=60, y=310)
+
+            quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
+            quit_config.place(x=0,y=0)
+
+            NEXT=False
     
     def back_page():
-        nonlocal NEXT
+        nonlocal NEXT,ImgFondo
         if NEXT==False:
-            C_config.delete('pilot5')
-            C_config.delete('pilot6')
-            C_config.delete('pilot7')
-            C_config.delete('pilot8')
-            C_config.delete('pilot9')
-            C_config.delete('pilot10')
-            PilotEdu = C_config.create_image(180, 150, tags=('eduardo'), image=Eduardo)
-            PilotMax = C_config.create_image(350, 150, tags=('max'), image=Max)
-            Pilot1 = C_config.create_image(520, 150, tags=('pilot1'), image=Pilot1img)
-            Pilot2 = C_config.create_image(180, 310, tags=('pilot2'), image=Pilot2img)
-            Pilot3 = C_config.create_image(350, 310, tags=('pilot3'), image=Pilot3img)
-            Pilot4 = C_config.create_image(520, 310, tags=('pilot4'), image=Pilot4img)
+            Set1 = Canvas(Config, width=700, height=500, bg='white')
+            Set1.place(x=0, y=0)
+
+            Select = Label(Set1, text='Selecciona un piloto', font=('Georgia',20), fg='lemonchiffon', bg='maroon')
+            Select.place(x=240, y=30)
+            
+            PilotEdu = Button(Set1, command=edu, image=Eduardo)
+            PilotEdu.place(x=100, y=85)
+            PilotMax = Button(Set1, command=maX, image=Max)
+            PilotMax.place(x=300, y=85)
+            Pilot1 = Button(Set1, command=pilot1, image=Pilot1img)
+            Pilot1.place(x=500, y=85)
+            Pilot2 = Button(Set1, command=pilot2, image=Pilot2img)
+            Pilot2.place(x=100, y=285)
+            Pilot3 = Button(Set1, command=pilot3, image=Pilot3img)
+            Pilot3.place(x=300, y=285)
+            Pilot4 = Button(Set1, command=pilot4, image=Pilot4img)
+            Pilot4.place(x=500, y=285)
+
+            Fondo = Set1.create_image(350,250,image=ImgFondo)
+
+            NextPilot = Button(Set1, text='Siguiente', command=next_page)
+            NextPilot.place(x=640, y=310)
+
+            quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
+            quit_config.place(x=0,y=0)
+
             NEXT=True
             
     def back_config():       #<== VOLVER AL MENU PRINCIPAL
@@ -411,11 +495,8 @@ def config():
     quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
     quit_config.place(x=0,y=0)
 
-    NextPilot = Button(Config, text='Siguiente', command=next_page)
+    NextPilot = Button(C_config, text='Siguiente', command=next_page)
     NextPilot.place(x=640, y=310)
-
-    PrevPilot = Button(Config, text='Anterior', command=back_page)
-    PrevPilot.place(x=60, y=310)
 
 
     Menu.withdraw()
