@@ -10,6 +10,7 @@ import random
 #////////////////// GLOBALES ////////////////////////////////////////////////////////////////
 
 OPEN=True
+PLAYERSHOW= []
 BATTERY=100
 
 #////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
@@ -89,6 +90,10 @@ def juego(Mode):
     Display = Canvas(Pant, width=1200, height=60, bg='silver')
     Display.place(x=0, y=0)
 
+    def show_player():
+        global PLAYERSHOW
+        Display.create_image(500, 70, image=PLAYERSHOW)
+
     def back():         #<== RETORNO
         global OPEN, BATTERY
         OPEN=False
@@ -108,10 +113,8 @@ def juego(Mode):
                 Thread(target=tiempo,args=(Seg+1,)).start()
             except:
                 return
-            
-    Thread(target = tiempo, args = (0,)).start()
     
-    SpriteBattery = sprites('Imagenes/Spaceship/Fullbattery*.png')
+    Fullbattery = sprites('Imagenes/Spaceship/Fullbattery*.png')
     
     def generate_battery(t):
         global OPEN
@@ -125,17 +128,21 @@ def juego(Mode):
                     time.sleep(1)
                     return generate_battery(t+1)
             except:
-                return           
+                return
     
-    def move_fullbattery(i):              #<== MOVER SOBRECARGA DE BATERÍA
-            if i==12:
+    def move_fullbattery(i):                #<== MOVER SOBRECARGA DE BATERÍA
+        Coord = Bg.coords('battery')
+        if Coord!=[]:
+            if i==3:
                 return Bg.delete('battery')
             else:
                 Bg.itemconfig('battery', image=Fullbattery[i])
                 time.sleep(1)
                 return move_fullbattery(i+1)
+        else:
+            return None
 
-    Thread(target=move_fullbattery, args=(0,)).start()
+    Thread(target=generate_battery, args=(0,)).start()
     
         
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
@@ -260,7 +267,7 @@ def juego(Mode):
     BatteryEmpty = Imagenes('Imagenes\\Spaceship\\Battery4.png')
     BatteryDead = Imagenes('Imagenes\\Spaceship\\Battery5.png')
     
-    Battery = Display.create_image(500, 30, tags=('battery'), image=BatteryFull)
+    Battery = Display.create_image(800, 30, tags=('battery'), image=BatteryFull)
     
     def empty_battery():
         global BATTERY
@@ -282,13 +289,15 @@ def juego(Mode):
             Display.itemconfig('battery',image=BatteryEmpty)
             BATTERY-=1
             return Display.after(1000,empty_battery)
-
-    empty_battery()
         
 
     #//////////////////////////////////////////// BINDS Y LLAMADAS ///////////////////////////////////////////////////////////
 
+    show_player()
     anim(0)
+    empty_battery()
+
+    Thread(target = tiempo, args = (0,)).start()
 
     Pant.bind('<w>',arriba)
     Pant.bind('<s>',abajo)
@@ -336,24 +345,40 @@ def config():
     Pilot8img = Imagenes('Imagenes/Pilotos/Piloto8.png')
     Pilot9img = Imagenes('Imagenes/Pilotos/Piloto9.png')
     Pilot10img = Imagenes('Imagenes/Pilotos/Piloto10.png')
+
+    Select = Label(C_config, text='Selecciona un piloto', font=('Georgia',20), fg='lemonchiffon', bg='maroon')
+    Select.place(x=240, y=30)
+
+    def edu():
+        global PLAYERSHOW
+        nonlocal Select
+        Select.configure(text='Piloto Eduardo Seleccionado')
+        PLAYERSHOW = Eduardo
+        
     
-    PilotEdu = C_config.create_image(180, 150, tags=('eduardo'), image=Eduardo)
-    PilotMax = C_config.create_image(350, 150, tags=('max'), image=Max)
-    Pilot1 = C_config.create_image(520, 150, tags=('pilot1'), image=Pilot1img)
-    Pilot2 = C_config.create_image(180, 310, tags=('pilot2'), image=Pilot2img)
-    Pilot3 = C_config.create_image(350, 310, tags=('pilot3'), image=Pilot3img)
-    Pilot4 = C_config.create_image(520, 310, tags=('pilot4'), image=Pilot4img)
+    PilotEdu = Button(C_config, command=edu, image=Eduardo)
+    PilotEdu.place(x=100, y=85)
+    PilotMax = Button(C_config, image=Max)
+    PilotMax.place(x=300, y=85)
+    Pilot1 = Button(C_config, image=Pilot1img)
+    Pilot1.place(x=500, y=85)
+    Pilot2 = Button(C_config, image=Pilot2img)
+    Pilot2.place(x=100, y=285)
+    Pilot3 = Button(C_config, image=Pilot3img)
+    Pilot3.place(x=300, y=285)
+    Pilot4 = Button(C_config, image=Pilot4img)
+    Pilot4.place(x=500, y=285)
 
     NEXT=True
 
     def next_page():
         nonlocal NEXT
-        C_config.delete('eduardo')
-        C_config.delete('max')
-        C_config.delete('pilot1')
-        C_config.delete('pilot2')
-        C_config.delete('pilot3')
-        C_config.delete('pilot4')
+        C_config.delete(PilotEdu)
+        C_config.delete(PilotMax)
+        C_config.delete(Pilot1)
+        C_config.delete(Pilot2)
+        C_config.delete(Pilot3)
+        C_config.delete(Pilot4)
         Pilot5 = C_config.create_image(180, 150, tags=('pilot5'), image=Pilot5img)
         Pilot6 = C_config.create_image(350, 150, tags=('pilot6'), image=Pilot6img)
         Pilot7 = C_config.create_image(520, 150, tags=('pilot7'), image=Pilot7img)
