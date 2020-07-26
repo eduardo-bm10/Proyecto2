@@ -158,7 +158,7 @@ def juego(Mode):
             global OPEN
             if OPEN==True:
                 try:
-                    if t==5:
+                    if t==2:
                         Bg.Asteroid = Bg.create_image(random.uniform(100,1100), random.uniform(100,500), tags=('ast'))
                         ast_3D(0)
                         return generate_ast(0)
@@ -170,7 +170,7 @@ def juego(Mode):
                     return None
     
         def ast_3D(i):              #<== MOVER ASTEROIDE
-            if i==12:
+            if i==10:
                 return Bg.delete('ast')
             else:
                 Bg.itemconfig('ast', image=SpritesAst[i])
