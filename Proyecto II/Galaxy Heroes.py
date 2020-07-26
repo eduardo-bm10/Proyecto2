@@ -324,6 +324,8 @@ def config():
     C_config.image1 = Imagenes('Imagenes/Background/playbg.png')
     imgCanvas_config = C_config.create_image(350,250,image= C_config.image1)
 
+    Eduardo = Imagenes('Imagenes/Pilotos/Eduardo.png')
+    Max = Imagenes('Imagenes/Pilotos/Max.png')
     Pilot1img = Imagenes('Imagenes/Pilotos/Piloto1.png')
     Pilot2img = Imagenes('Imagenes/Pilotos/Piloto2.png')
     Pilot3img = Imagenes('Imagenes/Pilotos/Piloto3.png')
@@ -335,42 +337,46 @@ def config():
     Pilot9img = Imagenes('Imagenes/Pilotos/Piloto9.png')
     Pilot10img = Imagenes('Imagenes/Pilotos/Piloto10.png')
     
-    Pilot1 = C_config.create_image(180, 150, tags=('pilot1'), image=Pilot1img)
-    Pilot2 = C_config.create_image(360, 150, tags=('pilot2'), image=Pilot2img)
-    Pilot3 = C_config.create_image(540, 150, tags=('pilot3'), image=Pilot3img)
-    Pilot4 = C_config.create_image(270, 310, tags=('pilot4'), image=Pilot4img)
-    Pilot5 = C_config.create_image(450, 310, tags=('pilot5'), image=Pilot5img)
+    PilotEdu = C_config.create_image(180, 150, tags=('eduardo'), image=Eduardo)
+    PilotMax = C_config.create_image(350, 150, tags=('max'), image=Max)
+    Pilot1 = C_config.create_image(520, 150, tags=('pilot1'), image=Pilot1img)
+    Pilot2 = C_config.create_image(180, 310, tags=('pilot2'), image=Pilot2img)
+    Pilot3 = C_config.create_image(350, 310, tags=('pilot3'), image=Pilot3img)
+    Pilot4 = C_config.create_image(520, 310, tags=('pilot4'), image=Pilot4img)
 
     NEXT=True
 
     def next_page():
         nonlocal NEXT
-        if NEXT==True:
-            C_config.delete('pilot1')
-            C_config.delete('pilot2')
-            C_config.delete('pilot3')
-            C_config.delete('pilot4')
-            C_config.delete('pilot5')
-            Pilot6 = C_config.create_image(180, 150, tags=('pilot6'), image=Pilot6img)
-            Pilot7 = C_config.create_image(360, 150, tags=('pilot7'), image=Pilot7img)
-            Pilot8 = C_config.create_image(540, 150, tags=('pilot8'), image=Pilot8img)
-            Pilot9 = C_config.create_image(270, 310, tags=('pilot9'), image=Pilot9img)
-            Pilot10 = C_config.create_image(450, 310, tags=('pilot10'), image=Pilot10img)         
-            NEXT=False
+        C_config.delete('eduardo')
+        C_config.delete('max')
+        C_config.delete('pilot1')
+        C_config.delete('pilot2')
+        C_config.delete('pilot3')
+        C_config.delete('pilot4')
+        Pilot5 = C_config.create_image(180, 150, tags=('pilot5'), image=Pilot5img)
+        Pilot6 = C_config.create_image(350, 150, tags=('pilot6'), image=Pilot6img)
+        Pilot7 = C_config.create_image(520, 150, tags=('pilot7'), image=Pilot7img)
+        Pilot8 = C_config.create_image(180, 310, tags=('pilot8'), image=Pilot8img)
+        Pilot9 = C_config.create_image(350, 310, tags=('pilot9'), image=Pilot9img)
+        Pilot10 = C_config.create_image(520, 310, tags=('pilot10'), image=Pilot10img)
+        NEXT=False
     
     def back_page():
         nonlocal NEXT
         if NEXT==False:
+            C_config.delete('pilot5')
             C_config.delete('pilot6')
             C_config.delete('pilot7')
             C_config.delete('pilot8')
             C_config.delete('pilot9')
             C_config.delete('pilot10')
-            Pilot1 = C_config.create_image(180, 150, tags=('pilot1'), image=Pilot1img)
-            Pilot2 = C_config.create_image(360, 150, tags=('pilot2'), image=Pilot2img)
-            Pilot3 = C_config.create_image(540, 150, tags=('pilot3'), image=Pilot3img)
-            Pilot4 = C_config.create_image(270, 310, tags=('pilot4'), image=Pilot4img)
-            Pilot5 = C_config.create_image(450, 310, tags=('pilot5'), image=Pilot5img)
+            PilotEdu = C_config.create_image(180, 150, tags=('eduardo'), image=Eduardo)
+            PilotMax = C_config.create_image(350, 150, tags=('max'), image=Max)
+            Pilot1 = C_config.create_image(520, 150, tags=('pilot1'), image=Pilot1img)
+            Pilot2 = C_config.create_image(180, 310, tags=('pilot2'), image=Pilot2img)
+            Pilot3 = C_config.create_image(350, 310, tags=('pilot3'), image=Pilot3img)
+            Pilot4 = C_config.create_image(520, 310, tags=('pilot4'), image=Pilot4img)
             NEXT=True
             
     def back_config():       #<== VOLVER AL MENU PRINCIPAL
