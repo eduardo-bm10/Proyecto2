@@ -92,7 +92,7 @@ def juego(Mode):
 
     def show_player():
         global PLAYERSHOW
-        Display.create_image(500, 50, image=PLAYERSHOW)
+        Display.create_image(800, 50, image=PLAYERSHOW)
 
     def back():         #<== RETORNO
         global OPEN, BATTERY, PLAYERSHOW
@@ -109,8 +109,8 @@ def juego(Mode):
         if OPEN == True:
             try:
                 time.sleep(1)
-                time_label = Label(Pant, text='Tiempo:'+ str(Seg), font=('Georgia',20), fg='gold', bg='darkslategray')
-                time_label.place(x=650,y=20)
+                time_label = Label(Pant, text='Tiempo:'+ str(Seg), font=('Georgia',20), fg='lemonchiffon', bg='midnightblue')
+                time_label.place(x=300,y=20)
                 Thread(target=tiempo,args=(Seg+1,)).start()
             except:
                 return
@@ -148,6 +148,27 @@ def juego(Mode):
         
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
     Exit.place(x=10, y=20)
+
+    #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
+
+    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png') #<== Imagen del fondo de la pantalla de juego
+    BgFondo = Bg.create_image(600, 325, image=fondojuego)
+    
+    Bg.Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
+
+    Bg.Spaceship = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
+    Bg.Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
+    Bg.Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
+
+    ShotCent = Imagenes('Imagenes\\Spaceship\\shotcenter.png')
+    ShotLeft = Imagenes('Imagenes\\Spaceship\\SHOTLEFT.png')
+    ShotRight = Imagenes('Imagenes\\Spaceship\\SHOTRIGHT.png')
+
+    BatteryFull = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery1.png')
+    BatteryMedium = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery2.png')
+    BatteryMedium1 = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery3.png')
+    BatteryEmpty = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery4.png')
+    BatteryDead = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery5.png')
 
     #///////////////////////////////////// MODOS DE JUEGO //////////////////////////////////////////////////////////////
     #MODO DESTRUCCION DE ASTEROIDES
@@ -204,17 +225,6 @@ def juego(Mode):
 
         Thread(target=generate_ring, args=(0,)).start()
 
-    #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
-
-    fondojuego = Imagenes('Imagenes\\Background\\GameBG.png') #<== Imagen del fondo de la pantalla de juego
-    BgFondo = Bg.create_image(600, 325, image=fondojuego)
-    
-    Bg.Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
-
-    Bg.Spaceship = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
-    Bg.Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
-    Bg.Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
-
     #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
 
     def anim(i):        #<== ANIMACION DE NAVE
@@ -260,15 +270,19 @@ def juego(Mode):
             if (Ubi[0]-25)==100:
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
-    #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
+    def shooting(event):
+        Loc = Bg.coords('MYSHIP')
+        if 400<Loc[0]<800:
+            Bg.create_image(Loc[0], Loc[1], tags=('shot1'), image=ShotCent)
+        elif Loc[0]<=400:
+            Bg.create_image(Loc[0], Loc[1], tags=('shot2'), image=ShotLeft)
+        elif Loc[0]>=800:
+            Bg.create_image(Loc[0], Loc[1], tags=('shot3'), image=ShotRight)
+                            
 
-    BatteryFull = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery1.png')
-    BatteryMedium = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery2.png')
-    BatteryMedium1 = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery3.png')
-    BatteryEmpty = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery4.png')
-    BatteryDead = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery5.png')
+    #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
     
-    Battery = Display.create_image(800, 30, tags=('battery'), image=BatteryFull)
+    Battery = Display.create_image(600, 30, tags=('battery'), image=BatteryFull)
     
     def empty_battery():
         global BATTERY
@@ -303,7 +317,8 @@ def juego(Mode):
     Pant.bind('<w>',arriba)
     Pant.bind('<s>',abajo)
     Pant.bind('<d>',derecha)
-    Pant.bind('<a>',izquierda)        
+    Pant.bind('<a>',izquierda)
+    Pant.bind('<space>',shooting)
 
     Pant.mainloop()
 
