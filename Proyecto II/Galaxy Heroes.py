@@ -161,10 +161,9 @@ def juego(Mode):
     Bg.Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
     Bg.Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
 
-    ShotCent = Imagenes('Imagenes\\Spaceship\\shotcenter1.png')
-    SprShotCent = sprites('Imagenes\\Spaceship\\shotcenter*.png')
-    SprShotLeft = sprites('Imagenes\\Spaceship\\shotleft*.png')
-    ShotRight = Imagenes('Imagenes\\Spaceship\\SHOTRIGHT.png')
+    ShotCent = sprites('Imagenes\\Spaceship\\shotcenter*.png')
+    ShotLeft = sprites('Imagenes\\Spaceship\\shotleft*.png')
+    ShotRight = sprites('Imagenes\\Spaceship\\shotright*.png')
 
     BatteryFull = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery1.png')
     BatteryMedium = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery2.png')
@@ -280,7 +279,7 @@ def juego(Mode):
             Disp = pg.mixer.Sound('Audio\\disparo.wav')
             Disp.play()
             if 400<Loc[0]<800:
-                Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'), image=ShotCent)
+                Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
                 SHOT=False
                 return mov_shot(1,0)
             elif Loc[0]<=400:
@@ -288,7 +287,9 @@ def juego(Mode):
                 SHOT=False
                 return mov_shot(2,0)
             elif Loc[0]>=800:
-                Bg.create_image(Loc[0], Loc[1], tags=('shot3'), image=ShotRight)
+                Bg.create_image(Loc[0], Loc[1], tags=('shot3'))
+                SHOT=False
+                return mov_shot(3,0)
     def mov_shot(W,i):
         global SHOT
         if W==1:
@@ -309,7 +310,17 @@ def juego(Mode):
                     return Bg.delete('shot2')
                 else:
                     Bg.coords('shot2', Blast1[0]+40, Blast1[1]-10)
-                    Bg.itemconfig('shot2', image=SprShotLeft[i])
+                    Bg.itemconfig('shot2', image=ShotLeft[i])
+                    i+=1
+        if W==3:
+            Blast2 = Bg.coords('shot3')
+            if Blast2!=[]:
+                if i==9:
+                    SHOT=True
+                    return Bg.delete('shot3')
+                else:
+                    Bg.coords('shot3', Blast2[0]-40, Blast2[1]-10)
+                    Bg.itemconfig('shot3', image=ShotRight[i])
                     i+=1
         def call():
             mov_shot(W,i)
