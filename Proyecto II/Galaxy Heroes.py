@@ -301,7 +301,7 @@ def juego(Mode):
                     SHOT=True
                     return Bg.delete('shot1')
                 else:
-                    Bg.coords('shot1', Blast[0], Blast[1])
+                    Bg.coords('shot1', Blast[0], Blast[1]-5)
                     Bg.itemconfig('shot1', image=ShotCent[i])
                     i+=1
         if W==2:
@@ -311,7 +311,7 @@ def juego(Mode):
                     SHOT=True
                     return Bg.delete('shot2')
                 else:
-                    Bg.coords('shot2', Blast1[0]+40, Blast1[1]-10)
+                    Bg.coords('shot2', Blast1[0]+30, Blast1[1]-10)
                     Bg.itemconfig('shot2', image=ShotLeft[i])
                     i+=1
         if W==3:
@@ -321,12 +321,12 @@ def juego(Mode):
                     SHOT=True
                     return Bg.delete('shot3')
                 else:
-                    Bg.coords('shot3', Blast2[0]-40, Blast2[1]-10)
+                    Bg.coords('shot3', Blast2[0]-30, Blast2[1]-10)
                     Bg.itemconfig('shot3', image=ShotRight[i])
                     i+=1
         def call():
             mov_shot(W,i)
-        Pant.after(30,call)
+        Pant.after(20,call)
             
                             
 
