@@ -10,6 +10,7 @@ import random
 #////////////////// GLOBALES ////////////////////////////////////////////////////////////////
 
 OPEN=True
+SHOT=True
 PLAYERSHOW= []
 BATTERY=100
 
@@ -160,8 +161,9 @@ def juego(Mode):
     Bg.Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
     Bg.Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
 
-    ShotCent = Imagenes('Imagenes\\Spaceship\\shotcenter.png')
-    ShotLeft = Imagenes('Imagenes\\Spaceship\\SHOTLEFT.png')
+    ShotCent = Imagenes('Imagenes\\Spaceship\\shotcenter1.png')
+    SprShotCent = sprites('Imagenes\\Spaceship\\shotcenter*.png')
+    SprShotLeft = sprites('Imagenes\\Spaceship\\shotleft*.png')
     ShotRight = Imagenes('Imagenes\\Spaceship\\SHOTRIGHT.png')
 
     BatteryFull = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery1.png')
@@ -271,13 +273,48 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1])
 
     def shooting(event):
-        Loc = Bg.coords('MYSHIP')
-        if 400<Loc[0]<800:
-            Bg.create_image(Loc[0], Loc[1], tags=('shot1'), image=ShotCent)
-        elif Loc[0]<=400:
-            Bg.create_image(Loc[0], Loc[1], tags=('shot2'), image=ShotLeft)
-        elif Loc[0]>=800:
-            Bg.create_image(Loc[0], Loc[1], tags=('shot3'), image=ShotRight)
+        global SHOT
+        if SHOT==True:
+            Loc = Bg.coords('MYSHIP')
+            pg.mixer.init()
+            Disp = pg.mixer.Sound('Audio\\disparo.wav')
+            Disp.play()
+            if 400<Loc[0]<800:
+                Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'), image=ShotCent)
+                SHOT=False
+                return mov_shot(1,0)
+            elif Loc[0]<=400:
+                Bg.create_image(Loc[0], Loc[1], tags=('shot2'))
+                SHOT=False
+                return mov_shot(2,0)
+            elif Loc[0]>=800:
+                Bg.create_image(Loc[0], Loc[1], tags=('shot3'), image=ShotRight)
+    def mov_shot(W,i):
+        global SHOT
+        if W==1:
+            Blast = Bg.coords('shot1')
+            if Blast!=[]:
+                if i==5:
+                    SHOT=True
+                    return Bg.delete('shot1')
+                else:
+                    Bg.coords('shot1', Blast[0], Blast[1]-10)
+                    Bg.itemconfig('shot1', image=SprShotCent[i])
+                    i+=1
+        if W==2:
+            Blast1 = Bg.coords('shot2')
+            if Blast1!=[]:
+                if i==8:
+                    SHOT=True
+                    return Bg.delete('shot2')
+                else:
+                    Bg.coords('shot2', Blast1[0]+40, Blast1[1]-10)
+                    Bg.itemconfig('shot2', image=SprShotLeft[i])
+                    i+=1
+        def call():
+            mov_shot(W,i)
+        Pant.after(50,call)
+            
                             
 
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
