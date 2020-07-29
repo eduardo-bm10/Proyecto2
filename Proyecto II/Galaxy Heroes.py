@@ -196,8 +196,10 @@ def juego(Mode):
                 return Bg.delete('ast')
             else:
                 Bg.itemconfig('ast', image=SpritesAst[i])
-                time.sleep(0.3)
-                return ast_3D(i+1)
+                i+=1
+            def call():
+                ast_3D(i)
+            Pant.after(150,call)
 
         Thread(target=generate_ast, args=(0,)).start()
 
@@ -295,17 +297,17 @@ def juego(Mode):
         if W==1:
             Blast = Bg.coords('shot1')
             if Blast!=[]:
-                if i==5:
+                if i==10:
                     SHOT=True
                     return Bg.delete('shot1')
                 else:
-                    Bg.coords('shot1', Blast[0], Blast[1]-10)
-                    Bg.itemconfig('shot1', image=SprShotCent[i])
+                    Bg.coords('shot1', Blast[0], Blast[1])
+                    Bg.itemconfig('shot1', image=ShotCent[i])
                     i+=1
         if W==2:
             Blast1 = Bg.coords('shot2')
             if Blast1!=[]:
-                if i==8:
+                if i==10:
                     SHOT=True
                     return Bg.delete('shot2')
                 else:
@@ -315,7 +317,7 @@ def juego(Mode):
         if W==3:
             Blast2 = Bg.coords('shot3')
             if Blast2!=[]:
-                if i==9:
+                if i==10:
                     SHOT=True
                     return Bg.delete('shot3')
                 else:
@@ -324,7 +326,7 @@ def juego(Mode):
                     i+=1
         def call():
             mov_shot(W,i)
-        Pant.after(50,call)
+        Pant.after(30,call)
             
                             
 
