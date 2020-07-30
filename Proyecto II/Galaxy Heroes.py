@@ -10,9 +10,15 @@ import random
 #////////////////// GLOBALES ////////////////////////////////////////////////////////////////
 
 OPEN=True
+POINTS=0
 SHOT=True
 PLAYERSHOW= []
 BATTERY=100
+SHOWNAME=''
+UP=False
+DOWN=False
+RIGHT=False
+LEFT=False
 
 #////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
 
@@ -88,33 +94,45 @@ def juego(Mode):
     Bg = Canvas(Pant, width=1200, height=650, bg='maroon')
     Bg.place(x=0,y=0)
 
-    Display = Canvas(Pant, width=1200, height=90, bg='silver')
+    Display = Canvas(Pant, width=1200, height=90, bg='dimgray')
     Display.place(x=0, y=0)
+
+    global SHOWNAME
+
+    Name = Label(Display, width=10, text=SHOWNAME, font=('Georgia',15), fg='lemonchiffon', bg='maroon')
+    Name.place(x=700, y=50)
 
     def show_player():
         global PLAYERSHOW
-        Display.create_image(1000, 50, image=PLAYERSHOW)
+        Display.create_image(900, 50, image=PLAYERSHOW)
 
     def back():         #<== RETORNO
-        global OPEN, BATTERY, PLAYERSHOW
+        global OPEN, BATTERY, PLAYERSHOW, SHOWNAME
         OPEN=False
         BATTERY=100
         PLAYERSHOW=[]
+        SHOWNAME=''
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
         Menu.deiconify()   
 
-    #//////////////////////////////////////////Función para el temporizador///////////////////////////////////////////        
+    #//////////////////////////////////////////Función para el temporizador, puntos y baterias///////////////////////////////////////////        
     def tiempo(Seg):
         global OPEN
         if OPEN == True:
             try:
                 time.sleep(1)
-                time_label = Label(Pant, width=16, text='Tiempo:'+ str(Seg), font=('Georgia',20), fg='lemonchiffon', bg='darkslategrey')
-                time_label.place(x=465,y=10)
+                time_label = Label(Pant, width=10, text='Tiempo:'+ str(Seg), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
+                time_label.place(x=150,y=50)
                 Thread(target=tiempo,args=(Seg+1,)).start()
             except:
                 return
+
+    def points(p):
+        global POINTS
+        POINTS+=p
+        Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
+        Cont.place(x=350, y=50)
     
     Fullbattery = sprites('Imagenes/Spaceship/Combustible/Fullbattery*.png')
     
@@ -238,34 +256,70 @@ def juego(Mode):
             time.sleep(0.15)
             Thread(target=anim, args=(i+1,)).start()
 
-    def arriba(event):      #<== MOVER HACIA ARRIBA
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0], Ubi[1]-25)
-            if (Ubi[1]-25)==150:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+    def arriba():      #<== MOVER HACIA ARRIBA
+        global UP
+        if UP==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1]-10)
+                if (Ubi[1]-10)==145:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(20,arriba)
+    def UpT(event):
+        global UP
+        UP=True
+    def UpF(event):
+        global UP
+        UP=False
 
-    def abajo(event):       #<== MOVER HACIA ABAJO
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0], Ubi[1]+25)
-            if (Ubi[1]+25)==575:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+    def abajo():       #<== MOVER HACIA ABAJO
+        global DOWN
+        if DOWN==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1]+10)
+                if (Ubi[1]+10)==585:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(20,abajo)
+    def DownT(event):
+        global DOWN
+        DOWN=True
+    def DownF(event):
+        global DOWN
+        DOWN=False
 
-    def derecha(event):     #<== MOVER A LA DERECHA
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0]+25, Ubi[1])
-            if (Ubi[0]+25)==1100:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+    def derecha():     #<== MOVER A LA DERECHA
+        global RIGHT
+        if RIGHT==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0]+10, Ubi[1])
+                if (Ubi[0]+10)==1100:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(20,derecha)
+    def RightT(event):
+        global RIGHT
+        RIGHT=True
+    def RightF(event):
+        global RIGHT
+        RIGHT=False
 
-    def izquierda(event):   #<== MOVER A LA IZQUIERDA
-        Ubi = Bg.coords('MYSHIP')
-        if Ubi!=[]:
-            Bg.coords('MYSHIP', Ubi[0]-25, Ubi[1])
-            if (Ubi[0]-25)==100:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-
+    def izquierda():   #<== MOVER A LA IZQUIERDA
+        global LEFT
+        if LEFT==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0]-10, Ubi[1])
+                if (Ubi[0]-10)==100:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(20,izquierda)
+    def LeftT(event):
+        global LEFT
+        LEFT=True
+    def LeftF(event):
+        global LEFT
+        LEFT=False
+        
     def shooting(event):
         global SHOT
         if SHOT==True:
@@ -293,13 +347,13 @@ def juego(Mode):
             
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
     
-    Battery = Display.create_image(600, 72, tags=('battery'), image=BatteryFull)
+    Battery = Display.create_image(600, 50, tags=('battery'), image=BatteryFull)
     
     def empty_battery():
-        global BATTERY
+        global BATTERY, OPEN
         if BATTERY==0:
             Display.itemconfig('battery',image=BatteryDead)
-            return 'Game Over'
+            return
         elif 75<BATTERY<=100:
             BATTERY-=1
             return Display.after(1000,empty_battery)
@@ -319,16 +373,26 @@ def juego(Mode):
 
     #//////////////////////////////////////////// BINDS Y LLAMADAS ///////////////////////////////////////////////////////////
 
+    arriba()
+    abajo()
+    derecha()
+    izquierda()
+
     show_player()
     anim(0)
     empty_battery()
+    points(0)
 
     Thread(target = tiempo, args = (0,)).start()
 
-    Pant.bind('<w>',arriba)
-    Pant.bind('<s>',abajo)
-    Pant.bind('<d>',derecha)
-    Pant.bind('<a>',izquierda)
+    Pant.bind('<w>',UpT)
+    Pant.bind('<KeyRelease w>',UpF)
+    Pant.bind('<s>',DownT)
+    Pant.bind('<KeyRelease s>',DownF)
+    Pant.bind('<d>',RightT)
+    Pant.bind('<KeyRelease d>',RightF)
+    Pant.bind('<a>',LeftT)
+    Pant.bind('<KeyRelease a>',LeftF)
     Pant.bind('<space>',shooting)
 
     Pant.mainloop()
@@ -385,53 +449,65 @@ def config():
 
     #////////////////////////////////////////// SELECCIONAR PILOTOS //////////////////////////////////////////////////////
     def edu():
-        global PLAYERSHOW
+        global PLAYERSHOW, SHOWNAME
         print('Eduardo Seleccionado')
         PLAYERSHOW = Eduardo
+        SHOWNAME+='Eduardo'
     def maX():
-        global PLAYERSHOW
+        global PLAYERSHOW, SHOWNAME
         print('Max Seleccionado')
         PLAYERSHOW = Max
+        SHOWNAME+='Max'
     def pilot1():
-        global PLAYERSHOW
-        print('Piloto 1 Seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Reyes Seleccionado')
         PLAYERSHOW = Pilot1img
+        SHOWNAME+='Reyes'
     def pilot2():
-        global PLAYERSHOW
-        print('Piloto 2 Seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Jill Seleccionado')
         PLAYERSHOW = Pilot2img
+        SHOWNAME+='Jill'
     def pilot3():
-        global PLAYERSHOW
-        print('Piloto 3 Seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('X Champion Seleccionado')
         PLAYERSHOW = Pilot3img
+        SHOWNAME+='X Champion'
     def pilot4():
-        global PLAYERSHOW
-        print('Piloto 4 Seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Meteor Seleccionado')
         PLAYERSHOW = Pilot4img
+        SHOWNAME+='Meteor'
     def pilot5():
-        global PLAYERSHOW
-        print('Piloto 5 seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Mysterio seleccionado')
         PLAYERSHOW = Pilot5img
+        SHOWNAME+='Mysterio'
     def pilot6():
-        global PLAYERSHOW
-        print('Piloto 6 seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Astrid seleccionada')
         PLAYERSHOW = Pilot6img
+        SHOWNAME+='Astrid'
     def pilot7():
-        global PLAYERSHOW
-        print('Piloto 7 seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Peach seleccionada')
         PLAYERSHOW = Pilot7img
+        SHOWNAME+='Peach'
     def pilot8():
-        global PLAYERSHOW
-        print('Piloto 8 seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Sheeva seleccionada')
         PLAYERSHOW = Pilot8img
+        SHOWNAME+='Sheeva'
     def pilot9():
-        global PLAYERSHOW
-        print('Piloto 9 seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Riper seleccionado')
         PLAYERSHOW = Pilot9img
+        SHOWNAME+='Riper'
     def pilot10():
-        global PLAYERSHOW
-        print('Piloto 10 seleccionado')
+        global PLAYERSHOW, SHOWNAME
+        print('Ashoka seleccionada')
         PLAYERSHOW = Pilot10img
+        SHOWNAME+='Ashoka'
         
     
     PilotEdu = Button(C_config, command=edu, image=Eduardo)
@@ -446,6 +522,19 @@ def config():
     Pilot3.place(x=300, y=285)
     Pilot4 = Button(C_config, command=pilot4, image=Pilot4img)
     Pilot4.place(x=500, y=285)
+
+    NameEdu = Label(C_config, width=10, text='Eduardo', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+    NameEdu.place(x=100, y=200)
+    NameMax = Label(C_config, width=10, text='Max', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+    NameMax.place(x=300, y=200)
+    NameReyes = Label(C_config, width=10, text='Reyes', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+    NameReyes.place(x=500, y=200)
+    NameJill = Label(C_config, width=10, text='Jill', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+    NameJill.place(x=100, y=400)
+    NameX = Label(C_config, width=10, text='X Champion', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+    NameX.place(x=300, y=400)
+    NameMeteor = Label(C_config, width=10, text='Meteor', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+    NameMeteor.place(x=500, y=400)
 
     NEXT=True
 
@@ -472,13 +561,26 @@ def config():
             Pilot10 = Button(Set2, command=pilot10, image=Pilot10img)
             Pilot10.place(x=500, y=285)
 
+            NameMysterio = Label(Set2, width=10, text='Mysterio', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameMysterio.place(x=100, y=200)
+            NameAstrid = Label(Set2, width=10, text='Astrid', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameAstrid.place(x=300, y=200)
+            NamePeach = Label(Set2, width=10, text='Peach', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NamePeach.place(x=500, y=200)
+            NameSheeva = Label(Set2, width=10, text='Sheeva', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameSheeva.place(x=100, y=400)
+            NameRiper = Label(Set2, width=10, text='Riper', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameRiper.place(x=300, y=400)
+            NameAshoka = Label(Set2, width=10, text='Ashoka', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameAshoka.place(x=500, y=400)
+
             Fondo = Set2.create_image(350,250,image=ImgFondo)
 
             PrevPilot = Button(Set2, width=15, text='Anterior', font=('Helvatica',15), command=back_page, fg='gold', bg='darkred')
-            PrevPilot.place(x=80, y=400)
-
+            PrevPilot.place(x=80, y=450)
+            
             NextPilot = Button(Set2, width=15, text='Siguiente', font=('Helvatica',15), command=next_page, fg='gold', bg='darkred')
-            NextPilot.place(x=470, y=400)
+            NextPilot.place(x=470, y=450)
 
             quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
             quit_config.place(x=0,y=0)
@@ -507,13 +609,26 @@ def config():
             Pilot4 = Button(Set1, command=pilot4, image=Pilot4img)
             Pilot4.place(x=500, y=285)
 
+            NameEdu = Label(Set1, width=10, text='Eduardo', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameEdu.place(x=100, y=200)
+            NameMax = Label(Set1, width=10, text='Max', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameMax.place(x=300, y=200)
+            NameReyes = Label(Set1, width=10, text='Reyes', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameReyes.place(x=500, y=200)
+            NameJill = Label(Set1, width=10, text='Jill', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameJill.place(x=100, y=400)
+            NameX = Label(Set1, width=10, text='X Champion', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameX.place(x=300, y=400)
+            NameMeteor = Label(Set1, width=10, text='Meteor', font=('Helvatica',15), fg='gold', bg='darkslategrey')
+            NameMeteor.place(x=500, y=400)
+
             Fondo = Set1.create_image(350,250,image=ImgFondo)
 
             PrevPilot = Button(Set1, width=15, text='Anterior', font=('Helvatica',15), command=back_page, fg='gold', bg='darkred')
-            PrevPilot.place(x=80, y=400)
+            PrevPilot.place(x=80, y=450)
 
             NextPilot = Button(Set1, width=15, text='Siguiente', font=('Helvatica',15), command=next_page, fg='gold', bg='darkred')
-            NextPilot.place(x=470, y=400)
+            NextPilot.place(x=470, y=450)
 
             quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
             quit_config.place(x=0,y=0)
@@ -528,10 +643,10 @@ def config():
     quit_config.place(x=0,y=0)
 
     PrevPilot = Button(C_config, width=15, text='Anterior', font=('Helvatica',15), command=back_page, fg='gold', bg='darkred')
-    PrevPilot.place(x=80, y=400)
+    PrevPilot.place(x=80, y=450)
 
     NextPilot = Button(C_config, width=15, text='Siguiente', font=('Helvatica',15), command=next_page, fg='gold', bg='darkred')
-    NextPilot.place(x=470, y=400)
+    NextPilot.place(x=470, y=450)
 
 
     Menu.withdraw()
