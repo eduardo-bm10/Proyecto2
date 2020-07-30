@@ -155,9 +155,9 @@ def juego(Mode):
     fondojuego = Imagenes('Imagenes\\Background\\GameBG.png') #<== Imagen del fondo de la pantalla de juego
     BgFondo = Bg.create_image(600, 325, image=fondojuego)
     
-    Bg.Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
+    Spaceship = Bg.create_image(600, 325, tags=('MYSHIP'))
 
-    Bg.Spaceship = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
+    SpaceshipImg = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
 
     ShotCent = sprites('Imagenes\\Spaceship\\shotcenter*.png')
 
@@ -234,7 +234,7 @@ def juego(Mode):
         if i==2:
             i=0
         if OPEN==True:
-            Bg.itemconfig('MYSHIP', image=Bg.Spaceship[i])
+            Bg.itemconfig('MYSHIP', image=SpaceshipImg[i])
             time.sleep(0.15)
             Thread(target=anim, args=(i+1,)).start()
 
@@ -289,7 +289,7 @@ def juego(Mode):
                 i+=1
         def call():
             mov_shot(i)
-        Pant.after(20,call)
+        Pant.after(15,call)
             
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
     
