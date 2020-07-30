@@ -93,7 +93,7 @@ def juego(Mode):
 
     def show_player():
         global PLAYERSHOW
-        Display.create_image(800, 50, image=PLAYERSHOW)
+        Display.create_image(1000, 50, image=PLAYERSHOW)
 
     def back():         #<== RETORNO
         global OPEN, BATTERY, PLAYERSHOW
@@ -110,8 +110,8 @@ def juego(Mode):
         if OPEN == True:
             try:
                 time.sleep(1)
-                time_label = Label(Pant, text='Tiempo:'+ str(Seg), font=('Georgia',20), fg='lemonchiffon', bg='midnightblue')
-                time_label.place(x=300,y=20)
+                time_label = Label(Pant, width=16, text='Tiempo:'+ str(Seg), font=('Georgia',20), fg='lemonchiffon', bg='darkslategrey')
+                time_label.place(x=465,y=10)
                 Thread(target=tiempo,args=(Seg+1,)).start()
             except:
                 return
@@ -147,7 +147,7 @@ def juego(Mode):
     Thread(target=generate_battery, args=(0,)).start()
     
         
-    Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='gold', bg='darkslategray')
+    Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='lemonchiffon', bg='darkslategrey')
     Exit.place(x=10, y=20)
 
     #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
@@ -158,12 +158,8 @@ def juego(Mode):
     Bg.Spaceship0 = Bg.create_image(600, 325, tags=('MYSHIP'))
 
     Bg.Spaceship = sprites('Imagenes/Spaceship/playership*.png') #<== Sprites de la nave del jugador cuando va por el centro de la pantalla
-    Bg.Right = sprites('Imagenes/Spaceship/right*.png') #<== Sprites de la nave del jugador cuando va por el lado derecho de la pantalla
-    Bg.Left = sprites('Imagenes/Spaceship/left*.png') #<== Sprites de la nave del jugador cuando va por el lado izquierdo de la pantalla
 
     ShotCent = sprites('Imagenes\\Spaceship\\shotcenter*.png')
-    ShotLeft = sprites('Imagenes\\Spaceship\\shotleft*.png')
-    ShotRight = sprites('Imagenes\\Spaceship\\shotright*.png')
 
     BatteryFull = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery1.png')
     BatteryMedium = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery2.png')
@@ -210,13 +206,16 @@ def juego(Mode):
         def generate_ring(t):       #<== GENERAR ANILLO
             global OPEN
             if OPEN==True:
-                if t==3:
-                    Anillo = Bg.create_image(random.uniform(100,1100),random.uniform(100,550), tags=('RING'))
-                    ring_3D(0)
-                    return generate_ring(0)
-                else:
-                    time.sleep(0.5)
-                    return generate_ring(t+1)
+                try:
+                    if t==3:
+                        Anillo = Bg.create_image(random.uniform(100,1100),random.uniform(100,550), tags=('RING'))
+                        ring_3D(0)
+                        return generate_ring(0)
+                    else:
+                        time.sleep(0.5)
+                        return generate_ring(t+1)
+                except:
+                    return None
                     
         def ring_3D(i):             #<== MOVER ANILLO
             if i==5:
@@ -235,13 +234,7 @@ def juego(Mode):
         if i==2:
             i=0
         if OPEN==True:
-            loc = Bg.coords('MYSHIP')
-            if 400<loc[0]<800:
-                Bg.itemconfig('MYSHIP', image=Bg.Spaceship[i])
-            if loc[0]<=400:
-                Bg.itemconfig('MYSHIP', image=Bg.Right[i])
-            if loc[0]>=800:
-                Bg.itemconfig('MYSHIP', image=Bg.Left[i])
+            Bg.itemconfig('MYSHIP', image=Bg.Spaceship[i])
             time.sleep(0.15)
             Thread(target=anim, args=(i+1,)).start()
 
@@ -280,59 +273,27 @@ def juego(Mode):
             pg.mixer.init()
             Disp = pg.mixer.Sound('Audio\\disparo.wav')
             Disp.play()
-            if 400<Loc[0]<800:
-                Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
-                SHOT=False
-                return mov_shot(1,0)
-            elif Loc[0]<=400:
-                Bg.create_image(Loc[0], Loc[1], tags=('shot2'))
-                SHOT=False
-                return mov_shot(2,0)
-            elif Loc[0]>=800:
-                Bg.create_image(Loc[0], Loc[1], tags=('shot3'))
-                SHOT=False
-                return mov_shot(3,0)
-    def mov_shot(W,i):
+            Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
+            SHOT=False
+            return mov_shot(0)
+    def mov_shot(i):
         global SHOT
-        if W==1:
-            Blast = Bg.coords('shot1')
-            if Blast!=[]:
-                if i==10:
-                    SHOT=True
-                    return Bg.delete('shot1')
-                else:
-                    Bg.coords('shot1', Blast[0], Blast[1]-5)
-                    Bg.itemconfig('shot1', image=ShotCent[i])
-                    i+=1
-        if W==2:
-            Blast1 = Bg.coords('shot2')
-            if Blast1!=[]:
-                if i==10:
-                    SHOT=True
-                    return Bg.delete('shot2')
-                else:
-                    Bg.coords('shot2', Blast1[0]+30, Blast1[1]-10)
-                    Bg.itemconfig('shot2', image=ShotLeft[i])
-                    i+=1
-        if W==3:
-            Blast2 = Bg.coords('shot3')
-            if Blast2!=[]:
-                if i==10:
-                    SHOT=True
-                    return Bg.delete('shot3')
-                else:
-                    Bg.coords('shot3', Blast2[0]-30, Blast2[1]-10)
-                    Bg.itemconfig('shot3', image=ShotRight[i])
-                    i+=1
+        Blast = Bg.coords('shot1')
+        if Blast!=[]:
+            if i==20:
+                SHOT=True
+                return Bg.delete('shot1')
+            else:
+                Bg.coords('shot1', Blast[0], Blast[1]-3)
+                Bg.itemconfig('shot1', image=ShotCent[i])
+                i+=1
         def call():
-            mov_shot(W,i)
+            mov_shot(i)
         Pant.after(20,call)
             
-                            
-
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
     
-    Battery = Display.create_image(600, 30, tags=('battery'), image=BatteryFull)
+    Battery = Display.create_image(600, 72, tags=('battery'), image=BatteryFull)
     
     def empty_battery():
         global BATTERY
@@ -513,8 +474,11 @@ def config():
 
             Fondo = Set2.create_image(350,250,image=ImgFondo)
 
-            PrevPilot = Button(Set2, text='Anterior', command=back_page)
-            PrevPilot.place(x=60, y=310)
+            PrevPilot = Button(Set2, width=15, text='Anterior', font=('Helvatica',15), command=back_page, fg='gold', bg='darkred')
+            PrevPilot.place(x=80, y=400)
+
+            NextPilot = Button(Set2, width=15, text='Siguiente', font=('Helvatica',15), command=next_page, fg='gold', bg='darkred')
+            NextPilot.place(x=470, y=400)
 
             quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
             quit_config.place(x=0,y=0)
@@ -545,8 +509,11 @@ def config():
 
             Fondo = Set1.create_image(350,250,image=ImgFondo)
 
-            NextPilot = Button(Set1, text='Siguiente', command=next_page)
-            NextPilot.place(x=640, y=310)
+            PrevPilot = Button(Set1, width=15, text='Anterior', font=('Helvatica',15), command=back_page, fg='gold', bg='darkred')
+            PrevPilot.place(x=80, y=400)
+
+            NextPilot = Button(Set1, width=15, text='Siguiente', font=('Helvatica',15), command=next_page, fg='gold', bg='darkred')
+            NextPilot.place(x=470, y=400)
 
             quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
             quit_config.place(x=0,y=0)
@@ -560,8 +527,11 @@ def config():
     quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
     quit_config.place(x=0,y=0)
 
-    NextPilot = Button(C_config, text='Siguiente', command=next_page)
-    NextPilot.place(x=640, y=310)
+    PrevPilot = Button(C_config, width=15, text='Anterior', font=('Helvatica',15), command=back_page, fg='gold', bg='darkred')
+    PrevPilot.place(x=80, y=400)
+
+    NextPilot = Button(C_config, width=15, text='Siguiente', font=('Helvatica',15), command=next_page, fg='gold', bg='darkred')
+    NextPilot.place(x=470, y=400)
 
 
     Menu.withdraw()
