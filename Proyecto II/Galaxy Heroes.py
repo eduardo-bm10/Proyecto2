@@ -115,7 +115,34 @@ def juego(Mode):
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
         Menu.deiconify()   
-
+        
+        
+    #//////////////////////////////////////////Hitbox//////////////////////////////////////////////////
+    def colision_ship_ast():
+        player = Display.bbox(SpaceshipImg)
+        asteroid = Display.bbox('ast')
+        if player != None and asteroid != None:
+            if (player[0]<asteroid[0]<player[2] or player[0]<asteroid[2]<player[2] or asteroid[0]<player[0]<player[2]<asteroid[2]) and (asteroid[1]<player[1]<asteroid[3]):
+                quitar_vidas_ast_ship()
+                C_play.delete('asteroide')
+                return Display.after(20,colision_ship_ast)
+            else:
+                return Display.after(20,colision_ship_ast)                        
+        else:
+            return Display.after(20,colision_ship_ast)
+        
+        
+    Thread(target = colision_ship_ast).start()
+        
+        
+    #//////////////////////////////////////////Funciones para quitar vidas////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
+    
+            
     #//////////////////////////////////////////Función para el temporizador, puntos y baterias///////////////////////////////////////////        
     def tiempo(Seg):
         global OPEN
