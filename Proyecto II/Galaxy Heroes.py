@@ -19,7 +19,6 @@ UP=False
 DOWN=False
 RIGHT=False
 LEFT=False
-RING=True
 
 #////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
 
@@ -118,24 +117,6 @@ def juego(Mode):
         Menu.deiconify()   
         
         
-    #//////////////////////////////////////////Hitbox//////////////////////////////////////////////////
-    def colision_ship_ast():
-        player = Display.bbox(SpaceshipImg)
-        asteroid = Display.bbox('ast')
-        if player != None and asteroid != None:
-            if (player[0]<asteroid[0]<player[2] or player[0]<asteroid[2]<player[2] or asteroid[0]<player[0]<player[2]<asteroid[2]) and (asteroid[1]<player[1]<asteroid[3]):
-                quitar_vidas_ast_ship()
-                C_play.delete('asteroide')
-                return Display.after(20,colision_ship_ast)
-            else:
-                return Display.after(20,colision_ship_ast)                        
-        else:
-            return Display.after(20,colision_ship_ast)
-        
-        
-    Thread(target = colision_ship_ast).start()
-        
-        
     #//////////////////////////////////////////Funciones para quitar vidas////////////////////////////////////////////////////////
     
     
@@ -222,7 +203,7 @@ def juego(Mode):
             global OPEN
             if OPEN==True:
                 try:
-                    if t==2:
+                    if t==5:
                         Bg.Asteroid = Bg.create_image(random.uniform(100,1100), random.uniform(100,500), tags=('ast'))
                         ast_3D(0)
                         return generate_ast(0)
@@ -234,15 +215,30 @@ def juego(Mode):
                     return None
     
         def ast_3D(i):              #<== MOVER ASTEROIDE
-            if i==10:
+            if i==20:
                 return Bg.delete('ast')
             else:
                 Bg.itemconfig('ast', image=SpritesAst[i])
                 i+=1
             def call():
                 ast_3D(i)
-            Pant.after(150,call)
+            Pant.after(60,call)
 
+                    #HITBOX DE ASTEROIDE CONTRA NAVE
+        def colision_ship_ast():
+            player = Bg.bbox(SpaceshipImg)
+            asteroid = Bg.bbox('ast')
+            if player != None and asteroid != None:
+                if (player[0]<asteroid[0]<player[2] or player[0]<asteroid[2]<player[2] or asteroid[0]<player[0]<player[2]<asteroid[2]) and (asteroid[1]<player[1]<asteroid[3]):
+                    quitar_vidas_ast_ship()
+                    C_play.delete('asteroide')
+                    return Bg.after(20,colision_ship_ast)
+                else:
+                    return Bg.after(20,colision_ship_ast)                        
+            else:
+                return Bg.after(20,colision_ship_ast)
+
+        colision_ship_ast()
         Thread(target=generate_ast, args=(0,)).start()
 
     #MODO MANIOBRA DE PRUEBAS
