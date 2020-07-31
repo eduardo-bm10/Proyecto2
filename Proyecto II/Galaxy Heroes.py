@@ -19,6 +19,7 @@ UP=False
 DOWN=False
 RIGHT=False
 LEFT=False
+RING=True
 
 #////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
 
@@ -225,23 +226,25 @@ def juego(Mode):
             global OPEN
             if OPEN==True:
                 try:
-                    if t==3:
-                        Anillo = Bg.create_image(random.uniform(100,1100),random.uniform(100,550), tags=('RING'))
+                    if t==5:
+                        Anillo = Bg.create_image(random.uniform(100, 1100),random.uniform(100,550), tags=('RING'))
                         ring_3D(0)
                         return generate_ring(0)
                     else:
-                        time.sleep(0.5)
+                        time.sleep(1)
                         return generate_ring(t+1)
                 except:
                     return None
                     
         def ring_3D(i):             #<== MOVER ANILLO
-            if i==5:
+            if i==20:
                 return Bg.delete('RING')
             else:
                 Bg.itemconfig('RING',image=Anillos[i])
-                time.sleep(0.3)
-                return ring_3D(i+1)
+                i+=1
+            def call():
+                ring_3D(i)
+            Pant.after(70,call)
 
         Thread(target=generate_ring, args=(0,)).start()
 
