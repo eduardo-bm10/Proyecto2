@@ -133,6 +133,14 @@ def juego(Mode):
         POINTS+=p
         Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
         Cont.place(x=350, y=50)
+
+    def game_over():
+        global POINTS, OPEN
+        End = Label(Pant, width=25, text='FIN DEL JUEGO', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
+        End.place(x=587.5, y=325)
+        TotPun = Label(Pant, width=25, text='OBTUVISTE '+str(POINTS)+' PUNTOS', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
+        TotPun.place(x=587.5, y=425)
+        OPEN=False
         
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='lemonchiffon', bg='darkslategrey')
     Exit.place(x=10, y=20)
@@ -176,28 +184,30 @@ def juego(Mode):
                     return None
     
         def ast_3D(i):              #<== MOVER ASTEROIDE
-            if i==20:
-                return Bg.delete('ast')
-            else:
-                Bg.itemconfig('ast', image=SpritesAst[i])
-                i+=1
-            def call():
-                ast_3D(i)
-            Pant.after(60,call)
+            global OPEN
+            if OPEN==True:
+                if i==20:
+                    return Bg.delete('ast')
+                else:
+                    Bg.itemconfig('ast', image=SpritesAst[i])
+                    i+=1
+                def call():
+                    ast_3D(i)
+                Pant.after(60,call)
 
                     #HITBOX DE ASTEROIDE CONTRA NAVE
         def colision_ship_ast():
-            player = Bg.bbox(SpaceshipImg)
-            asteroid = Bg.bbox('ast')
-            if player != None and asteroid != None:
-                if (player[0]<asteroid[0]<player[2] or player[0]<asteroid[2]<player[2] or asteroid[0]<player[0]<player[2]<asteroid[2]) and (asteroid[1]<player[1]<asteroid[3]):
-                    quitar_vidas_ast_ship()
-                    C_play.delete('asteroide')
-                    return Bg.after(20,colision_ship_ast)
+            Ship = Bg.bbox(SpaceshipImg)
+            Ast = Bg.bbox('ast')
+            print(Ast)
+            if Ship != None and Ast != None:
+                if (Ship[0]<Ast[0]<Ship[2] or Ship[0]<Ast[2]<Ship[2]) and (Ship[1]<Ast[3]<Ship[3] or Ship[1]<Ast[1]<Ship[3]):
+                    game_over()
+                    return Bg.delete('ast')
                 else:
-                    return Bg.after(20,colision_ship_ast)                        
+                    return Bg.after(10,colision_ship_ast)                        
             else:
-                return Bg.after(20,colision_ship_ast)
+                return Bg.after(10,colision_ship_ast)
 
         colision_ship_ast()
         Thread(target=generate_ast, args=(0,)).start()
@@ -342,24 +352,23 @@ def juego(Mode):
         if OPEN==True:
             if BATTERY==0:
                 Display.itemconfig('battery',image=BatteryDead)
-                time.sleep(5)
-                return back()
+                return game_over()
             elif 75<BATTERY<=100:
                 Display.itemconfig('battery',image=BatteryFull)
                 BATTERY-=1
-                return Display.after(1000,empty_battery)
+                return Display.after(500,empty_battery)
             elif 50<BATTERY<=75:
                 Display.itemconfig('battery',image=BatteryMedium)
                 BATTERY-=1
-                return Display.after(1000,empty_battery)
+                return Display.after(500,empty_battery)
             elif 25<BATTERY<=50:
                 Display.itemconfig('battery',image=BatteryMedium1)
                 BATTERY-=1
-                return Display.after(1000,empty_battery)
+                return Display.after(500,empty_battery)
             elif 0<BATTERY<=25:
                 Display.itemconfig('battery',image=BatteryEmpty)
                 BATTERY-=1
-                return Display.after(1000,empty_battery)
+                return Display.after(500,empty_battery)
 
     #GENERADOR DE BATERIAS FLOTANTES
     def generate_battery(t,r):
