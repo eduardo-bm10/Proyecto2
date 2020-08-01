@@ -115,17 +115,8 @@ def juego(Mode):
         Pant.destroy()
         musica('Audio\\MainTheme.mp3')
         Menu.deiconify()   
-        
-        
-    #//////////////////////////////////////////Funciones para quitar vidas////////////////////////////////////////////////////////
-    
-    
-    
-    
-    
-    
             
-    #//////////////////////////////////////////Función para el temporizador, puntos y baterias///////////////////////////////////////////        
+    #//////////////////////////////////////////TIEMPO, PUNTOS Y FIN DE JUEGO///////////////////////////////////////////        
     def tiempo(Seg):
         global OPEN
         if OPEN == True:
@@ -142,37 +133,6 @@ def juego(Mode):
         POINTS+=p
         Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
         Cont.place(x=350, y=50)
-    
-    Fullbattery = sprites('Imagenes/Spaceship/Combustible/Fullbattery*.png')
-    
-    def generate_battery(t):
-        global OPEN
-        if OPEN == True:
-            try:
-                if t == 25:
-                    Bg.BatteryFull = Bg.create_image(random.uniform(100,1100),random.uniform(100,500),tags=('battery'))
-                    move_fullbattery(0)
-                    return generate_battery(0)
-                else:
-                    time.sleep(1)
-                    return generate_battery(t+1)
-            except:
-                return
-    
-    def move_fullbattery(i):                #<== MOVER SOBRECARGA DE BATERÍA
-        Coord = Bg.coords('battery')
-        if Coord!=[]:
-            if i==6:
-                return Bg.delete('battery')
-            else:
-                Bg.itemconfig('battery', image=Fullbattery[i])
-                time.sleep(1)
-                return move_fullbattery(i+1)
-        else:
-            return None
-
-    Thread(target=generate_battery, args=(0,)).start()
-    
         
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='lemonchiffon', bg='darkslategrey')
     Exit.place(x=10, y=20)
@@ -188,6 +148,7 @@ def juego(Mode):
 
     ShotCent = sprites('Imagenes\\Spaceship\\shotcenter*.png')
 
+    RechargeImg = Imagenes('Imagenes/Spaceship/Combustible/RechargeIcon.png')
     BatteryFull = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery1.png')
     BatteryMedium = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery2.png')
     BatteryMedium1 = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery3.png')
@@ -374,27 +335,81 @@ def juego(Mode):
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
     
     Battery = Display.create_image(600, 50, tags=('battery'), image=BatteryFull)
-    
+
+    #DURACION DE COMBUSTIBLE
     def empty_battery():
         global BATTERY, OPEN
-        if BATTERY==0:
-            Display.itemconfig('battery',image=BatteryDead)
-            return
-        elif 75<BATTERY<=100:
-            BATTERY-=1
-            return Display.after(1000,empty_battery)
-        elif 50<BATTERY<=75:
-            Display.itemconfig('battery',image=BatteryMedium)
-            BATTERY-=1
-            return Display.after(1000,empty_battery)
-        elif 25<BATTERY<=50:
-            Display.itemconfig('battery',image=BatteryMedium1)
-            BATTERY-=1
-            return Display.after(1000,empty_battery)
-        elif 0<BATTERY<=25:
-            Display.itemconfig('battery',image=BatteryEmpty)
-            BATTERY-=1
-            return Display.after(1000,empty_battery)
+        if OPEN==True:
+            if BATTERY==0:
+                Display.itemconfig('battery',image=BatteryDead)
+                time.sleep(5)
+                return back()
+            elif 75<BATTERY<=100:
+                Display.itemconfig('battery',image=BatteryFull)
+                BATTERY-=1
+                return Display.after(1000,empty_battery)
+            elif 50<BATTERY<=75:
+                Display.itemconfig('battery',image=BatteryMedium)
+                BATTERY-=1
+                return Display.after(1000,empty_battery)
+            elif 25<BATTERY<=50:
+                Display.itemconfig('battery',image=BatteryMedium1)
+                BATTERY-=1
+                return Display.after(1000,empty_battery)
+            elif 0<BATTERY<=25:
+                Display.itemconfig('battery',image=BatteryEmpty)
+                BATTERY-=1
+                return Display.after(1000,empty_battery)
+
+    #GENERADOR DE BATERIAS FLOTANTES
+    def generate_battery(t,r):
+        global OPEN
+        if OPEN == True:
+            if t == 25:
+                if r==0:
+                    Bg.create_image(0,random.uniform(100,500),tags=('battery'), image=RechargeImg)
+                    move_fullbattery(0)
+                    return generate_battery(0,random.randint(0,1))
+                elif r==1:
+                    Bg.create_image(1200,random.uniform(100,500),tags=('battery'), image=RechargeImg)
+                    move_fullbattery(1)
+                    return generate_battery(0,random.randint(0,1))
+            else:
+                time.sleep(1)
+                return generate_battery(t+1,r)
+
+    #MOVIMIENTO DE LA BATERIA FLOTANTE
+    def move_fullbattery(S):
+        Coord = Bg.coords('battery')
+        if Coord!=[]:
+            if S==0:
+                Bg.coords('battery', Coord[0]+5, Coord[1])
+                if Coord[0]+5==600:
+                    return Bg.delete('battery')
+            elif S==1:
+                Bg.coords('battery', Coord[0]-5, Coord[1])
+                if Coord[0]-5==600:
+                    return Bg.delete('battery')
+            def call():
+                move_fullbattery(S)
+            Bg.after(40, call)
+
+    def colision_battery():
+        global BATTERY
+        Ship = Bg.bbox('MYSHIP')
+        Batt = Bg.bbox('battery')
+        if Ship!=None and Batt!=None:
+            if (Ship[0]<Batt[0]<Ship[2] or Ship[0]<Batt[2]<Ship[2]) and (Ship[1]<Batt[3]<Ship[3] or Ship[1]<Batt[1]<Ship[3]):
+                BATTERY+=20
+                Bg.delete('battery')
+                return Bg.after(10,colision_battery)
+            else:
+                return Bg.after(10,colision_battery)
+        else:
+            return Bg.after(10,colision_battery)
+
+    Thread(target=generate_battery, args=(0,random.randint(0,1),)).start()
+    colision_battery()
         
 
     #//////////////////////////////////////////// BINDS Y LLAMADAS ///////////////////////////////////////////////////////////
