@@ -58,7 +58,7 @@ Menu.resizable(False, False)
 Menu.title('Galaxy Heroes')
 Menu.iconbitmap('Imagenes/Icono.ico')
 
-musica('Audio\\MainTheme.mp3')
+musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
 
 Fondo = Canvas(Menu, width=1200, height=650, bg='black')
 Fondo.place(x=0, y=0)
@@ -114,8 +114,8 @@ def juego(Mode):
         BATTERY=100
         PLAYERSHOW=[]
         SHOWNAME=''
+        musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
         Pant.destroy()
-        musica('Audio\\MainTheme.mp3')
         Menu.deiconify()   
             
     #//////////////////////////////////////////TIEMPO, PUNTOS Y FIN DE JUEGO///////////////////////////////////////////        
@@ -174,15 +174,15 @@ def juego(Mode):
             global OPEN, DIFF
             if OPEN==True:
                 try:
-                    Ast1 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast1'))
-                    Ast2 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast2'))
-                    Ast3 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast3'))
-                    Ast4 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast4'))
-                    Ast5 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast5'))
-                    Ast6 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast6'))
-                    Ast7 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast7'))
-                    Ast8 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast8'))
-                    Ast9 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast9'))
+                    Ast1 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast1'))
+                    Ast2 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast2'))
+                    Ast3 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast3'))
+                    Ast4 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast4'))
+                    Ast5 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast5'))
+                    Ast6 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast6'))
+                    Ast7 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast7'))
+                    Ast8 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast8'))
+                    Ast9 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast9'))
 
                     ListAst = [Ast1, Ast2, Ast3, Ast4, Ast5, Ast6, Ast7, Ast8, Ast9]                       
                     if t==5:
@@ -193,12 +193,14 @@ def juego(Mode):
                             time.sleep(0.5)
                             ast_3D(0,ListAst[2])
                         if DIFF>=2:
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[3])
                             time.sleep(0.5)
                             ast_3D(0,ListAst[4])
                             time.sleep(0.5)
                             ast_3D(0,ListAst[5])
                         if DIFF==3:
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[6])
                             time.sleep(0.5)
                             ast_3D(0,ListAst[7])
@@ -211,7 +213,7 @@ def juego(Mode):
                         return generate_ast(t)
                 except:
                     return None
-    
+                
         def ast_3D(i, tag):              #<== MOVER ASTEROIDE
             global OPEN
             if OPEN==True:
@@ -222,7 +224,7 @@ def juego(Mode):
                     i+=1
                 def call():
                     ast_3D(i, tag)
-                Pant.after(60,call)
+                Pant.after(90,call)
 
                     #HITBOX DE ASTEROIDE CONTRA NAVE
         def colision_ship_ast():
@@ -292,12 +294,41 @@ def juego(Mode):
         Anillos=sprites('Imagenes/Anillos/Ring*.png')
 
         def generate_ring(t):       #<== GENERAR ANILLO
-            global OPEN
+            global OPEN, DIFF
             if OPEN==True:
                 try:
+                    Ring1 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring1'))
+                    Ring2 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring2'))
+                    Ring3 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring3'))
+                    Ring4 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring4'))
+                    Ring5 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring5'))
+                    Ring6 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring6'))
+                    Ring7 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring7'))
+                    Ring8 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring8'))
+                    Ring9 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring9'))
+
+                    ListRing = [Ring1, Ring2, Ring3, Ring4, Ring5, Ring6, Ring7, Ring8, Ring9]
                     if t==5:
-                        Anillo = Bg.create_image(random.uniform(100, 1100),random.uniform(100,550), tags=('RING'))
-                        ring_3D(0)
+                        if DIFF>=1:
+                            ring_3D(0,ListRing[0])
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[1])
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[2])
+                        if DIFF>=2:
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[3])
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[4])
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[5])
+                        if DIFF==3:
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[6])
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[7])
+                            time.sleep(0.5)
+                            ring_3D(0,ListRing[8])
                         return generate_ring(0)
                     else:
                         time.sleep(1)
@@ -305,15 +336,15 @@ def juego(Mode):
                 except:
                     return None
                     
-        def ring_3D(i):             #<== MOVER ANILLO
+        def ring_3D(i, tag):             #<== MOVER ANILLO
             if i==20:
-                return Bg.delete('RING')
+                return Bg.delete(tag)
             else:
-                Bg.itemconfig('RING',image=Anillos[i])
+                Bg.itemconfig(tag,image=Anillos[i])
                 i+=1
             def call():
-                ring_3D(i)
-            Pant.after(70,call)
+                ring_3D(i,tag)
+            Pant.after(90,call)
 
         Thread(target=generate_ring, args=(0,)).start()
 
@@ -521,7 +552,7 @@ def juego(Mode):
     Pant.bind('<KeyRelease d>',RightF)
     Pant.bind('<a>',LeftT)
     Pant.bind('<KeyRelease a>',LeftF)
-    Pant.bind('<space>',shooting)
+    Pant.bind('<Control_R>',shooting)
 
     Pant.mainloop()
 
