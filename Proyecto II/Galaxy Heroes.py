@@ -15,6 +15,8 @@ SHOT=True
 PLAYERSHOW= []
 BATTERY=100
 SHOWNAME=''
+DIFF=2
+
 UP=False
 DOWN=False
 RIGHT=False
@@ -169,12 +171,39 @@ def juego(Mode):
         SpritesAst=sprites('Imagenes/Asteroides/ast*.png')
 
         def generate_ast(t):        #<== GENERAR ASTEROIDE
-            global OPEN
+            global OPEN, DIFF
             if OPEN==True:
                 try:
+                    Ast1 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast1'))
+                    Ast2 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast2'))
+                    Ast3 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast3'))
+                    Ast4 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast4'))
+                    Ast5 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast5'))
+                    Ast6 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast6'))
+                    Ast7 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast7'))
+                    Ast8 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast8'))
+                    Ast9 = Bg.create_image(random.uniform(100,1100),random.uniform(100,500), tags=('ast9'))
+
+                    ListAst = [Ast1, Ast2, Ast3, Ast4, Ast5, Ast6, Ast7, Ast8, Ast9]                       
                     if t==5:
-                        Bg.Asteroid = Bg.create_image(random.uniform(100,1100), random.uniform(100,500), tags=('ast'))
-                        ast_3D(0)
+                        if DIFF>=1:
+                            ast_3D(0,ListAst[0])
+                            time.sleep(0.5)
+                            ast_3D(0,ListAst[1])
+                            time.sleep(0.5)
+                            ast_3D(0,ListAst[2])
+                        if DIFF>=2:
+                            ast_3D(0,ListAst[3])
+                            time.sleep(0.5)
+                            ast_3D(0,ListAst[4])
+                            time.sleep(0.5)
+                            ast_3D(0,ListAst[5])
+                        if DIFF==3:
+                            ast_3D(0,ListAst[6])
+                            time.sleep(0.5)
+                            ast_3D(0,ListAst[7])
+                            time.sleep(0.5)
+                            ast_3D(0,ListAst[8])
                         return generate_ast(0)
                     else:
                         time.sleep(1)
@@ -183,29 +212,75 @@ def juego(Mode):
                 except:
                     return None
     
-        def ast_3D(i):              #<== MOVER ASTEROIDE
+        def ast_3D(i, tag):              #<== MOVER ASTEROIDE
             global OPEN
             if OPEN==True:
                 if i==20:
-                    return Bg.delete('ast')
+                    return Bg.delete(tag)
                 else:
-                    Bg.itemconfig('ast', image=SpritesAst[i])
+                    Bg.itemconfig(tag, image=SpritesAst[i])
                     i+=1
                 def call():
-                    ast_3D(i)
+                    ast_3D(i, tag)
                 Pant.after(60,call)
 
                     #HITBOX DE ASTEROIDE CONTRA NAVE
         def colision_ship_ast():
-            Ship = Bg.bbox(SpaceshipImg)
-            Ast = Bg.bbox('ast')
-            print(Ast)
-            if Ship != None and Ast != None:
-                if (Ship[0]<Ast[0]<Ship[2] or Ship[0]<Ast[2]<Ship[2]) and (Ship[1]<Ast[3]<Ship[3] or Ship[1]<Ast[1]<Ship[3]):
-                    game_over()
-                    return Bg.delete('ast')
+            Ship = Bg.bbox(Spaceship)
+            Ast1 = Bg.bbox('ast1')
+            Ast2 = Bg.bbox('ast2')
+            Ast3 = Bg.bbox('ast3')
+            Ast4 = Bg.bbox('ast4')
+            Ast5 = Bg.bbox('ast5')
+            Ast6 = Bg.bbox('ast6')
+            Ast7 = Bg.bbox('ast7')
+            Ast8 = Bg.bbox('ast8')
+            Ast9 = Bg.bbox('ast9')
+            if Ship != None and Ast1 != None:
+                if (Ast1[0]<Ship[0]<Ast1[2] or Ast1[0]<Ship[2]<Ast1[2]) and (Ast1[1]<Ship[3]<Ast1[3] or Ast1[1]<Ship[1]<Ast1[3]):
+                    return game_over()
                 else:
-                    return Bg.after(10,colision_ship_ast)                        
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast2!=None:
+                if (Ast2[0]<Ship[0]<Ast2[2] or Ast2[0]<Ship[2]<Ast2[2]) and (Ast2[1]<Ship[3]<Ast2[3] or Ast2[1]<Ship[1]<Ast2[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast3!=None:
+                if (Ast3[0]<Ship[0]<Ast3[2] or Ast3[0]<Ship[2]<Ast3[2]) and (Ast3[1]<Ship[3]<Ast3[3] or Ast3[1]<Ship[1]<Ast3[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast4!=None:
+                if (Ast4[0]<Ship[0]<Ast4[2] or Ast4[0]<Ship[2]<Ast4[2]) and (Ast4[1]<Ship[3]<Ast4[3] or Ast4[1]<Ship[1]<Ast4[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast5!=None:
+                if (Ast5[0]<Ship[0]<Ast5[2] or Ast5[0]<Ship[2]<Ast5[2]) and (Ast5[1]<Ship[3]<Ast5[3] or Ast5[1]<Ship[1]<Ast5[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast6!=None:
+                if (Ast6[0]<Ship[0]<Ast6[2] or Ast6[0]<Ship[2]<Ast6[2]) and (Ast6[1]<Ship[3]<Ast6[3] or Ast6[1]<Ship[1]<Ast6[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast7!=None:
+                if (Ast7[0]<Ship[0]<Ast7[2] or Ast7[0]<Ship[2]<Ast7[2]) and (Ast7[1]<Ship[3]<Ast7[3] or Ast7[1]<Ship[1]<Ast7[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast8!=None:
+                if (Ast8[0]<Ship[0]<Ast8[2] or Ast8[0]<Ship[2]<Ast8[2]) and (Ast8[1]<Ship[3]<Ast8[3] or Ast8[1]<Ship[1]<Ast8[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
+            if Ship!=None and Ast9!=None:
+                if (Ast9[0]<Ship[0]<Ast9[2] or Ast9[0]<Ship[2]<Ast9[2]) and (Ast9[1]<Ship[3]<Ast9[3] or Ast9[1]<Ship[1]<Ast9[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ship_ast)
             else:
                 return Bg.after(10,colision_ship_ast)
 
@@ -249,9 +324,12 @@ def juego(Mode):
         if i==2:
             i=0
         if OPEN==True:
-            Bg.itemconfig('MYSHIP', image=SpaceshipImg[i])
-            time.sleep(0.15)
-            Thread(target=anim, args=(i+1,)).start()
+            try:
+                Bg.itemconfig('MYSHIP', image=SpaceshipImg[i])
+                time.sleep(0.15)
+                Thread(target=anim, args=(i+1,)).start()
+            except:
+                return None
 
     def arriba():      #<== MOVER HACIA ARRIBA
         global UP
@@ -781,6 +859,24 @@ def salida():       #<== CERRAR DEL JUEGO
     musica(1)
     Menu.destroy()
 
+Dificulty = Label(Fondo, width=15, text='Dificultad', font=('Times',15), fg='cyan', bg='darkslategray')
+Dificulty.place(x=850, y=420)
+
+def easy():
+    global DIFF
+    DIFF=1
+    Dificulty.configure(text='Facil elegido')
+
+def normal():
+    global DIFF
+    DIFF=2
+    Dificulty.configure(text='Normal elegido')
+
+def hard():
+    global DIFF
+    DIFF=3
+    Dificulty.configure(text='Dificil elegido')
+
 ModoJuego1 = Button(Fondo, width=27, text='Destrucción de asteroides', command=select_juego1, font=('Times',15), fg='gold', bg='firebrick')     #BOTONES DE MENU
 ModoJuego1.place(x=180, y=300)
 
@@ -795,6 +891,15 @@ Puntajes.place(x=490, y=450)
 
 About = Button(Fondo, width=17, text='Acerca de', command=about, font=('Times',15), fg='gold', bg='firebrick')
 About.place(x=490, y=500)
+
+Facil = Button(Fondo, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
+Facil.place(x=900, y=450)
+
+Medio = Button(Fondo, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
+Medio.place(x=900, y=500)
+
+Dificil = Button(Fondo, width=10, text='Dificil', command=hard, font=('Times',15), fg='gold', bg='midnightblue')
+Dificil.place(x=900, y=550)
 
 Cerrar = Button(Fondo, width=17, text='Salir del juego', command=salida, font=('Times',15), fg='gold', bg='firebrick')
 Cerrar.place(x=490, y=550)
