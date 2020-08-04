@@ -47,8 +47,7 @@ def ImagenesAnim(x, Result):
 def sprites(Ruta):
     x = glob.glob(Ruta)
     x.sort()
-    return ImagenesAnim(x,[])
-    
+    return ImagenesAnim(x,[])    
 
 #////////////////////// VENTANA PRINCIPAL //////////////////////////////////////////////////////////////////////////////
 
@@ -57,8 +56,6 @@ Menu.minsize(1200, 650)
 Menu.resizable(False, False)
 Menu.title('Galaxy Heroes')
 Menu.iconbitmap('Imagenes/Icono.ico')
-
-musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
 
 Fondo = Canvas(Menu, width=1200, height=650, bg='black')
 Fondo.place(x=0, y=0)
@@ -114,7 +111,6 @@ def juego(Mode):
         BATTERY=100
         PLAYERSHOW=[]
         SHOWNAME=''
-        musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
         Pant.destroy()
         Menu.deiconify()   
             
@@ -188,23 +184,23 @@ def juego(Mode):
                     if t==5:
                         if DIFF>=1:
                             ast_3D(0,ListAst[0])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[1])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[2])
                         if DIFF>=2:
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[3])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[4])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[5])
                         if DIFF==3:
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[6])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[7])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ast_3D(0,ListAst[8])
                         return generate_ast(0)
                     else:
@@ -224,7 +220,7 @@ def juego(Mode):
                     i+=1
                 def call():
                     ast_3D(i, tag)
-                Pant.after(90,call)
+                Pant.after(100,call)
 
                     #HITBOX DE ASTEROIDE CONTRA NAVE
         def colision_ship_ast():
@@ -311,23 +307,23 @@ def juego(Mode):
                     if t==5:
                         if DIFF>=1:
                             ring_3D(0,ListRing[0])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[1])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[2])
                         if DIFF>=2:
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[3])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[4])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[5])
                         if DIFF==3:
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[6])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[7])
-                            time.sleep(0.5)
+                            time.sleep(1)
                             ring_3D(0,ListRing[8])
                         return generate_ring(0)
                     else:
@@ -336,15 +332,76 @@ def juego(Mode):
                 except:
                     return None
                     
-        def ring_3D(i, tag):             #<== MOVER ANILLO
-            if i==20:
-                return Bg.delete(tag)
+        def ring_3D(i, tag):        #<== MOVER ANILLO
+            global OPEN
+            if OPEN==True:
+                if i==20:
+                    return Bg.delete(tag)
+                else:
+                    Bg.itemconfig(tag,image=Anillos[i])
+                    i+=1
+                def call():
+                    ring_3D(i,tag)
+                Pant.after(120,call)
+
+        def colision_ring():
+            Ship = Bg.bbox(Spaceship)
+            Ring1 = Bg.bbox('ring1')
+            Ring2 = Bg.bbox('ring2')
+            Ring3 = Bg.bbox('ring3')
+            Ring4 = Bg.bbox('ring4')
+            Ring5 = Bg.bbox('ring5')
+            Ring6 = Bg.bbox('ring6')
+            Ring7 = Bg.bbox('ring7')
+            Ring8 = Bg.bbox('ring8')
+            Ring9 = Bg.bbox('ring9')
+            if Ship!=None and Ring1!=None:
+                if (Ring1[0]<Ship[0]<Ring1[2] or Ring1[0]<Ship[2]<Ring1[2]) and (Ring1[1]<Ship[3]<Ring1[3] or Ring1[1]<Ship[1]<Ring1[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring2!=None:
+                if (Ring2[0]<Ship[0]<Ring2[2] or Ring2[0]<Ship[2]<Ring2[2]) and (Ring2[1]<Ship[3]<Ring2[3] or Ring2[1]<Ship[1]<Ring2[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring3!=None:
+                if (Ring3[0]<Ship[0]<Ring3[2] or Ring3[0]<Ship[2]<Ring3[2]) and (Ring3[1]<Ship[3]<Ring3[3] or Ring3[1]<Ship[1]<Ring3[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring4!=None:
+                if (Ring4[0]<Ship[0]<Ring4[2] or Ring4[0]<Ship[2]<Ring4[2]) and (Ring4[1]<Ship[3]<Ring4[3] or Ring4[1]<Ship[1]<Ring4[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring5!=None:
+                if (Ring5[0]<Ship[0]<Ring5[2] or Ring5[0]<Ship[2]<Ring5[2]) and (Ring5[1]<Ship[3]<Ring5[3] or Ring5[1]<Ship[1]<Ring5[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring6!=None:
+                if (Ring6[0]<Ship[0]<Ring6[2] or Ring6[0]<Ship[2]<Ring6[2]) and (Ring6[1]<Ship[3]<Ring6[3] or Ring6[1]<Ship[1]<Ring6[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring7!=None:
+                if (Ring7[0]<Ship[0]<Ring7[2] or Ring7[0]<Ship[2]<Ring7[2]) and (Ring7[1]<Ship[3]<Ring7[3] or Ring7[1]<Ship[1]<Ring7[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring8!=None:
+                if (Ring8[0]<Ship[0]<Ring8[2] or Ring8[0]<Ship[2]<Ring8[2]) and (Ring8[1]<Ship[3]<Ring8[3] or Ring8[1]<Ship[1]<Ring8[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
+            if Ship!=None and Ring9!=None:
+                if (Ring9[0]<Ship[0]<Ring9[2] or Ring9[0]<Ship[2]<Ring9[2]) and (Ring9[1]<Ship[3]<Ring9[3] or Ring9[1]<Ship[1]<Ring9[3]):
+                    return game_over()
+                else:
+                    return Bg.after(10,colision_ring)
             else:
-                Bg.itemconfig(tag,image=Anillos[i])
-                i+=1
-            def call():
-                ring_3D(i,tag)
-            Pant.after(90,call)
+                return Bg.after(10,colision_ring)
 
         Thread(target=generate_ring, args=(0,)).start()
 
@@ -370,7 +427,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1]-10)
                 if (Ubi[1]-10)==145:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,arriba)
+        Pant.after(12,arriba)
     def UpT(event):
         global UP
         UP=True
@@ -386,7 +443,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1]+10)
                 if (Ubi[1]+10)==585:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,abajo)
+        Pant.after(12,abajo)
     def DownT(event):
         global DOWN
         DOWN=True
@@ -402,7 +459,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0]+10, Ubi[1])
                 if (Ubi[0]+10)==1100:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,derecha)
+        Pant.after(12,derecha)
     def RightT(event):
         global RIGHT
         RIGHT=True
@@ -418,7 +475,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0]-10, Ubi[1])
                 if (Ubi[0]-10)==100:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,izquierda)
+        Pant.after(12,izquierda)
     def LeftT(event):
         global LEFT
         LEFT=True
@@ -430,9 +487,6 @@ def juego(Mode):
         global SHOT
         if SHOT==True:
             Loc = Bg.coords('MYSHIP')
-            pg.mixer.init()
-            Disp = pg.mixer.Sound('Audio\\disparo.wav')
-            Disp.play()
             Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
             SHOT=False
             return mov_shot(0)
@@ -518,7 +572,7 @@ def juego(Mode):
         Batt = Bg.bbox('battery')
         if Ship!=None and Batt!=None:
             if (Ship[0]<Batt[0]<Ship[2] or Ship[0]<Batt[2]<Ship[2]) and (Ship[1]<Batt[3]<Ship[3] or Ship[1]<Batt[1]<Ship[3]):
-                BATTERY+=20
+                BATTERY+=50
                 Bg.delete('battery')
                 return Bg.after(10,colision_battery)
             else:
@@ -814,7 +868,73 @@ def config():
 
 #/////////////////////////////////// PANTALLA DE PUNTAJES ////////////////////////////////////////////////////////////////////////
 
-def scores():
+def scores_ast():
+    Scores = Toplevel()
+    Scores.minsize(700,500)
+    Scores.resizable(False, False)
+    Scores.title('Galaxy Heroes')
+    Scores.iconbitmap('Imagenes/Icono.ico')
+    
+    C_scores = Canvas(Scores,width=700,height=500,bg='white')
+    C_scores.place(x=0,y=0)
+
+    C_scores.image1 = Imagenes('Imagenes/Background/playbg.png')
+    imgCanvas_Scores = C_scores.create_image(350,250,image= C_scores.image1)
+
+
+    ScoOrder = [str(random.randint(0,300))+': EDUARDO', str(random.randint(0,300))+': MAX', str(random.randint(0,300))+': REYES', str(random.randint(0,300))+': JILL', str(random.randint(0,300))+': X CHAMPION', str(random.randint(0,300))+': METEOR', str(random.randint(0,300))+': MYSTERIO', str(random.randint(0,300))+': ASTRID', str(random.randint(0,300))+': PEACH', str(random.randint(0,300))+': SHEEVA', str(random.randint(0,300))+': RIPER', str(random.randint(0,300))+': ASHOKA']  
+
+    def order(Lista):
+        return order_aux(Lista,1,len(Lista))
+
+    def order_aux(Lista,i,n):
+        if i==n:
+            return Lista
+        Aux=Lista[i]
+        j=incluye_orden(Lista,i,Aux)
+        Lista[j]=Aux
+        return order_aux(Lista,i+1,n)
+
+    def incluye_orden(Lista,j,Aux):
+        if j<=0 or Lista[j-1]<=Aux:
+            return j
+        Lista[j]=Lista[j-1]
+        return incluye_orden(Lista,j-1,Aux)
+
+    PuntOrdenados = order(ScoOrder)
+    
+    Pos1 = Label(Scores, text=PuntOrdenados[0], fg='black', bg='white')
+    Pos1.place(x=50, y=50)
+
+    Pos2 = Label(Scores, text=PuntOrdenados[1], fg='black', bg='white')
+    Pos2.place(x=50, y=100)
+
+    Pos3 = Label(Scores, text=PuntOrdenados[2], fg='black', bg='white')
+    Pos3.place(x=50,y=150)
+
+    Pos4 = Label(Scores, text=PuntOrdenados[3], fg='black', bg='white')
+    Pos4.place(x=50, y=200)
+
+    Pos5 = Label(Scores, text=PuntOrdenados[4], fg='black', bg='white')
+    Pos5.place(x=50, y=250)
+    
+    Pos6 = Label(Scores, text=PuntOrdenados[5], fg='black', bg='white')
+    Pos6.place(x=50, y=300)
+
+    Pos7 = Label(Scores, text=PuntOrdenados[6], fg='black', bg='white')
+    Pos7.place(x=50, y=350)
+    
+    def back_scores():       #<== VOLVER AL MENU PRINCIPAL
+        Scores.destroy()
+        Menu.deiconify()        
+    quit_scores = Button(Scores,text = 'Volver al inicio',command=back_scores)
+    quit_scores.place(x=0,y=0)
+    Menu.withdraw()
+
+
+    Scores.mainloop()
+
+def scores_ring():
     Scores = Toplevel()
     Scores.minsize(700,500)
     Scores.resizable(False, False)
@@ -917,11 +1037,14 @@ ModoJuego2.place(x=690, y=300)
 Confi = Button(Fondo, width=17, text='Configuración', command=config, font=('Times',15), fg='gold', bg='firebrick')
 Confi.place(x=490, y=400)
 
-Puntajes = Button(Fondo, width=17, text='Altos puntajes', command=scores, font=('Times',15), fg='gold', bg='firebrick')
-Puntajes.place(x=490, y=450)
+Puntajes1 = Button(Fondo, text='Puntajes Destruccion de Asteroides', command=scores_ast, font=('Times',15), fg='gold', bg='firebrick')
+Puntajes1.place(x=440, y=450)
+
+Puntajes2 = Button(Fondo, text='Puntajes Maniobra de Pruebas', command=scores_ring, font=('Times',15), fg='gold', bg='firebrick')
+Puntajes2.place(x=460, y=500)
 
 About = Button(Fondo, width=17, text='Acerca de', command=about, font=('Times',15), fg='gold', bg='firebrick')
-About.place(x=490, y=500)
+About.place(x=490, y=550)
 
 Facil = Button(Fondo, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
 Facil.place(x=900, y=450)
@@ -933,7 +1056,7 @@ Dificil = Button(Fondo, width=10, text='Dificil', command=hard, font=('Times',15
 Dificil.place(x=900, y=550)
 
 Cerrar = Button(Fondo, width=17, text='Salir del juego', command=salida, font=('Times',15), fg='gold', bg='firebrick')
-Cerrar.place(x=490, y=550)
+Cerrar.place(x=490, y=600)
 
 Menu.mainloop()
 
