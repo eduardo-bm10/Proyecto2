@@ -684,61 +684,73 @@ def config():
     def edu():
         global PLAYERSHOW, SHOWNAME
         print('Eduardo Seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Eduardo
         SHOWNAME+='Eduardo'
     def maX():
         global PLAYERSHOW, SHOWNAME
         print('Max Seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Max
         SHOWNAME+='Max'
     def pilot1():
         global PLAYERSHOW, SHOWNAME
         print('Reyes Seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Pilot1img
         SHOWNAME+='Reyes'
     def pilot2():
         global PLAYERSHOW, SHOWNAME
         print('Jill Seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Pilot2img
         SHOWNAME+='Jill'
     def pilot3():
         global PLAYERSHOW, SHOWNAME
         print('X Champion Seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Pilot3img
         SHOWNAME+='X Champion'
     def pilot4():
         global PLAYERSHOW, SHOWNAME
         print('Meteor Seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Pilot4img
         SHOWNAME+='Meteor'
     def pilot5():
         global PLAYERSHOW, SHOWNAME
         print('Mysterio seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Pilot5img
         SHOWNAME+='Mysterio'
     def pilot6():
         global PLAYERSHOW, SHOWNAME
         print('Astrid seleccionada')
+        SHOWNAME=''
         PLAYERSHOW = Pilot6img
         SHOWNAME+='Astrid'
     def pilot7():
         global PLAYERSHOW, SHOWNAME
         print('Peach seleccionada')
+        SHOWNAME=''
         PLAYERSHOW = Pilot7img
         SHOWNAME+='Peach'
     def pilot8():
         global PLAYERSHOW, SHOWNAME
         print('Sheeva seleccionada')
+        SHOWNAME=''
         PLAYERSHOW = Pilot8img
         SHOWNAME+='Sheeva'
     def pilot9():
         global PLAYERSHOW, SHOWNAME
         print('Riper seleccionado')
+        SHOWNAME=''
         PLAYERSHOW = Pilot9img
         SHOWNAME+='Riper'
     def pilot10():
         global PLAYERSHOW, SHOWNAME
         print('Ashoka seleccionada')
+        SHOWNAME=''
         PLAYERSHOW = Pilot10img
         SHOWNAME+='Ashoka'
         
@@ -1100,8 +1112,8 @@ def dificultad(m):
     Dificulty.place(x=250, y=50)
     
     def back_dificultad():       #<== VOLVER AL MENU PRINCIPAL
-        info.destroy()
-        Menu.deiconify()        
+        dif.destroy()
+        Menu.deiconify()
     quit_dif = Button(dif,text = 'Volver al inicio',command=back_dificultad)
     quit_dif.place(x=0,y=0)
     Menu.withdraw()
