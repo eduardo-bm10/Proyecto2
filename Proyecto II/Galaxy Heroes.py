@@ -355,6 +355,7 @@ def juego(Mode):
             global OPEN
             if OPEN==True:
                 if i==20:
+                    colision_ring()
                     return Bg.delete(tag)
                 else:
                     Bg.itemconfig(tag,image=Anillos[i])
@@ -375,54 +376,80 @@ def juego(Mode):
             Ring8 = Bg.bbox('ring8')
             Ring9 = Bg.bbox('ring9')
             if Ship!=None and Ring1!=None:
-                if (Ring1[0]<Ship[0]<Ring1[2] or Ring1[0]<Ship[2]<Ring1[2]) and (Ring1[1]<Ship[3]<Ring1[3] or Ring1[1]<Ship[1]<Ring1[3]):
+                Ring1In = (Ring1[0]+10, Ring1[1]+10, Ring1[2]-10, Ring1[3]-10)
+                if Ship[0]<Ring1[0]<Ring1In[0]<Ship[2] or Ship[0]<Ring1In[2]<Ring1[2]<Ship[2] and Ship[1]<Ring1[1]<Ring1In[1]<Ship[3] or Ship[1]<Ring1In[3]<Ring1[3]<Ship[3]:
                     return game_over()
+                if Ring1In[0]<Ship[0]<Ring1In[2] and Ring1In[1]<Ship[1]<Ring1In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring2!=None:
-                if (Ring2[0]<Ship[0]<Ring2[2] or Ring2[0]<Ship[2]<Ring2[2]) and (Ring2[1]<Ship[3]<Ring2[3] or Ring2[1]<Ship[1]<Ring2[3]):
+                Ring2In = (Ring2[0]+10, Ring2[1]+10, Ring2[2]-10, Ring2[3]-10)
+                if Ship[0]<Ring2[0]<Ring2In[0]<Ship[2] or Ship[0]<Ring2In[2]<Ring2[2]<Ship[2] and Ship[1]<Ring2[1]<Ring2In[1]<Ship[3] or Ship[1]<Ring2In[3]<Ring2[3]<Ship[3]:
                     return game_over()
+                if Ring2In[0]<Ship[0]<Ring2In[2] and Ring2In[1]<Ship[1]<Ring2In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring3!=None:
-                if (Ring3[0]<Ship[0]<Ring3[2] or Ring3[0]<Ship[2]<Ring3[2]) and (Ring3[1]<Ship[3]<Ring3[3] or Ring3[1]<Ship[1]<Ring3[3]):
+                Ring3In = (Ring3[0]+10, Ring3[1]+10, Ring3[2]-10, Ring3[3]-10)
+                if Ship[0]<Ring3[0]<Ring3In[0]<Ship[2] or Ship[0]<Ring3In[2]<Ring3[2]<Ship[2] and Ship[1]<Ring3[1]<Ring3In[1]<Ship[3] or Ship[1]<Ring3In[3]<Ring3[3]<Ship[3]:
                     return game_over()
+                if Ring3In[0]<Ship[0]<Ring3In[2] and Ring3In[1]<Ship[1]<Ring3In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring4!=None:
-                if (Ring4[0]<Ship[0]<Ring4[2] or Ring4[0]<Ship[2]<Ring4[2]) and (Ring4[1]<Ship[3]<Ring4[3] or Ring4[1]<Ship[1]<Ring4[3]):
+                Ring4In = (Ring4[0]+10, Ring4[1]+10, Ring4[2]-10, Ring4[3]-10)
+                if Ship[0]<Ring4[0]<Ring4In[0]<Ship[2] or Ship[0]<Ring4In[2]<Ring4[2]<Ship[2] and Ship[1]<Ring4[1]<Ring4In[1]<Ship[3] or Ship[1]<Ring4In[3]<Ring4[3]<Ship[3]:
                     return game_over()
+                if Ring4In[0]<Ship[0]<Ring4In[2] and Ring4In[1]<Ship[1]<Ring4In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring5!=None:
-                if (Ring5[0]<Ship[0]<Ring5[2] or Ring5[0]<Ship[2]<Ring5[2]) and (Ring5[1]<Ship[3]<Ring5[3] or Ring5[1]<Ship[1]<Ring5[3]):
+                Ring5In = (Ring5[0]+10, Ring5[1]+10, Ring5[2]-10, Ring5[3]-10)
+                if Ship[0]<Ring5[0]<Ring5In[0]<Ship[2] or Ship[0]<Ring5In[2]<Ring5[2]<Ship[2] and Ship[1]<Ring5[1]<Ring5In[1]<Ship[3] or Ship[1]<Ring5In[3]<Ring5[3]<Ship[3]:
                     return game_over()
+                if Ring5In[0]<Ship[0]<Ring5In[2] and Ring5In[1]<Ship[1]<Ring5In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring6!=None:
-                if (Ring6[0]<Ship[0]<Ring6[2] or Ring6[0]<Ship[2]<Ring6[2]) and (Ring6[1]<Ship[3]<Ring6[3] or Ring6[1]<Ship[1]<Ring6[3]):
+                Ring6In = (Ring6[0]+10, Ring6[1]+10, Ring6[2]-10, Ring6[3]-10)
+                if Ship[0]<Ring6[0]<Ring6In[0]<Ship[2] or Ship[0]<Ring6In[2]<Ring6[2]<Ship[2] and Ship[1]<Ring6[1]<Ring6In[1]<Ship[3] or Ship[1]<Ring6In[3]<Ring6[3]<Ship[3]:
                     return game_over()
+                if Ring6In[0]<Ship[0]<Ring6In[2] and Ring6In[1]<Ship[1]<Ring6In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring7!=None:
-                if (Ring7[0]<Ship[0]<Ring7[2] or Ring7[0]<Ship[2]<Ring7[2]) and (Ring7[1]<Ship[3]<Ring7[3] or Ring7[1]<Ship[1]<Ring7[3]):
+                Ring7In = (Ring7[0]+10, Ring7[1]+10, Ring7[2]-10, Ring7[3]-10)
+                if Ship[0]<Ring7[0]<Ring7In[0]<Ship[2] or Ship[0]<Ring7In[2]<Ring7[2]<Ship[2] and Ship[1]<Ring7[1]<Ring7In[1]<Ship[3] or Ship[1]<Ring7In[3]<Ring7[3]<Ship[3]:
                     return game_over()
+                if Ring7In[0]<Ship[0]<Ring7In[2] and Ring7In[1]<Ship[1]<Ring7In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring8!=None:
-                if (Ring8[0]<Ship[0]<Ring8[2] or Ring8[0]<Ship[2]<Ring8[2]) and (Ring8[1]<Ship[3]<Ring8[3] or Ring8[1]<Ship[1]<Ring8[3]):
+                Ring8In = (Ring8[0]+10, Ring8[1]+10, Ring8[2]-10, Ring8[3]-10)
+                if Ship[0]<Ring8[0]<Ring8In[0]<Ship[2] or Ship[0]<Ring8In[2]<Ring8[2]<Ship[2] and Ship[1]<Ring8[1]<Ring8In[1]<Ship[3] or Ship[1]<Ring8In[3]<Ring8[3]<Ship[3]:
                     return game_over()
+                if Ring8In[0]<Ship[0]<Ring8In[2] and Ring8In[1]<Ship[1]<Ring8In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             if Ship!=None and Ring9!=None:
-                if (Ring9[0]<Ship[0]<Ring9[2] or Ring9[0]<Ship[2]<Ring9[2]) and (Ring9[1]<Ship[3]<Ring9[3] or Ring9[1]<Ship[1]<Ring9[3]):
+                Ring9In = (Ring9[0]+10, Ring9[1]+10, Ring9[2]-10, Ring9[3]-10)
+                if Ship[0]<Ring9[0]<Ring9In[0]<Ship[2] or Ship[0]<Ring9In[2]<Ring9[2]<Ship[2] and Ship[1]<Ring9[1]<Ring9In[1]<Ship[3] or Ship[1]<Ring9In[3]<Ring9[3]<Ship[3]:
                     return game_over()
+                if Ring9In[0]<Ship[0]<Ring9In[2] and Ring9In[1]<Ship[1]<Ring9In[3]:
+                    return points(20)
                 else:
-                    return Bg.after(10,colision_ring)
+                    return 
             else:
-                return Bg.after(10,colision_ring)
+                return 
 
-        colision_ring()
         Thread(target=generate_ring, args=(0,)).start()
 
     #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
