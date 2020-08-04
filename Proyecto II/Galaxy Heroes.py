@@ -140,6 +140,25 @@ def juego(Mode):
         TotPun.place(x=587.5, y=425)
         OPEN=False
         
+    def dificultad(): 
+        global Dif, OPEN
+        if OPEN == True:
+            if Dif == 1:
+                print('Fácil')
+                time.sleep(60)
+                Dif += 1
+                return dificultad()
+            elif Dif == 2:
+                print('Medio')
+                time.sleep(60)
+                Dif += 1
+                return dificultad()
+            elif Dif == 3:
+                print('Difícil')
+                return 
+            
+    Thread(target=dificultad).start()
+        
     Exit = Button(Display, text='Abandonar', font=('Helvatica'), command=back, fg='lemonchiffon', bg='darkslategrey')
     Exit.place(x=10, y=20)
 
