@@ -629,7 +629,7 @@ def juego(Mode):
 
     Pant.mainloop()
 
-#//////////////////////////////////// SELECCION DE MODO DE JUEGO ///////////////////////////////////////////////////////////////
+#//////////////////////////////////// SELECCION DE MODO DE JUEGO ///////////////////////////////////////////////////////////////  
 
 def select_juego1():
     global OPEN, PLAYERSHOW
@@ -637,7 +637,7 @@ def select_juego1():
         return print('ELIJA UN PILOTO EN CONFIGURACION')
     else:
         OPEN=True
-        return juego(1)
+        return dificultad(1)
 
 def select_juego2():
     global OPEN, PLAYERSHOW
@@ -645,7 +645,7 @@ def select_juego2():
         return print('ELIJA UN PILOTO EN CONFIGURACION')
     else:
         OPEN=True
-        return juego(2)
+        return dificultad(2)
 
 #/////////////////////////////////// PANTALLA DE CONFIGURACION ////////////////////////////////////////////////////////////////
 
@@ -1029,23 +1029,71 @@ def salida():       #<== CERRAR DEL JUEGO
     musica(1)
     Menu.destroy()
 
+#//////////////////////////////////////////////////////Ventana selección dificultad////////////////////////////////////////////////////////
+def dificultad(m):
+    dif = Toplevel()
+    dif.minsize(700,500)
+    dif.resizable(False, False)
+    dif.title('Galaxy Heroes')
+    dif.iconbitmap('Imagenes/Icono.ico')
+    
+    
+    C_dif = Canvas(dif,width=700,height=500,bg='white')
+    C_dif.place(x=0,y=0)
+
+    C_dif.image1 = Imagenes('Imagenes/Background/playbg.png')
+    imgCanvas_dif = C_dif.create_image(350,250,image= C_dif.image1) 
+    
+    def easy(m):
+        global DIFF
+        DIFF=1
+        Dificulty.configure(text='Facil elegido')
+        dif.destroy()
+        if m == 1:
+            return juego(1)
+        elif m == 2:
+            return juego(2)
+
+    def normal(m):
+        global DIFF
+        DIFF=2
+        Dificulty.configure(text='Normal elegido')
+        dif.destroy()
+        if m == 1:
+            return juego(1)
+        elif m == 2:
+            return juego(2)
+
+    def hard(m):
+        global DIFF
+        DIFF=3
+        Dificulty.configure(text='Dificil elegido')
+        dif.destroy()
+        if m == 1:
+            return juego(1)
+        elif m == 2:
+            return juego(2)
+        
+    Facil = Button(Fondo, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
+    Facil.place(x=900, y=450)
+
+    Medio = Button(Fondo, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
+    Medio.place(x=900, y=500)
+
+    Dificil = Button(Fondo, width=10, text='Dificil', command=hard, font=('Times',15), fg='gold', bg='midnightblue')
+    Dificil.place(x=900, y=550)
+
+        
+    dif.mainloop()
+        
+def salida():       #<== CERRAR DEL JUEGO
+    musica(1)
+    Menu.destroy()
+
 Dificulty = Label(Fondo, width=15, text='Dificultad', font=('Times',15), fg='cyan', bg='darkslategray')
 Dificulty.place(x=850, y=420)
 
-def easy():
-    global DIFF
-    DIFF=1
-    Dificulty.configure(text='Facil elegido')
 
-def normal():
-    global DIFF
-    DIFF=2
-    Dificulty.configure(text='Normal elegido')
-
-def hard():
-    global DIFF
-    DIFF=3
-    Dificulty.configure(text='Dificil elegido')
 
 ModoJuego1 = Button(Fondo, width=27, text='Destrucción de asteroides', command=select_juego1, font=('Times',15), fg='gold', bg='firebrick')     #BOTONES DE MENU
 ModoJuego1.place(x=180, y=300)
@@ -1065,17 +1113,9 @@ Puntajes2.place(x=460, y=500)
 About = Button(Fondo, width=17, text='Acerca de', command=about, font=('Times',15), fg='gold', bg='firebrick')
 About.place(x=490, y=550)
 
-Facil = Button(Fondo, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
-Facil.place(x=900, y=450)
-
-Medio = Button(Fondo, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
-Medio.place(x=900, y=500)
-
-Dificil = Button(Fondo, width=10, text='Dificil', command=hard, font=('Times',15), fg='gold', bg='midnightblue')
-Dificil.place(x=900, y=550)
-
 Cerrar = Button(Fondo, width=17, text='Salir del juego', command=salida, font=('Times',15), fg='gold', bg='firebrick')
 Cerrar.place(x=490, y=600)
+
 
 Menu.mainloop()
 
