@@ -57,6 +57,8 @@ Menu.resizable(False, False)
 Menu.title('Galaxy Heroes')
 Menu.iconbitmap('Imagenes/Icono.ico')
 
+musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
+
 Fondo = Canvas(Menu, width=1200, height=650, bg='black')
 Fondo.place(x=0, y=0)
 
@@ -89,6 +91,7 @@ def juego(Mode):
 
     Menu.withdraw()
     musica(1)
+    musica('Audio\\Star Force (NES) Music - Stage Theme.mp3')
 
     Bg = Canvas(Pant, width=1200, height=650, bg='maroon')
     Bg.place(x=0,y=0)
@@ -106,12 +109,15 @@ def juego(Mode):
         Display.create_image(900, 50, image=PLAYERSHOW)
 
     def back():         #<== RETORNO
-        global OPEN, BATTERY, PLAYERSHOW, SHOWNAME
+        global OPEN, BATTERY, PLAYERSHOW, SHOWNAME, POINTS
         OPEN=False
         BATTERY=100
         PLAYERSHOW=[]
         SHOWNAME=''
+        POINTS=0
         Pant.destroy()
+        musica(1)
+        musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
         Menu.deiconify()   
             
     #//////////////////////////////////////////TIEMPO, PUNTOS Y FIN DE JUEGO///////////////////////////////////////////        
@@ -138,6 +144,7 @@ def juego(Mode):
         End.place(x=587.5, y=325)
         TotPun = Label(Pant, width=25, text='OBTUVISTE '+str(POINTS)+' PUNTOS', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
         TotPun.place(x=587.5, y=425)
+        musica(1)
         OPEN=False
         
     def dificultad(): 
@@ -233,6 +240,7 @@ def juego(Mode):
             global OPEN
             if OPEN==True:
                 if i==20:
+                    colision_ship_ast()
                     return Bg.delete(tag)
                 else:
                     Bg.itemconfig(tag, image=SpritesAst[i])
@@ -256,56 +264,135 @@ def juego(Mode):
             if Ship != None and Ast1 != None:
                 if (Ast1[0]<Ship[0]<Ast1[2] or Ast1[0]<Ship[2]<Ast1[2]) and (Ast1[1]<Ship[3]<Ast1[3] or Ast1[1]<Ship[1]<Ast1[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast2!=None:
                 if (Ast2[0]<Ship[0]<Ast2[2] or Ast2[0]<Ship[2]<Ast2[2]) and (Ast2[1]<Ship[3]<Ast2[3] or Ast2[1]<Ship[1]<Ast2[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast3!=None:
                 if (Ast3[0]<Ship[0]<Ast3[2] or Ast3[0]<Ship[2]<Ast3[2]) and (Ast3[1]<Ship[3]<Ast3[3] or Ast3[1]<Ship[1]<Ast3[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast4!=None:
                 if (Ast4[0]<Ship[0]<Ast4[2] or Ast4[0]<Ship[2]<Ast4[2]) and (Ast4[1]<Ship[3]<Ast4[3] or Ast4[1]<Ship[1]<Ast4[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast5!=None:
                 if (Ast5[0]<Ship[0]<Ast5[2] or Ast5[0]<Ship[2]<Ast5[2]) and (Ast5[1]<Ship[3]<Ast5[3] or Ast5[1]<Ship[1]<Ast5[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast6!=None:
                 if (Ast6[0]<Ship[0]<Ast6[2] or Ast6[0]<Ship[2]<Ast6[2]) and (Ast6[1]<Ship[3]<Ast6[3] or Ast6[1]<Ship[1]<Ast6[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast7!=None:
                 if (Ast7[0]<Ship[0]<Ast7[2] or Ast7[0]<Ship[2]<Ast7[2]) and (Ast7[1]<Ship[3]<Ast7[3] or Ast7[1]<Ship[1]<Ast7[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast8!=None:
                 if (Ast8[0]<Ship[0]<Ast8[2] or Ast8[0]<Ship[2]<Ast8[2]) and (Ast8[1]<Ship[3]<Ast8[3] or Ast8[1]<Ship[1]<Ast8[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             if Ship!=None and Ast9!=None:
                 if (Ast9[0]<Ship[0]<Ast9[2] or Ast9[0]<Ship[2]<Ast9[2]) and (Ast9[1]<Ship[3]<Ast9[3] or Ast9[1]<Ship[1]<Ast9[3]):
                     return game_over()
-                else:
-                    return Bg.after(10,colision_ship_ast)
             else:
-                return Bg.after(10,colision_ship_ast)
+                return None
 
-        colision_ship_ast()
+        def colision_disp():
+            global DIFF
+            Disp=Bg.bbox('shot1')
+            Ast1 = Bg.bbox('ast1')
+            Ast2 = Bg.bbox('ast2')
+            Ast3 = Bg.bbox('ast3')
+            Ast4 = Bg.bbox('ast4')
+            Ast5 = Bg.bbox('ast5')
+            Ast6 = Bg.bbox('ast6')
+            Ast7 = Bg.bbox('ast7')
+            Ast8 = Bg.bbox('ast8')
+            Ast9 = Bg.bbox('ast9')
+            if Disp!=None and Ast1!=None:
+                if Ast1[0]<Disp[0]<Disp[2]<Ast1[2] and Ast1[1]<Disp[1]<Disp[3]<Ast1[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast1')
+            if Disp!=None and Ast2!=None:
+                if Ast2[0]<Disp[0]<Disp[2]<Ast2[2] and Ast2[1]<Disp[1]<Disp[3]<Ast2[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast2')
+            if Disp!=None and Ast3!=None:
+                if Ast3[0]<Disp[0]<Disp[2]<Ast3[2] and Ast3[1]<Disp[1]<Disp[3]<Ast3[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast3')
+            if Disp!=None and Ast4!=None:
+                if Ast4[0]<Disp[0]<Disp[2]<Ast4[2] and Ast4[1]<Disp[1]<Disp[3]<Ast4[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast4')
+            if Disp!=None and Ast5!=None:
+                if Ast5[0]<Disp[0]<Disp[2]<Ast5[2] and Ast5[1]<Disp[1]<Disp[3]<Ast5[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast5')
+            if Disp!=None and Ast6!=None:
+                if Ast6[0]<Disp[0]<Disp[2]<Ast6[2] and Ast6[1]<Disp[1]<Disp[3]<Ast6[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)                   
+                    return Bg.delete('ast6')
+            if Disp!=None and Ast7!=None:
+                if Ast7[0]<Disp[0]<Disp[2]<Ast7[2] and Ast7[1]<Disp[1]<Disp[3]<Ast7[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast7')
+            if Disp!=None and Ast8!=None:
+                if Ast8[0]<Disp[0]<Disp[2]<Ast8[2] and Ast8[1]<Disp[1]<Disp[3]<Ast8[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast8')
+            if Disp!=None and Ast9!=None:
+                if Ast9[0]<Disp[0]<Disp[2]<Ast9[2] and Ast9[1]<Disp[1]<Disp[3]<Ast9[3]:
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
+                    return Bg.delete('ast9')
+            else:
+                return None
+            
         Thread(target=generate_ast, args=(0,)).start()
 
     #MODO MANIOBRA DE PRUEBAS
     if Mode==2:
+        global SHOT
+        SHOT=False
         Anillos=sprites('Imagenes/Anillos/Ring*.png')
 
         def generate_ring(t):       #<== GENERAR ANILLO
@@ -380,7 +467,12 @@ def juego(Mode):
                 if Ship[0]<Ring1[0]<Ring1In[0]<Ship[2] or Ship[0]<Ring1In[2]<Ring1[2]<Ship[2] and Ship[1]<Ring1[1]<Ring1In[1]<Ship[3] or Ship[1]<Ring1In[3]<Ring1[3]<Ship[3]:
                     return game_over()
                 if Ring1In[0]<Ship[0]<Ring1In[2] and Ring1In[1]<Ship[1]<Ring1In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring2!=None:
@@ -388,7 +480,12 @@ def juego(Mode):
                 if Ship[0]<Ring2[0]<Ring2In[0]<Ship[2] or Ship[0]<Ring2In[2]<Ring2[2]<Ship[2] and Ship[1]<Ring2[1]<Ring2In[1]<Ship[3] or Ship[1]<Ring2In[3]<Ring2[3]<Ship[3]:
                     return game_over()
                 if Ring2In[0]<Ship[0]<Ring2In[2] and Ring2In[1]<Ship[1]<Ring2In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring3!=None:
@@ -396,7 +493,12 @@ def juego(Mode):
                 if Ship[0]<Ring3[0]<Ring3In[0]<Ship[2] or Ship[0]<Ring3In[2]<Ring3[2]<Ship[2] and Ship[1]<Ring3[1]<Ring3In[1]<Ship[3] or Ship[1]<Ring3In[3]<Ring3[3]<Ship[3]:
                     return game_over()
                 if Ring3In[0]<Ship[0]<Ring3In[2] and Ring3In[1]<Ship[1]<Ring3In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring4!=None:
@@ -404,7 +506,12 @@ def juego(Mode):
                 if Ship[0]<Ring4[0]<Ring4In[0]<Ship[2] or Ship[0]<Ring4In[2]<Ring4[2]<Ship[2] and Ship[1]<Ring4[1]<Ring4In[1]<Ship[3] or Ship[1]<Ring4In[3]<Ring4[3]<Ship[3]:
                     return game_over()
                 if Ring4In[0]<Ship[0]<Ring4In[2] and Ring4In[1]<Ship[1]<Ring4In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring5!=None:
@@ -412,7 +519,12 @@ def juego(Mode):
                 if Ship[0]<Ring5[0]<Ring5In[0]<Ship[2] or Ship[0]<Ring5In[2]<Ring5[2]<Ship[2] and Ship[1]<Ring5[1]<Ring5In[1]<Ship[3] or Ship[1]<Ring5In[3]<Ring5[3]<Ship[3]:
                     return game_over()
                 if Ring5In[0]<Ship[0]<Ring5In[2] and Ring5In[1]<Ship[1]<Ring5In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring6!=None:
@@ -420,7 +532,12 @@ def juego(Mode):
                 if Ship[0]<Ring6[0]<Ring6In[0]<Ship[2] or Ship[0]<Ring6In[2]<Ring6[2]<Ship[2] and Ship[1]<Ring6[1]<Ring6In[1]<Ship[3] or Ship[1]<Ring6In[3]<Ring6[3]<Ship[3]:
                     return game_over()
                 if Ring6In[0]<Ship[0]<Ring6In[2] and Ring6In[1]<Ship[1]<Ring6In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring7!=None:
@@ -428,7 +545,12 @@ def juego(Mode):
                 if Ship[0]<Ring7[0]<Ring7In[0]<Ship[2] or Ship[0]<Ring7In[2]<Ring7[2]<Ship[2] and Ship[1]<Ring7[1]<Ring7In[1]<Ship[3] or Ship[1]<Ring7In[3]<Ring7[3]<Ship[3]:
                     return game_over()
                 if Ring7In[0]<Ship[0]<Ring7In[2] and Ring7In[1]<Ship[1]<Ring7In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring8!=None:
@@ -436,7 +558,12 @@ def juego(Mode):
                 if Ship[0]<Ring8[0]<Ring8In[0]<Ship[2] or Ship[0]<Ring8In[2]<Ring8[2]<Ship[2] and Ship[1]<Ring8[1]<Ring8In[1]<Ship[3] or Ship[1]<Ring8In[3]<Ring8[3]<Ship[3]:
                     return game_over()
                 if Ring8In[0]<Ship[0]<Ring8In[2] and Ring8In[1]<Ship[1]<Ring8In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             if Ship!=None and Ring9!=None:
@@ -444,7 +571,12 @@ def juego(Mode):
                 if Ship[0]<Ring9[0]<Ring9In[0]<Ship[2] or Ship[0]<Ring9In[2]<Ring9[2]<Ship[2] and Ship[1]<Ring9[1]<Ring9In[1]<Ship[3] or Ship[1]<Ring9In[3]<Ring9[3]<Ship[3]:
                     return game_over()
                 if Ring9In[0]<Ship[0]<Ring9In[2] and Ring9In[1]<Ship[1]<Ring9In[3]:
-                    return points(20)
+                    if DIFF==1:
+                        points(50)
+                    if DIFF==2:
+                        points(20)
+                    if DIFF==3:
+                        points(15)
                 else:
                     return 
             else:
@@ -543,6 +675,7 @@ def juego(Mode):
         if Blast!=[]:
             if i==20:
                 SHOT=True
+                colision_disp()
                 return Bg.delete('shot1')
             else:
                 Bg.coords('shot1', Blast[0], Blast[1]-3)
