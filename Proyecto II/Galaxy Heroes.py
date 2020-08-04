@@ -108,6 +108,7 @@ def juego(Mode):
         global PLAYERSHOW
         Display.create_image(900, 50, image=PLAYERSHOW)
 
+
     def back():         #<== RETORNO
         global OPEN, BATTERY, PLAYERSHOW, SHOWNAME, POINTS
         OPEN=False
@@ -137,6 +138,17 @@ def juego(Mode):
         POINTS+=p
         Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
         Cont.place(x=350, y=50)
+
+    # //////////////////////////Escribir puntos en el .txt///////////////////////////////////
+    def enter_puntos():
+        global POINTS
+        print(POINTS)
+        updatetxt(str(POINTS) + "\n")
+
+    def updatetxt(Texto):
+        file = open("PUNTUACIONES.txt", "a")
+        file.write(Texto)
+        file.close()
 
     def game_over():
         global POINTS, OPEN
