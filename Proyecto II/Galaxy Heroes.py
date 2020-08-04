@@ -422,6 +422,7 @@ def juego(Mode):
             else:
                 return Bg.after(10,colision_ring)
 
+        colision_ring()
         Thread(target=generate_ring, args=(0,)).start()
 
     #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
@@ -1042,46 +1043,57 @@ def dificultad(m):
     C_dif.place(x=0,y=0)
 
     C_dif.image1 = Imagenes('Imagenes/Background/playbg.png')
-    imgCanvas_dif = C_dif.create_image(350,250,image= C_dif.image1) 
-    
-    def easy(m):
-        global DIFF
-        DIFF=1
-        Dificulty.configure(text='Facil elegido')
-        dif.destroy()
-        if m == 1:
+    imgCanvas_dif = C_dif.create_image(350,250,image= C_dif.image1)
+    if m==1:
+        def easy():
+            global DIFF
+            DIFF=1
+            Dificulty.configure(text='Facil elegido')
+            dif.destroy()
             return juego(1)
-        elif m == 2:
+
+        def normal():
+            global DIFF
+            DIFF=2
+            Dificulty.configure(text='Normal elegido')
+            dif.destroy()
+            return juego(1)
+
+        def hard():
+            global DIFF
+            DIFF=3
+            Dificulty.configure(text='Dificil elegido')
+            return juego(1)
+    if m==2:
+        def easy():
+            global DIFF
+            DIFF=1
+            Dificulty.configure(text='Facil elegido')
+            dif.destroy()
             return juego(2)
 
-    def normal(m):
-        global DIFF
-        DIFF=2
-        Dificulty.configure(text='Normal elegido')
-        dif.destroy()
-        if m == 1:
-            return juego(1)
-        elif m == 2:
-            return juego(2)
+        def normal():
+            global DIFF
+            DIFF=2
+            Dificulty.configure(text='Normal elegido')
+            dif.destroy()
+            juego(2)
 
-    def hard(m):
-        global DIFF
-        DIFF=3
-        Dificulty.configure(text='Dificil elegido')
-        dif.destroy()
-        if m == 1:
-            return juego(1)
-        elif m == 2:
+        def hard():
+            global DIFF
+            DIFF=3
+            Dificulty.configure(text='Dificil elegido')
+            dif.destroy()
             return juego(2)
         
-    Facil = Button(Fondo, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
-    Facil.place(x=900, y=450)
+    Facil = Button(C_dif, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
+    Facil.place(x=50, y=30)
 
-    Medio = Button(Fondo, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
-    Medio.place(x=900, y=500)
+    Medio = Button(C_dif, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
+    Medio.place(x=50, y=60)
 
-    Dificil = Button(Fondo, width=10, text='Dificil', command=hard, font=('Times',15), fg='gold', bg='midnightblue')
-    Dificil.place(x=900, y=550)
+    Dificil = Button(C_dif, width=10, text='Dificil', command=hard, font=('Times',15), fg='gold', bg='midnightblue')
+    Dificil.place(x=50, y=90)
 
         
     dif.mainloop()
