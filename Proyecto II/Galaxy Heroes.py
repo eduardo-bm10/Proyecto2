@@ -141,21 +141,21 @@ def juego(Mode):
         OPEN=False
         
     def dificultad(): 
-        global Dif, OPEN
+        global DIFF, OPEN
         if OPEN == True:
-            if Dif == 1:
+            if DIFF == 1:
                 print('Fácil')
                 time.sleep(60)
-                Dif += 1
+                DIFF += 1
                 return dificultad()
-            elif Dif == 2:
+            elif DIFF == 2:
                 print('Medio')
                 time.sleep(60)
-                Dif += 1
+                DIFF += 1
                 return dificultad()
-            elif Dif == 3:
+            elif DIFF == 3:
                 print('Difícil')
-                return 
+                return None
             
     Thread(target=dificultad).start()
         
