@@ -156,6 +156,7 @@ def juego(Mode):
         End.place(x=587.5, y=325)
         TotPun = Label(Pant, width=25, text='OBTUVISTE '+str(POINTS)+' PUNTOS', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
         TotPun.place(x=587.5, y=425)
+        enter_puntos()
         musica(1)
         OPEN=False
         
