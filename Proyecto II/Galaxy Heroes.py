@@ -868,6 +868,94 @@ def select_juego2():
         OPEN=True
         return dificultad(2)
 
+#///////////////////////////////////////////////////// SELECCION DE DIFICULTAD INICIAL ////////////////////////////////////////////////////////
+
+#VENTANA DE SELECCION DE DIFICULTAD
+def dificultad(m):
+    dif = Toplevel()
+    dif.minsize(500,400)
+    dif.resizable(False, False)
+    dif.title('Galaxy Heroes')
+    dif.iconbitmap('Imagenes/Icono.ico')
+    
+    
+    C_dif = Canvas(dif,width=500,height=400,bg='white')
+    C_dif.place(x=0,y=0)
+
+    C_dif.image1 = Imagenes('Imagenes/Background/playbg.png')
+    imgCanvas_dif = C_dif.create_image(350,250,image= C_dif.image1)
+    
+    if m==1:
+        #DIFICULTAD FACIL PARA DESTRUCCION DE ASTEROIDES
+        def easy():
+            global DIFF
+            DIFF=1
+            Dificulty.configure(text='Facil elegido')
+            dif.destroy()
+            return juego(1)
+
+        #DIFICULTAD NORMAL PARA DESTRUCCION DE ASTEROIDES
+        def normal():
+            global DIFF
+            DIFF=2
+            Dificulty.configure(text='Normal elegido')
+            dif.destroy()
+            return juego(1)
+
+        #DIFICULTAD DIFICIL PARA DESTRUCCION DE ASTEROIDES
+        def hard():
+            global DIFF
+            DIFF=3
+            Dificulty.configure(text='Dificil elegido')
+            return juego(1)
+    if m==2:
+        #DIFICULTAD FACIL PARA MANIOBRA DE PRUEBAS
+        def easy():
+            global DIFF
+            DIFF=1
+            Dificulty.configure(text='Facil elegido')
+            dif.destroy()
+            return juego(2)
+
+        #DIFICULTAD NORMAL PARA MANIOBRA DE PRUEBAS
+        def normal():
+            global DIFF
+            DIFF=2
+            Dificulty.configure(text='Normal elegido')
+            dif.destroy()
+            juego(2)
+
+        #DIFICULTAD DIFICIL PARA MANIOBRA DE PRUEBAS
+        def hard():
+            global DIFF
+            DIFF=3
+            Dificulty.configure(text='Dificil elegido')
+            dif.destroy()
+            return juego(2)
+        
+    Facil = Button(C_dif, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
+    Facil.place(x=250, y=100)
+
+    Medio = Button(C_dif, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
+    Medio.place(x=250, y=150)
+
+    Dificil = Button(C_dif, width=10, text='Dificil', command=hard, font=('Times',15), fg='gold', bg='midnightblue')
+    Dificil.place(x=250, y=200)
+    
+    Dificulty = Label(C_dif, width=15, text='Dificultad', font=('Times',15), fg='cyan', bg='darkslategray')
+    Dificulty.place(x=250, y=50)
+
+    #RETORNO AL MENU PRINCIPAL
+    def back_dificultad():       
+        dif.destroy()
+        Menu.deiconify()
+        
+    quit_dif = Button(dif,text = 'Volver al inicio',command=back_dificultad)
+    quit_dif.place(x=0,y=0)
+    
+    Menu.withdraw()
+    dif.mainloop()
+
 #/////////////////////////////////// PANTALLA DE CONFIGURACION ////////////////////////////////////////////////////////////////
 
 #VENTANA DE CONFIGURACION Y SELECCION DE PILOTOS
@@ -1207,6 +1295,7 @@ def scores_ast():
 
     Scores.mainloop()
 
+#VENTANA DE MEJORES PUNTAJES DE MANIOBRA DE PRUEBAS
 def scores_ring():
     Scores = Toplevel()
     Scores.minsize(700,500)
@@ -1282,89 +1371,7 @@ def about():
 def salida():       #<== CERRAR DEL JUEGO
     musica(1)
     Menu.destroy()
-
-#//////////////////////////////////////////////////////Ventana selección dificultad////////////////////////////////////////////////////////
-def dificultad(m):
-    dif = Toplevel()
-    dif.minsize(500,400)
-    dif.resizable(False, False)
-    dif.title('Galaxy Heroes')
-    dif.iconbitmap('Imagenes/Icono.ico')
-    
-    
-    C_dif = Canvas(dif,width=500,height=400,bg='white')
-    C_dif.place(x=0,y=0)
-
-    C_dif.image1 = Imagenes('Imagenes/Background/playbg.png')
-    imgCanvas_dif = C_dif.create_image(350,250,image= C_dif.image1)
-    
-    if m==1:
-        def easy():
-            global DIFF
-            DIFF=1
-            Dificulty.configure(text='Facil elegido')
-            dif.destroy()
-            return juego(1)
-
-        def normal():
-            global DIFF
-            DIFF=2
-            Dificulty.configure(text='Normal elegido')
-            dif.destroy()
-            return juego(1)
-
-        def hard():
-            global DIFF
-            DIFF=3
-            Dificulty.configure(text='Dificil elegido')
-            return juego(1)
-    if m==2:
-        def easy():
-            global DIFF
-            DIFF=1
-            Dificulty.configure(text='Facil elegido')
-            dif.destroy()
-            return juego(2)
-
-        def normal():
-            global DIFF
-            DIFF=2
-            Dificulty.configure(text='Normal elegido')
-            dif.destroy()
-            juego(2)
-
-        def hard():
-            global DIFF
-            DIFF=3
-            Dificulty.configure(text='Dificil elegido')
-            dif.destroy()
-            return juego(2)
         
-    Facil = Button(C_dif, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
-    Facil.place(x=250, y=100)
-
-    Medio = Button(C_dif, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
-    Medio.place(x=250, y=150)
-
-    Dificil = Button(C_dif, width=10, text='Dificil', command=hard, font=('Times',15), fg='gold', bg='midnightblue')
-    Dificil.place(x=250, y=200)
-    
-    Dificulty = Label(C_dif, width=15, text='Dificultad', font=('Times',15), fg='cyan', bg='darkslategray')
-    Dificulty.place(x=250, y=50)
-    
-    def back_dificultad():       #<== VOLVER AL MENU PRINCIPAL
-        dif.destroy()
-        Menu.deiconify()
-    quit_dif = Button(dif,text = 'Volver al inicio',command=back_dificultad)
-    quit_dif.place(x=0,y=0)
-    Menu.withdraw()
-        
-    dif.mainloop()
-        
-def salida():       #<== CERRAR DEL JUEGO
-    musica(1)
-    Menu.destroy()
-
 
 ModoJuego1 = Button(Fondo, width=27, text='Destrucción de asteroides', command=select_juego1, font=('Times',15), fg='gold', bg='firebrick')     #BOTONES DE MENU
 ModoJuego1.place(x=180, y=300)
