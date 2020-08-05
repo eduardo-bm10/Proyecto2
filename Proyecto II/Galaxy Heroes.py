@@ -759,8 +759,9 @@ def juego(Mode):
         global OPEN
         if OPEN == True:
             if t == 25:
-                if r==0:    
+                if r==0:    <<<<<<< HEAD
                     Bg.create_image(0,random.uniform(100,500),tags=('battery'), image=RechargeImg)#GENERA LA BATERIA A LA DERECHA
+                    Bg.create_image(0,random.uniform(100,500),tags=('battery'), image=RechargeImg) #GENERA LA BATERIA A LA DERECHA
                     move_fullbattery(0)
                     return generate_battery(0,random.randint(0,3))
                 elif r==1:  
@@ -1242,29 +1243,50 @@ def scores_ast():
     C_scores.image1 = Imagenes('Imagenes/Background/playbg.png')
     imgCanvas_Scores = C_scores.create_image(350,250,image= C_scores.image1)
 
-
     ScoOrder = [str(random.randint(0,300))+': EDUARDO', str(random.randint(0,300))+': MAX', str(random.randint(0,300))+': REYES', str(random.randint(0,300))+': JILL', str(random.randint(0,300))+': X CHAMPION', str(random.randint(0,300))+': METEOR', str(random.randint(0,300))+': MYSTERIO', str(random.randint(0,300))+': ASTRID', str(random.randint(0,300))+': PEACH', str(random.randint(0,300))+': SHEEVA', str(random.randint(0,300))+': RIPER', str(random.randint(0,300))+': ASHOKA']
 
     def order(Lista):
         return burbuja_aux(Lista, 0, 0, len(Lista), False)
 
-def burbuja_aux(Lista, i, j, n, Swap):
-    if i == n:
-        return Lista
-    if j == n - i - 1:
-        if Swap:
-            return burbuja_aux(Lista, i + 1, 0, n, False)
-        else:
+    def burbuja_aux(Lista, i, j, n, Swap):
+        if i == n:
             return Lista
-    if Lista[j] < Lista[j+1]:
-        Tmp = Lista[j+1]
-        Lista[j+1] = Lista[j]
-        Lista[j] = Tmp
-        return burbuja_aux(Lista, i, j + 1, n, True)
-    else:
-        return burbuja_aux(Lista, i, j + 1, n, Swap)
+        if j == n - i - 1:
+            if Swap:
+                return burbuja_aux(Lista, i + 1, 0, n, False)
+            else:
+                return Lista
+        if Lista[j] < Lista[j+1]:
+            Tmp = Lista[j+1]
+            Lista[j+1] = Lista[j]
+            Lista[j] = Tmp
+                return burbuja_aux(Lista, i, j + 1, n, True)
+        else:
+            return burbuja_aux(Lista, i, j + 1, n, Swap)
 
     PuntOrdenados = order(ScoOrder)
+    ScoOrder = [str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300))]  
+
+    def burbuja(Lista):
+            return burbuja_aux(Lista,0,0,len(Lista),False)
+
+    def burbuja_aux(Lista,i,j,n,Swap):
+        if i==n:
+            return Lista
+        elif j==n-i-1:
+            if Swap:
+                return burbuja_aux(Lista,i+1,0,n,False)
+            else:
+                return Lista
+        elif Lista[j]>Lista[j+1]:
+            Tmp=Lista[j]
+            Lista[j]=Lista[j+1]
+            Lista[j+1]=Tmp
+            return burbuja_aux(Lista,i,j+1,n,True)
+        else:
+            return burbuja_aux(Lista,i,j+1,n,Swap)
+
+    PuntOrdenados = burbuja(ScoOrder)
     
     Pos1 = Label(Scores, text=PuntOrdenados[0], fg='black', bg='white')
     Pos1.place(x=50, y=50)
