@@ -197,10 +197,10 @@ def juego(Mode):
     #///////////////////////////////////// CARGAR IMAGENES MISCELANEAS ////////////////////////////////////////////////////
 
     fondojuego = Imagenes('Imagenes\\Background\\GameBG.png') #IMAGEN DE FONDO DE LA PANTALLA DE JUEGO
-    BgFondo = Bg.create_image(600, 325, image=fondojuego)
-    
-    Spaceship = Bg.create_image(600, 325, tags=('MYSHIP'))  #CREACION DE LA IMAGEN DE LA NAVE
+    BgFondo = Bg.create_image(600, 325, tags=('fondo'), image=fondojuego)
 
+    Spaceship = Bg.create_image(600, 325, tags=('MYSHIP'))  #CREACION DE LA IMAGEN DE LA NAVE
+    
     SpaceshipImg = sprites('Imagenes/Spaceship/playership*.png') #SPRITES DE LA NAVE DEL JUGADOR
 
     ShotCent = sprites('Imagenes\\Spaceship\\shotcenter*.png')  #SPRITES PARA EL DISPARO DE LA NAVE
@@ -211,6 +211,117 @@ def juego(Mode):
     BatteryMedium1 = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery3.png') #COMBUSTIBLE MEDIO VACIO
     BatteryEmpty = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery4.png')   #COMBUSTIBLE CASI VACIO
     BatteryDead = Imagenes('Imagenes\\Spaceship\\Combustible\\Battery5.png')    #COMBUSTIBLE VACIO
+
+    #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
+
+    #ANIMACION DE LA NAVE PRINCIPAL
+    def anim(i):    
+        global OPEN
+        print('Nave')
+        if i==2:
+            i=0
+        if OPEN==True:
+            try:
+                Bg.itemconfig('MYSHIP', image=SpaceshipImg[i])
+                time.sleep(0.15)
+                Thread(target=anim, args=(i+1,)).start()
+            except:
+                return None
+
+    #MOVIMIENTO DE LA NAVE HACIA ARRIBA
+    def arriba():      
+        global UP
+        if UP==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1]-10)
+                if (Ubi[1]-10)==145:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(12,arriba)
+    def UpT(event):
+        global UP
+        UP=True
+    def UpF(event):
+        global UP
+        UP=False
+
+    #MOVIMIENTO DE LA NAVE HACIA ABAJO
+    def abajo():       
+        global DOWN
+        if DOWN==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0], Ubi[1]+10)
+                if (Ubi[1]+10)==585:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(12,abajo)
+    def DownT(event):
+        global DOWN
+        DOWN=True
+    def DownF(event):
+        global DOWN
+        DOWN=False
+
+    #MOVIMIENTO DE LA NAVE HACIA LA DERECHA
+    def derecha():     
+        global RIGHT
+        if RIGHT==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0]+10, Ubi[1])
+                if (Ubi[0]+10)==1100:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(12,derecha)
+    def RightT(event):
+        global RIGHT
+        RIGHT=True
+    def RightF(event):
+        global RIGHT
+        RIGHT=False
+
+    #MOVIMIENTO DE LA NAVE HACIA LA IZQUIERDA
+    def izquierda():
+        global LEFT
+        if LEFT==True:
+            Ubi = Bg.coords('MYSHIP')
+            if Ubi!=[]:
+                Bg.coords('MYSHIP', Ubi[0]-10, Ubi[1])
+                if (Ubi[0]-10)==100:
+                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
+        Pant.after(12,izquierda)
+    def LeftT(event):
+        global LEFT
+        LEFT=True
+    def LeftF(event):
+        global LEFT
+        LEFT=False
+
+    #DISPARO DE LA NAVE PRINCIPAL
+    def shooting(event):
+        global SHOT
+        pg.mixer.init()
+        Shot = pg.mixer.Sound('Audio\\disparo.wav')
+        if SHOT==True:
+            Loc = Bg.coords('MYSHIP')
+            Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
+            Shot.play()
+            SHOT=False
+            return mov_shot(0)
+    def mov_shot(i):    #MOVIMIENTO DEL DISPARO
+        global SHOT
+        Blast = Bg.coords('shot1')
+        if Blast!=[]:
+            if i==20:
+                SHOT=True
+                colision_disp()
+                return Bg.delete('shot1')
+            else:
+                Bg.coords('shot1', Blast[0], Blast[1]-3)
+                Bg.itemconfig('shot1', image=ShotCent[i])
+                i+=1
+        def call():
+            mov_shot(i)
+        Pant.after(15,call)
 
     #///////////////////////////////////// MODOS DE JUEGO //////////////////////////////////////////////////////////////
 
@@ -224,6 +335,7 @@ def juego(Mode):
         #GENERADOR ALEATORIO DE ASTEROIDES
         def generate_ast(t):        
             global OPEN, DIFF
+            print('Asteroide')
             if OPEN==True:
                 try:
                     Ast1 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast1')) #CREA LA IMAGEN DEL PRIMER ASTEROIDE
@@ -235,6 +347,16 @@ def juego(Mode):
                     Ast7 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast7')) #CREA LA IMAGEN DEL SEPTIMO ASTEROIDE
                     Ast8 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast8')) #CREA LA IMAGEN DEL OCTAVO ASTEROIDE
                     Ast9 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast9')) #CREA LA IMAGEN DEL NOVENO ASTEROIDE
+                    Bg.tag_lower('ast1')
+                    Bg.tag_lower('ast2')
+                    Bg.tag_lower('ast3')
+                    Bg.tag_lower('ast4')
+                    Bg.tag_lower('ast5')
+                    Bg.tag_lower('ast6')
+                    Bg.tag_lower('ast7')
+                    Bg.tag_lower('ast8')
+                    Bg.tag_lower('ast9')
+                    Bg.tag_lower(BgFondo)
 
                     ListAst = [Ast1, Ast2, Ast3, Ast4, Ast5, Ast6, Ast7, Ast8, Ast9]                       
                     if t==3:
@@ -374,6 +496,16 @@ def juego(Mode):
                     Ring7 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring7'))  #CREA EL SEPTIMO ANILLO
                     Ring8 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring8'))  #CREA EL OCTAVO ANILLO
                     Ring9 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring9'))  #CREA EL NOVENO ANILLO
+                    Bg.tag_lower('ring1')
+                    Bg.tag_lower('ring2')
+                    Bg.tag_lower('ring3')
+                    Bg.tag_lower('ring4')
+                    Bg.tag_lower('ring5')
+                    Bg.tag_lower('ring6')
+                    Bg.tag_lower('ring7')
+                    Bg.tag_lower('ring8')
+                    Bg.tag_lower('ring9')
+                    Bg.tag_lower(BgFondo)
 
                     ListRing = [Ring1, Ring2, Ring3, Ring4, Ring5, Ring6, Ring7, Ring8, Ring9]
                     if t==3:
@@ -434,116 +566,6 @@ def juego(Mode):
                 return
 
         Thread(target=generate_ring, args=(0,)).start()
-
-    #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
-
-    #ANIMACION DE LA NAVE PRINCIPAL
-    def anim(i):    
-        global OPEN
-        if i==2:
-            i=0
-        if OPEN==True:
-            try:
-                Bg.itemconfig('MYSHIP', image=SpaceshipImg[i])
-                time.sleep(0.15)
-                Thread(target=anim, args=(i+1,)).start()
-            except:
-                return None
-
-    #MOVIMIENTO DE LA NAVE HACIA ARRIBA
-    def arriba():      
-        global UP
-        if UP==True:
-            Ubi = Bg.coords('MYSHIP')
-            if Ubi!=[]:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1]-10)
-                if (Ubi[1]-10)==145:
-                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(15,arriba)
-    def UpT(event):
-        global UP
-        UP=True
-    def UpF(event):
-        global UP
-        UP=False
-
-    #MOVIMIENTO DE LA NAVE HACIA ABAJO
-    def abajo():       
-        global DOWN
-        if DOWN==True:
-            Ubi = Bg.coords('MYSHIP')
-            if Ubi!=[]:
-                Bg.coords('MYSHIP', Ubi[0], Ubi[1]+10)
-                if (Ubi[1]+10)==585:
-                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(15,abajo)
-    def DownT(event):
-        global DOWN
-        DOWN=True
-    def DownF(event):
-        global DOWN
-        DOWN=False
-
-    #MOVIMIENTO DE LA NAVE HACIA LA DERECHA
-    def derecha():     
-        global RIGHT
-        if RIGHT==True:
-            Ubi = Bg.coords('MYSHIP')
-            if Ubi!=[]:
-                Bg.coords('MYSHIP', Ubi[0]+10, Ubi[1])
-                if (Ubi[0]+10)==1100:
-                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(15,derecha)
-    def RightT(event):
-        global RIGHT
-        RIGHT=True
-    def RightF(event):
-        global RIGHT
-        RIGHT=False
-
-    #MOVIMIENTO DE LA NAVE HACIA LA IZQUIERDA
-    def izquierda():
-        global LEFT
-        if LEFT==True:
-            Ubi = Bg.coords('MYSHIP')
-            if Ubi!=[]:
-                Bg.coords('MYSHIP', Ubi[0]-10, Ubi[1])
-                if (Ubi[0]-10)==100:
-                    Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(15,izquierda)
-    def LeftT(event):
-        global LEFT
-        LEFT=True
-    def LeftF(event):
-        global LEFT
-        LEFT=False
-
-    #DISPARO DE LA NAVE PRINCIPAL
-    def shooting(event):
-        global SHOT
-        pg.mixer.init()
-        Shot = pg.mixer.Sound('Audio\\disparo.wav')
-        if SHOT==True:
-            Loc = Bg.coords('MYSHIP')
-            Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
-            Shot.play()
-            SHOT=False
-            return mov_shot(0)
-    def mov_shot(i):    #MOVIMIENTO DEL DISPARO
-        global SHOT
-        Blast = Bg.coords('shot1')
-        if Blast!=[]:
-            if i==20:
-                SHOT=True
-                colision_disp()
-                return Bg.delete('shot1')
-            else:
-                Bg.coords('shot1', Blast[0], Blast[1]-3)
-                Bg.itemconfig('shot1', image=ShotCent[i])
-                i+=1
-        def call():
-            mov_shot(i)
-        Pant.after(15,call)
             
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
     
