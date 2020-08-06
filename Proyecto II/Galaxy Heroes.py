@@ -376,7 +376,7 @@ def juego(Mode):
                     Ring9 = Bg.create_image(random.randint(100,1100), random.randint(100,500), tags=('ring9'))  #CREA EL NOVENO ANILLO
 
                     ListRing = [Ring1, Ring2, Ring3, Ring4, Ring5, Ring6, Ring7, Ring8, Ring9]
-                    if t==5:
+                    if t==3:
                         if DIFF>=1:
                             ring_3D(0,ListRing[0])  #INVOCA EL PRIMER ANILLO
                             time.sleep(1)
