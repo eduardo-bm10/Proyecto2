@@ -60,9 +60,9 @@ Menu.minsize(1200, 650)
 Menu.resizable(False, False)
 Menu.title('Galaxy Heroes')
 Menu.iconbitmap('Imagenes/Icono.ico')
-"""
+
 musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
-"""
+
 Fondo = Canvas(Menu, width=1200, height=650, bg='black')
 Fondo.place(x=0, y=0)
 
@@ -237,26 +237,26 @@ def juego(Mode):
                     Ast9 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast9')) #CREA LA IMAGEN DEL NOVENO ASTEROIDE
 
                     ListAst = [Ast1, Ast2, Ast3, Ast4, Ast5, Ast6, Ast7, Ast8, Ast9]                       
-                    if t==5:
+                    if t==3:
                         if DIFF>=1:
                             ast_3D(0,ListAst[0])    #INVOCA AL PRIMER ASTEROIDE
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[1])    #INVOCA AL SEGUNDO ASTEROIDE
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[2])    #INVOCA AL TERCER ASTEROIDE
                         if DIFF>=2:
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[3])    #INVOCA AL CUARTO ASTEROIDE
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[4])    #INVOCA AL QUINTO ASTEROIDE
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[5])    #INVOCA AL SEXTO ASTEROIDE
                         if DIFF==3:
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[6])    #INVOCA AL SEPTIMO ASTEROIDE
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[7])    #INVOCA AL OCTAVO ASTEROIDE
-                            time.sleep(1)
+                            time.sleep(0.5)
                             ast_3D(0,ListAst[8])    #INVOCA AL NOVENO ASTEROIDE
                         return generate_ast(0)
                     else:
@@ -271,60 +271,27 @@ def juego(Mode):
             global OPEN
             if OPEN==True:
                 if i==20:
-                    colision_ship_ast()
+                    colision_ship_ast(tag)
                     return Bg.delete(tag)
                 else:
                     Bg.itemconfig(tag, image=SpritesAst[i]) #AUMENTA EL TAMANO DEL ASTEROIDE
                     i+=1
                 def call():
                     ast_3D(i, tag)
-                Pant.after(100,call)
+                Pant.after(80,call)
 
         #UN ASTEROIDE COLISIONA CONTRA LA NAVE
-        def colision_ship_ast():
+        def colision_ship_ast(Tag):
             Ship = Bg.bbox(Spaceship)
-            Ast1 = Bg.bbox('ast1')
-            Ast2 = Bg.bbox('ast2')
-            Ast3 = Bg.bbox('ast3')
-            Ast4 = Bg.bbox('ast4')
-            Ast5 = Bg.bbox('ast5')
-            Ast6 = Bg.bbox('ast6')
-            Ast7 = Bg.bbox('ast7')
-            Ast8 = Bg.bbox('ast8')
-            Ast9 = Bg.bbox('ast9')
-            if Ship != None and Ast1 != None:
-                if (Ast1[0]<Ship[0]<Ast1[2] or Ast1[0]<Ship[2]<Ast1[2]) and (Ast1[1]<Ship[3]<Ast1[3] or Ast1[1]<Ship[1]<Ast1[3]):   #SE EVALUA EL CHOQUE DEL PRIMER ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast2!=None:
-                if (Ast2[0]<Ship[0]<Ast2[2] or Ast2[0]<Ship[2]<Ast2[2]) and (Ast2[1]<Ship[3]<Ast2[3] or Ast2[1]<Ship[1]<Ast2[3]):   #SE EVALUA EL CHOQUE DEL SEGUNDO ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast3!=None:
-                if (Ast3[0]<Ship[0]<Ast3[2] or Ast3[0]<Ship[2]<Ast3[2]) and (Ast3[1]<Ship[3]<Ast3[3] or Ast3[1]<Ship[1]<Ast3[3]):   #SE EVALUA EL CHOQUE DEL TERCER ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast4!=None:
-                if (Ast4[0]<Ship[0]<Ast4[2] or Ast4[0]<Ship[2]<Ast4[2]) and (Ast4[1]<Ship[3]<Ast4[3] or Ast4[1]<Ship[1]<Ast4[3]):   #SE EVALUA EL CHOQUE DEL CUARTO ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast5!=None:
-                if (Ast5[0]<Ship[0]<Ast5[2] or Ast5[0]<Ship[2]<Ast5[2]) and (Ast5[1]<Ship[3]<Ast5[3] or Ast5[1]<Ship[1]<Ast5[3]):   #SE EVALUA EL CHOQUE DEL QUINTO ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast6!=None:
-                if (Ast6[0]<Ship[0]<Ast6[2] or Ast6[0]<Ship[2]<Ast6[2]) and (Ast6[1]<Ship[3]<Ast6[3] or Ast6[1]<Ship[1]<Ast6[3]):   #SE EVALUA EL CHOQUE DEL SEXTO ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast7!=None:
-                if (Ast7[0]<Ship[0]<Ast7[2] or Ast7[0]<Ship[2]<Ast7[2]) and (Ast7[1]<Ship[3]<Ast7[3] or Ast7[1]<Ship[1]<Ast7[3]):   #SE EVALUA EL CHOQUE DEL SEPTIMO ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast8!=None:
-                if (Ast8[0]<Ship[0]<Ast8[2] or Ast8[0]<Ship[2]<Ast8[2]) and (Ast8[1]<Ship[3]<Ast8[3] or Ast8[1]<Ship[1]<Ast8[3]):   #SE EVALUA EL CHOQUE DEL OCTAVO ASTEROIDE
-                    return game_over()
-            if Ship!=None and Ast9!=None:
-                if (Ast9[0]<Ship[0]<Ast9[2] or Ast9[0]<Ship[2]<Ast9[2]) and (Ast9[1]<Ship[3]<Ast9[3] or Ast9[1]<Ship[1]<Ast9[3]):   #SE EVALUA EL CHOQUE DEL NOVENO ASTEROIDE
+            Ast = Bg.bbox(Tag)
+            if Ship != None and Ast != None:
+                if (Ast[0]<Ship[0]<Ast[2] or Ast[0]<Ship[2]<Ast[2]) and (Ast[1]<Ship[3]<Ast[3] or Ast[1]<Ship[1]<Ast[3]):   #SE EVALUA EL CHOQUE DEL ASTEROIDE
                     return game_over()
             else:
                 return None
 
         #EL DISPARO COLISIONA CONTRA UN ASTEROIDE
         def colision_disp():
-            global DIFF
             Disp=Bg.bbox('shot1')
             Ast1 = Bg.bbox('ast1')
             Ast2 = Bg.bbox('ast2')
@@ -335,86 +302,52 @@ def juego(Mode):
             Ast7 = Bg.bbox('ast7')
             Ast8 = Bg.bbox('ast8')
             Ast9 = Bg.bbox('ast9')
+            pg.mixer.init()
+            Desc = pg.mixer.Sound('Audio\\explosion.wav')
             if Disp!=None and Ast1!=None:
                 if Ast1[0]<Disp[0]<Disp[2]<Ast1[2] and Ast1[1]<Disp[1]<Disp[3]<Ast1[3]: #EVALUA EL DISPARO CONTRA EL PRIMER ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast1')
             if Disp!=None and Ast2!=None:
                 if Ast2[0]<Disp[0]<Disp[2]<Ast2[2] and Ast2[1]<Disp[1]<Disp[3]<Ast2[3]: #EVALUA EL DISPARO CONTRA EL SEGUNDO ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast2')
             if Disp!=None and Ast3!=None:
                 if Ast3[0]<Disp[0]<Disp[2]<Ast3[2] and Ast3[1]<Disp[1]<Disp[3]<Ast3[3]: #EVALUA EL DISPARO CONTRA EL TERCER ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast3')
             if Disp!=None and Ast4!=None:
                 if Ast4[0]<Disp[0]<Disp[2]<Ast4[2] and Ast4[1]<Disp[1]<Disp[3]<Ast4[3]: #EVALUA EL DISPARO CONTRA EL CUARTO ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast4')
             if Disp!=None and Ast5!=None:
                 if Ast5[0]<Disp[0]<Disp[2]<Ast5[2] and Ast5[1]<Disp[1]<Disp[3]<Ast5[3]: #EVALUA EL DISPARO CONTRA EL QUINTO ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast5')
             if Disp!=None and Ast6!=None:
                 if Ast6[0]<Disp[0]<Disp[2]<Ast6[2] and Ast6[1]<Disp[1]<Disp[3]<Ast6[3]: #EVALUA EL DISPARO CONTRA EL SEXTO ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)                   
+                    Desc.play()
+                    points(50)                   
                     return Bg.delete('ast6')
             if Disp!=None and Ast7!=None:
                 if Ast7[0]<Disp[0]<Disp[2]<Ast7[2] and Ast7[1]<Disp[1]<Disp[3]<Ast7[3]: #EVALUA EL DISPARO CONTRA EL SEPTIMO ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast7')
             if Disp!=None and Ast8!=None:
                 if Ast8[0]<Disp[0]<Disp[2]<Ast8[2] and Ast8[1]<Disp[1]<Disp[3]<Ast8[3]: #EVALUA EL DISPARO CONTRA EL OCTAVO ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast8')
             if Disp!=None and Ast9!=None:
                 if Ast9[0]<Disp[0]<Disp[2]<Ast9[2] and Ast9[1]<Disp[1]<Disp[3]<Ast9[3]: #EVALUA EL DISPARO CONTRA EL NOVENO ASTEROIDE
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                    Desc.play()
+                    points(50)
                     return Bg.delete('ast9')
             else:
                 return None
@@ -476,146 +409,29 @@ def juego(Mode):
             global OPEN
             if OPEN==True:
                 if i==20:
-                    colision_ring()
+                    colision_ring(tag)
                     return Bg.delete(tag)
                 else:
                     Bg.itemconfig(tag,image=Anillos[i]) #AUMENTA EL TAMANO DEL ANILLO
                     i+=1
                 def call():
                     ring_3D(i,tag)
-                Pant.after(120,call)
+                Pant.after(100,call)
 
         #COLISION DE LOS ANILLOS CONTRA LA NAVE
-        def colision_ring():
+        def colision_ring(Tag):
             Ship = Bg.bbox(Spaceship)
-            Ring1 = Bg.bbox('ring1')
-            Ring2 = Bg.bbox('ring2')
-            Ring3 = Bg.bbox('ring3')
-            Ring4 = Bg.bbox('ring4')
-            Ring5 = Bg.bbox('ring5')
-            Ring6 = Bg.bbox('ring6')
-            Ring7 = Bg.bbox('ring7')
-            Ring8 = Bg.bbox('ring8')
-            Ring9 = Bg.bbox('ring9')
-            if Ship!=None and Ring1!=None:      #EVALUA LA COLISION DEL PRIMER ANILLO
-                Ring1In = (Ring1[0]+10, Ring1[1]+10, Ring1[2]-10, Ring1[3]-10)
-                if Ship[0]<Ring1[0]<Ring1In[0]<Ship[2] or Ship[0]<Ring1In[2]<Ring1[2]<Ship[2] and Ship[1]<Ring1[1]<Ring1In[1]<Ship[3] or Ship[1]<Ring1In[3]<Ring1[3]<Ship[3]:
+            Ring = Bg.bbox(Tag)
+            if Ship!=None and Ring!=None:      #EVALUA LA COLISION DE CADA ANILLO
+                RingIn = (Ring[0]+10, Ring[1]+10, Ring[2]-10, Ring[3]-10)
+                if (Ship[0]<Ring[0]<RingIn[0]<Ship[2] or Ship[0]<RingIn[2]<Ring[2]<Ship[2]) and (Ship[1]<Ring[1]<RingIn[1]<Ship[3] or Ship[1]<RingIn[3]<Ring[3]<Ship[3]):
                     return game_over()
-                if Ring1In[0]<Ship[0]<Ring1In[2] and Ring1In[1]<Ship[1]<Ring1In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring2!=None:      #EVALUA LA COLISION DEL SEGUNDO ANILLO
-                Ring2In = (Ring2[0]+10, Ring2[1]+10, Ring2[2]-10, Ring2[3]-10)
-                if Ship[0]<Ring2[0]<Ring2In[0]<Ship[2] or Ship[0]<Ring2In[2]<Ring2[2]<Ship[2] and Ship[1]<Ring2[1]<Ring2In[1]<Ship[3] or Ship[1]<Ring2In[3]<Ring2[3]<Ship[3]:
-                    return game_over()
-                if Ring2In[0]<Ship[0]<Ring2In[2] and Ring2In[1]<Ship[1]<Ring2In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring3!=None:      #EVALUA LA COLISION DEL TERCER ANILLO
-                Ring3In = (Ring3[0]+10, Ring3[1]+10, Ring3[2]-10, Ring3[3]-10)
-                if Ship[0]<Ring3[0]<Ring3In[0]<Ship[2] or Ship[0]<Ring3In[2]<Ring3[2]<Ship[2] and Ship[1]<Ring3[1]<Ring3In[1]<Ship[3] or Ship[1]<Ring3In[3]<Ring3[3]<Ship[3]:
-                    return game_over()
-                if Ring3In[0]<Ship[0]<Ring3In[2] and Ring3In[1]<Ship[1]<Ring3In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring4!=None:      #EVALUA LA COLISION DEL CUARTO ANILLO 
-                Ring4In = (Ring4[0]+10, Ring4[1]+10, Ring4[2]-10, Ring4[3]-10)
-                if Ship[0]<Ring4[0]<Ring4In[0]<Ship[2] or Ship[0]<Ring4In[2]<Ring4[2]<Ship[2] and Ship[1]<Ring4[1]<Ring4In[1]<Ship[3] or Ship[1]<Ring4In[3]<Ring4[3]<Ship[3]:
-                    return game_over()
-                if Ring4In[0]<Ship[0]<Ring4In[2] and Ring4In[1]<Ship[1]<Ring4In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring5!=None:      #EVALUA LA COLISION DEL QUINTO ANILLO
-                Ring5In = (Ring5[0]+10, Ring5[1]+10, Ring5[2]-10, Ring5[3]-10)
-                if Ship[0]<Ring5[0]<Ring5In[0]<Ship[2] or Ship[0]<Ring5In[2]<Ring5[2]<Ship[2] and Ship[1]<Ring5[1]<Ring5In[1]<Ship[3] or Ship[1]<Ring5In[3]<Ring5[3]<Ship[3]:
-                    return game_over()
-                if Ring5In[0]<Ship[0]<Ring5In[2] and Ring5In[1]<Ship[1]<Ring5In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring6!=None:      #EVALUA LA COLISION DEL SEXTO ANILLO
-                Ring6In = (Ring6[0]+10, Ring6[1]+10, Ring6[2]-10, Ring6[3]-10)
-                if Ship[0]<Ring6[0]<Ring6In[0]<Ship[2] or Ship[0]<Ring6In[2]<Ring6[2]<Ship[2] and Ship[1]<Ring6[1]<Ring6In[1]<Ship[3] or Ship[1]<Ring6In[3]<Ring6[3]<Ship[3]:
-                    return game_over()
-                if Ring6In[0]<Ship[0]<Ring6In[2] and Ring6In[1]<Ship[1]<Ring6In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring7!=None:      #EVALUA LA COLISION DEL SEPTIMO ANILLO
-                Ring7In = (Ring7[0]+10, Ring7[1]+10, Ring7[2]-10, Ring7[3]-10)
-                if Ship[0]<Ring7[0]<Ring7In[0]<Ship[2] or Ship[0]<Ring7In[2]<Ring7[2]<Ship[2] and Ship[1]<Ring7[1]<Ring7In[1]<Ship[3] or Ship[1]<Ring7In[3]<Ring7[3]<Ship[3]:
-                    return game_over()
-                if Ring7In[0]<Ship[0]<Ring7In[2] and Ring7In[1]<Ship[1]<Ring7In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring8!=None:      #EVALUA LA COLISION DEL OCTAVO ANILLO
-                Ring8In = (Ring8[0]+10, Ring8[1]+10, Ring8[2]-10, Ring8[3]-10)
-                if Ship[0]<Ring8[0]<Ring8In[0]<Ship[2] or Ship[0]<Ring8In[2]<Ring8[2]<Ship[2] and Ship[1]<Ring8[1]<Ring8In[1]<Ship[3] or Ship[1]<Ring8In[3]<Ring8[3]<Ship[3]:
-                    return game_over()
-                if Ring8In[0]<Ship[0]<Ring8In[2] and Ring8In[1]<Ship[1]<Ring8In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
-                else:
-                    return 
-            if Ship!=None and Ring9!=None:      #EVALUA LA COLISION DEL NOVENO ANILLO
-                Ring9In = (Ring9[0]+10, Ring9[1]+10, Ring9[2]-10, Ring9[3]-10)
-                if Ship[0]<Ring9[0]<Ring9In[0]<Ship[2] or Ship[0]<Ring9In[2]<Ring9[2]<Ship[2] and Ship[1]<Ring9[1]<Ring9In[1]<Ship[3] or Ship[1]<Ring9In[3]<Ring9[3]<Ship[3]:
-                    return game_over()
-                if Ring9In[0]<Ship[0]<Ring9In[2] and Ring9In[1]<Ship[1]<Ring9In[3]:
-                    if DIFF==1:
-                        points(50)
-                    if DIFF==2:
-                        points(20)
-                    if DIFF==3:
-                        points(15)
+                if RingIn[0]<Ship[0]<RingIn[2] and RingIn[1]<Ship[1]<RingIn[3]:
+                    points(40)
                 else:
                     return 
             else:
-                return 
+                return
 
         Thread(target=generate_ring, args=(0,)).start()
 
@@ -643,7 +459,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1]-10)
                 if (Ubi[1]-10)==145:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,arriba)
+        Pant.after(15,arriba)
     def UpT(event):
         global UP
         UP=True
@@ -660,7 +476,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0], Ubi[1]+10)
                 if (Ubi[1]+10)==585:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,abajo)
+        Pant.after(15,abajo)
     def DownT(event):
         global DOWN
         DOWN=True
@@ -677,7 +493,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0]+10, Ubi[1])
                 if (Ubi[0]+10)==1100:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,derecha)
+        Pant.after(15,derecha)
     def RightT(event):
         global RIGHT
         RIGHT=True
@@ -694,7 +510,7 @@ def juego(Mode):
                 Bg.coords('MYSHIP', Ubi[0]-10, Ubi[1])
                 if (Ubi[0]-10)==100:
                     Bg.coords('MYSHIP', Ubi[0], Ubi[1])
-        Pant.after(20,izquierda)
+        Pant.after(15,izquierda)
     def LeftT(event):
         global LEFT
         LEFT=True
@@ -705,9 +521,12 @@ def juego(Mode):
     #DISPARO DE LA NAVE PRINCIPAL
     def shooting(event):
         global SHOT
+        pg.mixer.init()
+        Shot = pg.mixer.Sound('Audio\\disparo.wav')
         if SHOT==True:
             Loc = Bg.coords('MYSHIP')
             Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
+            Shot.play()
             SHOT=False
             return mov_shot(0)
     def mov_shot(i):    #MOVIMIENTO DEL DISPARO
@@ -759,9 +578,8 @@ def juego(Mode):
         global OPEN
         if OPEN == True:
             if t == 25:
-                if r==0:    <<<<<<< HEAD
+                if r==0:    
                     Bg.create_image(0,random.uniform(100,500),tags=('battery'), image=RechargeImg)#GENERA LA BATERIA A LA DERECHA
-                    Bg.create_image(0,random.uniform(100,500),tags=('battery'), image=RechargeImg) #GENERA LA BATERIA A LA DERECHA
                     move_fullbattery(0)
                     return generate_battery(0,random.randint(0,3))
                 elif r==1:  
@@ -949,12 +767,10 @@ def dificultad(m):
     #RETORNO AL MENU PRINCIPAL
     def back_dificultad():       
         dif.destroy()
-        Menu.deiconify()
         
     quit_dif = Button(dif,text = 'Volver al inicio',command=back_dificultad)
     quit_dif.place(x=0,y=0)
     
-    Menu.withdraw()
     dif.mainloop()
 
 #/////////////////////////////////// PANTALLA DE CONFIGURACION ////////////////////////////////////////////////////////////////
@@ -1211,7 +1027,6 @@ def config():
     #RETORNO AL MENU PRINCIPAL
     def back_config():       
         Config.destroy()
-        Menu.deiconify()
         
     quit_config = Button(Config,text = 'Volver al inicio',command=back_config)
     quit_config.place(x=0,y=0)
@@ -1221,9 +1036,6 @@ def config():
 
     NextPilot = Button(C_config, width=15, text='Siguiente', font=('Helvatica',15), command=next_page, fg='gold', bg='darkred')
     NextPilot.place(x=470, y=450)
-
-
-    Menu.withdraw()
 
     Config.mainloop()
 
@@ -1244,30 +1056,8 @@ def scores_ast():
     imgCanvas_Scores = C_scores.create_image(350,250,image= C_scores.image1)
 
     ScoOrder = [str(random.randint(0,300))+': EDUARDO', str(random.randint(0,300))+': MAX', str(random.randint(0,300))+': REYES', str(random.randint(0,300))+': JILL', str(random.randint(0,300))+': X CHAMPION', str(random.randint(0,300))+': METEOR', str(random.randint(0,300))+': MYSTERIO', str(random.randint(0,300))+': ASTRID', str(random.randint(0,300))+': PEACH', str(random.randint(0,300))+': SHEEVA', str(random.randint(0,300))+': RIPER', str(random.randint(0,300))+': ASHOKA']
-
+    
     def order(Lista):
-        return burbuja_aux(Lista, 0, 0, len(Lista), False)
-
-    def burbuja_aux(Lista, i, j, n, Swap):
-        if i == n:
-            return Lista
-        if j == n - i - 1:
-            if Swap:
-                return burbuja_aux(Lista, i + 1, 0, n, False)
-            else:
-                return Lista
-        if Lista[j] < Lista[j+1]:
-            Tmp = Lista[j+1]
-            Lista[j+1] = Lista[j]
-            Lista[j] = Tmp
-                return burbuja_aux(Lista, i, j + 1, n, True)
-        else:
-            return burbuja_aux(Lista, i, j + 1, n, Swap)
-
-    PuntOrdenados = order(ScoOrder)
-    ScoOrder = [str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300)), str(random.randint(0,300))]  
-
-    def burbuja(Lista):
             return burbuja_aux(Lista,0,0,len(Lista),False)
 
     def burbuja_aux(Lista,i,j,n,Swap):
@@ -1286,7 +1076,7 @@ def scores_ast():
         else:
             return burbuja_aux(Lista,i,j+1,n,Swap)
 
-    PuntOrdenados = burbuja(ScoOrder)
+    PuntOrdenados = order(ScoOrder)
     
     Pos1 = Label(Scores, text=PuntOrdenados[0], fg='black', bg='white')
     Pos1.place(x=50, y=50)
@@ -1311,11 +1101,9 @@ def scores_ast():
     
     def back_scores():       #<== VOLVER AL MENU PRINCIPAL
         Scores.destroy()
-        Menu.deiconify()        
+                
     quit_scores = Button(Scores,text = 'Volver al inicio',command=back_scores)
     quit_scores.place(x=0,y=0)
-    Menu.withdraw()
-
 
     Scores.mainloop()
 
@@ -1336,11 +1124,9 @@ def scores_ring():
     
     def back_scores():       #<== VOLVER AL MENU PRINCIPAL
         Scores.destroy()
-        Menu.deiconify()        
+        
     quit_scores = Button(Scores,text = 'Volver al inicio',command=back_scores)
     quit_scores.place(x=0,y=0)
-    Menu.withdraw()
-
 
     Scores.mainloop()
 
@@ -1385,10 +1171,9 @@ def about():
 
     def back_about():       #<== VOLVER AL MENU PRINCIPAL
         info.destroy()
-        Menu.deiconify()        
+           
     quit_info = Button(info,text = 'Volver al inicio',command=back_about)
     quit_info.place(x=0,y=0)
-    Menu.withdraw()
 
     info.mainloop()
 
