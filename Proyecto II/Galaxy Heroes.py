@@ -1136,15 +1136,15 @@ def scores_ast():
     PScore+=SaveAst
     
     #GUARDAR PUNTOS EN DESTRUCCION DE ASTEROIDES
-    def save_points(PScore, i):
-        if i==lenn(PScore):
+    def save_points(Score, i):
+        if i==lenn(Score):
             return read_points()
         else:
             file = open('Puntajes\\Puntajes Asteroides.txt', 'r+')
             file.readline()
-            file.write(PScore[i][1]+'................'+str(PScore[i][0])+'\n')
+            file.write(Score[i][1]+'................'+str(Score[i][0])+'\n')
             file.close()
-            return save_points(PScore, i+1)
+            return save_points(Score, i+1)
 
     #OBTIENE LISTA DE PUNTOS DE ARCHIVO SECUENCIAL
     def read_points():
@@ -1221,15 +1221,15 @@ def scores_ring():
     PScore+=SaveRing
 
     #GUARDA PUNTOS DE MANIOBRAS DE PRUEBA
-    def save_points(PScore, i):
-        if i==lenn(PScore):
+    def save_points(Score, i):
+        if i==lenn(Score):
             return read_points()
         else:
             file = open('Puntajes\\Puntajes Anillos.txt', 'r+')
             file.readline()
-            file.write(PScore[i][1]+'................'+str(PScore[i][0])+'\n')
+            file.write(Score[i][1]+'................'+str(Score[i][0])+'\n')
             file.close()
-            return save_points(PScore, i+1)
+            return save_points(Score, i+1)
 
     #OBTIENE LISTA DE PUNTOS EN ARCHIVO SECUENCIAL
     def read_points():
