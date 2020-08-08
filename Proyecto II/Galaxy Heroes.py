@@ -1075,34 +1075,23 @@ def config():
 
 #ORDENAMIENTO DE LISTA
 def order(Lista):
-        return burbuja_aux(Lista,0,0,lenn(Lista),False)
+        return burbuja_aux(Lista,0,0,len(Lista),False)
 #AUXILIAR DEL ORDENAMIENTO
 def burbuja_aux(Lista,i,j,n,Swap):
     if i==n:
-        return ordername(Lista,0)
+        return Lista
     elif j==n-i-1:
         if Swap:
             return burbuja_aux(Lista,i+1,0,n,False)
         else:
-            return ordername(Lista,0)
-    elif Lista[j]<Lista[j+1]:
+            return Lista
+    elif Lista[j]>Lista[j+1]:
         Tmp=Lista[j]
         Lista[j]=Lista[j+1]
         Lista[j+1]=Tmp
         return burbuja_aux(Lista,i,j+1,n,True)
     else:
         return burbuja_aux(Lista,i,j+1,n,Swap)
-
-#INTERCAMBIO DE PUNTAJE Y NOMBRE
-def ordername(ListaOrd,i):
-    if i==lenn(ListaOrd):
-        return ListaOrd
-    else:
-        tmp=ListaOrd[i][0]
-        ListaOrd[i][0]=ListaOrd[i][1]
-        ListaOrd[i][1]=tmp
-        i+=1
-        return ordername(ListaOrd,i)
 
 #LARGO DE UNA LISTA
 def lenn(Lista):
@@ -1129,7 +1118,7 @@ def scores_ast():
 
     Titulo = Label(Scores, text='Mejores puntajes:\nDestruccion de Asteroides', font=('Helvatica',18), fg='lemonchiffon', bg='maroon')
     Titulo.place(x=210, y=25)
-    
+
     Eduardo = [random.randint(0,600),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
     Max = [random.randint(0,600),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
     Reyes = [random.randint(0,600),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
@@ -1142,7 +1131,7 @@ def scores_ast():
     Sheeva = [random.randint(0,600),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
     Riper = [random.randint(0,600),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
     Ashoka = [random.randint(0,600),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
-    
+
     PScore = [Eduardo, Max, Reyes, Jill, XChampion, Meteor, Mysterio, Astrid, Peach, Sheeva, Riper, Ashoka] #LISTA DE PUNTAJES
     PScore+=SaveAst
     
@@ -1153,7 +1142,7 @@ def scores_ast():
         else:
             file = open('Puntajes\\Puntajes Asteroides.txt', 'r+')
             file.readline()
-            file.write(PScore[i][0]+'................'+str(PScore[i][1])+'\n')
+            file.write(PScore[i][1]+'................'+str(PScore[i][0])+'\n')
             file.close()
             return save_points(PScore, i+1)
 
@@ -1168,25 +1157,25 @@ def scores_ast():
     save_points(PuntOrdenados,0)
     OrderLista = read_points()
     
-    Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
+    Pos1 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-1], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
     Pos1.place(x=240, y=100)
 
-    Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
+    Pos2 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-2], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
     Pos2.place(x=240, y=160)
 
-    Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
+    Pos3 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-3], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
     Pos3.place(x=240,y=220)
 
-    Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
+    Pos4 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-4], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
     Pos4.place(x=240, y=280)
 
-    Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
+    Pos5 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-5], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
     Pos5.place(x=240, y=340)
     
-    Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
+    Pos6 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-6], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
     Pos6.place(x=240, y=400)
 
-    Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
+    Pos7 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-7], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
     Pos7.place(x=240, y=460)
     
     def back_scores():       #<== VOLVER AL MENU PRINCIPAL
@@ -1238,7 +1227,7 @@ def scores_ring():
         else:
             file = open('Puntajes\\Puntajes Anillos.txt', 'r+')
             file.readline()
-            file.write(PScore[i][0]+'................'+str(PScore[i][1])+'\n')
+            file.write(PScore[i][1]+'................'+str(PScore[i][0])+'\n')
             file.close()
             return save_points(PScore, i+1)
 
@@ -1253,25 +1242,25 @@ def scores_ring():
     save_points(PuntOrdenados,0)
     OrderLista = read_points()
     
-    Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
+    Pos1 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-1], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
     Pos1.place(x=240, y=100)
 
-    Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
+    Pos2 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-2], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
     Pos2.place(x=240, y=160)
 
-    Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
+    Pos3 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-3], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
     Pos3.place(x=240,y=220)
 
-    Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
+    Pos4 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-4], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
     Pos4.place(x=240, y=280)
 
-    Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
+    Pos5 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-5], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
     Pos5.place(x=240, y=340)
     
-    Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
+    Pos6 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-6], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
     Pos6.place(x=240, y=400)
 
-    Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
+    Pos7 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-7], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
     Pos7.place(x=240, y=460)
 
     
