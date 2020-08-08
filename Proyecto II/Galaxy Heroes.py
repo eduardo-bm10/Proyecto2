@@ -23,7 +23,7 @@ RIGHT=False
 LEFT=False
 
 #////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
-
+        
 #CARGADOR DE IMAGENES INMOVILES
 def Imagenes(Ubicacion):
     Ruta = os.path.join(Ubicacion)
@@ -51,7 +51,19 @@ def ImagenesAnim(x, Result):
 def sprites(Ruta):
     x = glob.glob(Ruta)
     x.sort()
-    return ImagenesAnim(x,[])    
+    return ImagenesAnim(x,[])
+
+#GUARDADO DE PUNTOS ACUMULADOS EN UN ARCHIVO SECUENCIAL 
+def enter_puntos():
+    global POINTS
+    print(POINTS)
+    updatetxt(str(POINTS) + "\n")
+
+#AUXILIAR DEL GUARDADO DE PUNTOS ACUMULADOS
+def updatetxt(Punto):
+    file = open("PUNTUACIONES.txt", "a")
+    file.write(Punto[0]+str(Punto[1]))
+    file.close()
 
 #////////////////////// VENTANA PRINCIPAL //////////////////////////////////////////////////////////////////////////////
 
@@ -61,7 +73,7 @@ Menu.resizable(False, False)
 Menu.title('Galaxy Heroes')
 Menu.iconbitmap('Imagenes/Icono.ico')
 
-musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
+"""musica('Audio\\MainTheme.mp3')"""
 
 Fondo = Canvas(Menu, width=1200, height=650, bg='black')
 Fondo.place(x=0, y=0)
@@ -124,7 +136,7 @@ def juego(Mode):
         POINTS=0
         Pant.destroy()
         musica(1)
-        musica('Audio\\LEGO Star Wars II DS Soundtrack.mp3')
+        """musica('Audio\\MainTheme.mp3')"""
         Menu.deiconify()   
             
     #//////////////////////////////////////////TIEMPO, PUNTOS Y FIN DE JUEGO///////////////////////////////////////////////////////////////////
@@ -147,18 +159,6 @@ def juego(Mode):
         POINTS+=p
         Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
         Cont.place(x=350, y=50)
-        
-    #GUARDADO DE PUNTOS ACUMULADOS EN UN ARCHIVO SECUENCIAL 
-    def enter_puntos():
-        global POINTS
-        print(POINTS)
-        updatetxt(str(POINTS) + "\n")
-
-    #AUXILIAR DEL GUARDADO DE PUNTOS ACUMULADOS
-    def updatetxt(Texto):
-        file = open("PUNTUACIONES.txt", "a")
-        file.write(Texto)
-        file.close()
         
     #FIN DE LA PARTIDA
     def game_over():
@@ -774,7 +774,7 @@ def dificultad(m):
             dif.destroy()
             return juego(2)
         
-    Facil = Button(C_dif, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')
+    Facil = Button(C_dif, width=10, text='Facil', command=easy, font=('Times',15), fg='gold', bg='midnightblue')    #BOTONES PARA ELEGIR DIFICULTAD
     Facil.place(x=250, y=100)
 
     Medio = Button(C_dif, width=10, text='Medio', command=normal, font=('Times',15), fg='gold', bg='midnightblue')
@@ -916,7 +916,7 @@ def config():
         PLAYERSHOW = Pilot10img
         SHOWNAME+='Ashoka'
         
-    #BOTONES DE CADA PILOTO A ELIGIR
+    #BOTONES DE PILOTOS DE LA PRIMERA PAGINA
     PilotEdu = Button(C_config, command=edu, image=Eduardo)
     PilotEdu.place(x=100, y=85)
     PilotMax = Button(C_config, command=maX, image=Max)
@@ -930,7 +930,7 @@ def config():
     Pilot4 = Button(C_config, command=pilot4, image=Pilot4img)
     Pilot4.place(x=500, y=285)
 
-    #NOMBRES DE LOS PILOTOS A ELEGIR
+    #NOMBRES DE PILOTOS DE LA PRIMERA PAGINA
     NameEdu = Label(C_config, width=10, text='Eduardo', font=('Helvatica',15), fg='gold', bg='darkslategrey')
     NameEdu.place(x=100, y=200)
     NameMax = Label(C_config, width=10, text='Max', font=('Helvatica',15), fg='gold', bg='darkslategrey')
@@ -957,7 +957,8 @@ def config():
 
             Select = Label(Set2, text='Selecciona un piloto', font=('Georgia',20), fg='lemonchiffon', bg='maroon')
             Select.place(x=240, y=30)
-            
+
+            #BOTONES DE PILOTOS DE LA SEGUNDA PAGINA
             Pilot5 = Button(Set2, command=pilot5, image=Pilot5img)
             Pilot5.place(x=100, y=85)
             Pilot6 = Button(Set2, command=pilot6, image=Pilot6img)
@@ -971,6 +972,7 @@ def config():
             Pilot10 = Button(Set2, command=pilot10, image=Pilot10img)
             Pilot10.place(x=500, y=285)
 
+            #NOMBRES DE LOS PILOTOS DE LA SEGUNDA PAGINA
             NameMysterio = Label(Set2, width=10, text='Mysterio', font=('Helvatica',15), fg='gold', bg='darkslategrey')
             NameMysterio.place(x=100, y=200)
             NameAstrid = Label(Set2, width=10, text='Astrid', font=('Helvatica',15), fg='gold', bg='darkslategrey')
@@ -1006,7 +1008,8 @@ def config():
 
             Select = Label(Set1, text='Selecciona un piloto', font=('Georgia',20), fg='lemonchiffon', bg='maroon')
             Select.place(x=240, y=30)
-            
+
+            #BOTONES DE PILOTOS DE LA SEGUNDA PAGINA
             PilotEdu = Button(Set1, command=edu, image=Eduardo)
             PilotEdu.place(x=100, y=85)
             PilotMax = Button(Set1, command=maX, image=Max)
@@ -1020,6 +1023,7 @@ def config():
             Pilot4 = Button(Set1, command=pilot4, image=Pilot4img)
             Pilot4.place(x=500, y=285)
 
+            #NOMBRES DE LOS PILOTOS DE LA PRIMERA PAGINA
             NameEdu = Label(Set1, width=10, text='Eduardo', font=('Helvatica',15), fg='gold', bg='darkslategrey')
             NameEdu.place(x=100, y=200)
             NameMax = Label(Set1, width=10, text='Max', font=('Helvatica',15), fg='gold', bg='darkslategrey')
@@ -1063,7 +1067,46 @@ def config():
 
 #/////////////////////////////////// PANTALLA DE PUNTAJES ////////////////////////////////////////////////////////////////////////
 
+#ORDENAMIENTO DE LISTA
+def order(Lista):
+        return burbuja_aux(Lista,0,0,lenn(Lista),False)
+#AUXILIAR DEL ORDENAMIENTO
+def burbuja_aux(Lista,i,j,n,Swap):
+    if i==n:
+        return ordername(Lista,0)
+    elif j==n-i-1:
+        if Swap:
+            return burbuja_aux(Lista,i+1,0,n,False)
+        else:
+            return ordername(Lista,0)
+    elif Lista[j]<Lista[j+1]:
+        Tmp=Lista[j]
+        Lista[j]=Lista[j+1]
+        Lista[j+1]=Tmp
+        return burbuja_aux(Lista,i,j+1,n,True)
+    else:
+        return burbuja_aux(Lista,i,j+1,n,Swap)
+
+#INTERCAMBIO DE PUNTAJE Y NOMBRE
+def ordername(ListaOrd,i):
+    if i==lenn(ListaOrd):
+        return ListaOrd
+    else:
+        tmp=ListaOrd[i][0]
+        ListaOrd[i][0]=ListaOrd[i][1]
+        ListaOrd[i][1]=tmp
+        i+=1
+        return ordername(ListaOrd,i)
+
+#LARGO DE UNA LISTA
+def lenn(Lista):
+    if Lista==[]:
+        return 0
+    else:
+        return 1+lenn(Lista[1:])
+
 #VENTANA DE MEJORES PUNTAJES DE DESTRUCCION DE ASTEROIDES
+    
 def scores_ast():
     Scores = Toplevel()
     Scores.minsize(700,500)
@@ -1077,49 +1120,66 @@ def scores_ast():
     C_scores.image1 = Imagenes('Imagenes/Background/playbg.png')
     imgCanvas_Scores = C_scores.create_image(350,250,image= C_scores.image1)
 
-    ScoOrder = [str(random.randint(0,300))+': EDUARDO', str(random.randint(0,300))+': MAX', str(random.randint(0,300))+': REYES', str(random.randint(0,300))+': JILL', str(random.randint(0,300))+': X CHAMPION', str(random.randint(0,300))+': METEOR', str(random.randint(0,300))+': MYSTERIO', str(random.randint(0,300))+': ASTRID', str(random.randint(0,300))+': PEACH', str(random.randint(0,300))+': SHEEVA', str(random.randint(0,300))+': RIPER', str(random.randint(0,300))+': ASHOKA']
+    Titulo = Label(Scores, text='Mejores puntajes:\nDestruccion de Asteroides', font=('Helvatica',18), fg='lemonchiffon', bg='maroon')
+    Titulo.place(x=210, y=25)
     
-    def order(Lista):
-            return burbuja_aux(Lista,0,0,len(Lista),False)
+    Eduardo = [random.randint(0,900),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
+    Max = [random.randint(0,900),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
+    Reyes = [random.randint(0,900),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
+    Jill = [random.randint(0,900),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
+    XChampion = [random.randint(0,900),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
+    Meteor = [random.randint(0,900),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
+    Mysterio = [random.randint(0,900),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
+    Astrid = [random.randint(0,900),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
+    Peach = [random.randint(0,900),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
+    Sheeva = [random.randint(0,900),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
+    Riper = [random.randint(0,900),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
+    Ashoka = [random.randint(0,900),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
+    
+    PScore = [Eduardo, Max, Reyes, Jill, XChampion, Meteor, Mysterio, Astrid, Peach, Sheeva, Riper, Ashoka] #LISTA DE PUNTAJES
 
-    def burbuja_aux(Lista,i,j,n,Swap):
-        if i==n:
-            return Lista
-        elif j==n-i-1:
-            if Swap:
-                return burbuja_aux(Lista,i+1,0,n,False)
-            else:
-                return Lista
-        elif Lista[j]>Lista[j+1]:
-            Tmp=Lista[j]
-            Lista[j]=Lista[j+1]
-            Lista[j+1]=Tmp
-            return burbuja_aux(Lista,i,j+1,n,True)
+    #GUARDAR PUNTOS EN DESTRUCCION DE ASTEROIDES
+    def save_points(PScore, i):
+        if i==len(PScore):
+            return read_points()
         else:
-            return burbuja_aux(Lista,i,j+1,n,Swap)
+            file = open('Puntajes\\Puntajes Asteroides.txt', 'a')
+            file.write(PScore[i][0]+'................'+str(PScore[i][1])+'\n')
+            file.close()
+            return save_points(PScore, i+1)
 
-    PuntOrdenados = order(ScoOrder)
+    #OBTIENE LISTA DE PUNTOS DE ARCHIVO SECUENCIAL
+    def read_points():
+        file=open('Puntajes\\Puntajes Asteroides.txt', 'r')
+        POrder = file.readlines()
+        file.close()
+        return POrder
     
-    Pos1 = Label(Scores, text=PuntOrdenados[0], fg='black', bg='white')
-    Pos1.place(x=50, y=50)
+    PuntOrdenados = order(PScore)
+    OrderLista = read_points()
+    if OrderLista==[]:
+        return save_points(PuntOrdenados,0)
+    else:
+        Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
+        Pos1.place(x=240, y=100)
 
-    Pos2 = Label(Scores, text=PuntOrdenados[1], fg='black', bg='white')
-    Pos2.place(x=50, y=100)
+        Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
+        Pos2.place(x=240, y=160)
 
-    Pos3 = Label(Scores, text=PuntOrdenados[2], fg='black', bg='white')
-    Pos3.place(x=50,y=150)
+        Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
+        Pos3.place(x=240,y=220)
 
-    Pos4 = Label(Scores, text=PuntOrdenados[3], fg='black', bg='white')
-    Pos4.place(x=50, y=200)
+        Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
+        Pos4.place(x=240, y=280)
 
-    Pos5 = Label(Scores, text=PuntOrdenados[4], fg='black', bg='white')
-    Pos5.place(x=50, y=250)
-    
-    Pos6 = Label(Scores, text=PuntOrdenados[5], fg='black', bg='white')
-    Pos6.place(x=50, y=300)
+        Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
+        Pos5.place(x=240, y=340)
+        
+        Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
+        Pos6.place(x=240, y=400)
 
-    Pos7 = Label(Scores, text=PuntOrdenados[6], fg='black', bg='white')
-    Pos7.place(x=50, y=350)
+        Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
+        Pos7.place(x=240, y=460)
     
     def back_scores():       #<== VOLVER AL MENU PRINCIPAL
         Scores.destroy()
@@ -1141,7 +1201,68 @@ def scores_ring():
     C_scores.place(x=0,y=0)
 
     C_scores.image1 = Imagenes('Imagenes/Background/playbg.png')
-    imgCanvas_Scores = C_scores.create_image(350,250,image= C_scores.image1)    
+    imgCanvas_Scores = C_scores.create_image(350,250,image= C_scores.image1)
+
+    Titulo = Label(Scores, text='Mejores puntajes:\nManiobras de Prueba', font=('Helvatica',18), fg='lemonchiffon', bg='maroon')
+    Titulo.place(x=230, y=25)
+    
+    Eduardo = [random.randint(0,900),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
+    Max = [random.randint(0,900),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
+    Reyes = [random.randint(0,900),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
+    Jill = [random.randint(0,900),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
+    XChampion = [random.randint(0,900),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
+    Meteor = [random.randint(0,900),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
+    Mysterio = [random.randint(0,900),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
+    Astrid = [random.randint(0,900),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
+    Peach = [random.randint(0,900),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
+    Sheeva = [random.randint(0,900),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
+    Riper = [random.randint(0,900),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
+    Ashoka = [random.randint(0,900),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
+    
+    PScore = [Eduardo, Max, Reyes, Jill, XChampion, Meteor, Mysterio, Astrid, Peach, Sheeva, Riper, Ashoka] #LISTA DE PUNTOS
+
+    #GUARDA PUNTOS DE MANIOBRAS DE PRUEBA
+    def save_points(PScore, i):
+        if i==len(PScore):
+            return read_points()
+        else:
+            file = open('Puntajes\\Puntajes Anillos.txt', 'a')
+            file.write(PScore[i][0]+'................'+str(PScore[i][1])+'\n')
+            file.close()
+            return save_points(PScore, i+1)
+
+    #OBTIENE LISTA DE PUNTOS EN ARCHIVO SECUENCIAL
+    def read_points():
+        file=open('Puntajes\\Puntajes Anillos.txt', 'r')
+        POrder = file.readlines()
+        file.close()
+        return POrder
+    
+    PuntOrdenados = order(PScore)
+    OrderLista = read_points()
+    if OrderLista==[]:
+        return save_points(PuntOrdenados,0)
+    else:
+        Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
+        Pos1.place(x=240, y=100)
+
+        Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
+        Pos2.place(x=240, y=160)
+
+        Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
+        Pos3.place(x=240,y=220)
+
+        Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
+        Pos4.place(x=240, y=280)
+
+        Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
+        Pos5.place(x=240, y=340)
+        
+        Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
+        Pos6.place(x=240, y=400)
+
+        Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
+        Pos7.place(x=240, y=460)
 
     
     def back_scores():       #<== VOLVER AL MENU PRINCIPAL
@@ -1167,6 +1288,7 @@ def about():
     C_info.image1 = Imagenes('Imagenes/Background/playbg.png')
     imgCanvas_info = C_info.create_image(350,250,image= C_info.image1)    
 
+    #LABELS CON INFORMACION COMPLEMENTARIA
     Label1 = Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
     Label1.place(x=50,y=50)
 
@@ -1216,7 +1338,7 @@ Confi.place(x=490, y=400)
 Puntajes1 = Button(Fondo, text='Puntajes Destruccion de Asteroides', command=scores_ast, font=('Times',15), fg='gold', bg='firebrick')
 Puntajes1.place(x=440, y=450)
 
-Puntajes2 = Button(Fondo, text='Puntajes Maniobra de Pruebas', command=scores_ring, font=('Times',15), fg='gold', bg='firebrick')
+Puntajes2 = Button(Fondo, text='Puntajes Maniobras de Prueba', command=scores_ring, font=('Times',15), fg='gold', bg='firebrick')
 Puntajes2.place(x=460, y=500)
 
 About = Button(Fondo, width=17, text='Acerca de', command=about, font=('Times',15), fg='gold', bg='firebrick')
