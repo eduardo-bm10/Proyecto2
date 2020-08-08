@@ -64,7 +64,7 @@ Menu.resizable(False, False)
 Menu.title('Galaxy Heroes')
 Menu.iconbitmap('Imagenes/Icono.ico')
 
-"""musica('Audio\\MainTheme.mp3')"""
+musica('Audio\\MainTheme.mp3')
 
 Fondo = Canvas(Menu, width=1200, height=650, bg='black')
 Fondo.place(x=0, y=0)
@@ -127,7 +127,7 @@ def juego(Mode):
         POINTS=0
         Pant.destroy()
         musica(1)
-        """musica('Audio\\MainTheme.mp3')"""
+        musica('Audio\\MainTheme.mp3')
         Menu.deiconify()   
             
     #//////////////////////////////////////////TIEMPO, PUNTOS Y FIN DE JUEGO///////////////////////////////////////////////////////////////////
@@ -155,7 +155,7 @@ def juego(Mode):
     def winning(M):
         global POINTS,OPEN,SHOWNAME,SaveAst,SaveRing
         if OPEN==True:
-            if POINTS==2000:
+            if POINTS==3000:
                 Win = Label(Pant, width=25, text='YOU WIN!', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
                 Win.place(x=587.5, y=325)
                 OPEN=False
@@ -326,7 +326,7 @@ def juego(Mode):
                 i+=1
         def call():
             mov_shot(i)
-        Pant.after(15,call)
+        Pant.after(10,call)
 
     #///////////////////////////////////// MODOS DE JUEGO //////////////////////////////////////////////////////////////
 
@@ -560,11 +560,11 @@ def juego(Mode):
             Ship = Bg.bbox(Spaceship)
             Ring = Bg.bbox(Tag)
             if Ship!=None and Ring!=None:      #EVALUA LA COLISION DE CADA ANILLO
-                RingIn = (Ring[0]+10, Ring[1]+10, Ring[2]-10, Ring[3]-10)
+                RingIn = (Ring[0]+5, Ring[1]+5, Ring[2]-5, Ring[3]-5)
                 if (Ship[0]<Ring[0]<RingIn[0]<Ship[2] or Ship[0]<RingIn[2]<Ring[2]<Ship[2]) and (Ship[1]<Ring[1]<RingIn[1]<Ship[3] or Ship[1]<RingIn[3]<Ring[3]<Ship[3]):
                     return game_over(2)
                 if RingIn[0]<Ship[0]<RingIn[2] and RingIn[1]<Ship[1]<RingIn[3]:
-                    points(40)
+                    points(50)
                 else:
                     return 
             else:
@@ -754,6 +754,7 @@ def dificultad(m):
             global DIFF
             DIFF=3
             Dificulty.configure(text='Dificil elegido')
+            dif.destroy()
             return juego(1)
     if m==2:
         #DIFICULTAD FACIL PARA MANIOBRA DE PRUEBAS
@@ -1101,7 +1102,6 @@ def lenn(Lista):
         return 1+lenn(Lista[1:])
 
 #VENTANA DE MEJORES PUNTAJES DE DESTRUCCION DE ASTEROIDES
-    
 def scores_ast():
     global SaveAst
     Scores = Toplevel()
@@ -1119,18 +1119,18 @@ def scores_ast():
     Titulo = Label(Scores, text='Mejores puntajes:\nDestruccion de Asteroides', font=('Helvatica',18), fg='lemonchiffon', bg='maroon')
     Titulo.place(x=210, y=25)
 
-    Eduardo = [random.randint(0,600),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
-    Max = [random.randint(0,600),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
-    Reyes = [random.randint(0,600),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
-    Jill = [random.randint(0,600),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
-    XChampion = [random.randint(0,600),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
-    Meteor = [random.randint(0,600),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
-    Mysterio = [random.randint(0,600),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
-    Astrid = [random.randint(0,600),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
-    Peach = [random.randint(0,600),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
-    Sheeva = [random.randint(0,600),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
-    Riper = [random.randint(0,600),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
-    Ashoka = [random.randint(0,600),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
+    Eduardo = [random.randint(0,900),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
+    Max = [random.randint(0,900),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
+    Reyes = [random.randint(0,900),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
+    Jill = [random.randint(0,900),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
+    XChampion = [random.randint(0,900),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
+    Meteor = [random.randint(0,900),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
+    Mysterio = [random.randint(0,900),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
+    Astrid = [random.randint(0,900),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
+    Peach = [random.randint(0,900),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
+    Sheeva = [random.randint(0,900),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
+    Riper = [random.randint(0,900),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
+    Ashoka = [random.randint(0,900),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
 
     PScore = [Eduardo, Max, Reyes, Jill, XChampion, Meteor, Mysterio, Astrid, Peach, Sheeva, Riper, Ashoka] #LISTA DE PUNTAJES
     PScore+=SaveAst
@@ -1154,8 +1154,7 @@ def scores_ast():
         return POrder
     
     PuntOrdenados = order(PScore)
-    save_points(PuntOrdenados,0)
-    OrderLista = read_points()
+    OrderLista = save_points(PuntOrdenados,0)
     
     Pos1 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-1], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
     Pos1.place(x=240, y=100)
@@ -1204,18 +1203,18 @@ def scores_ring():
     Titulo = Label(Scores, text='Mejores puntajes:\nManiobras de Prueba', font=('Helvatica',18), fg='lemonchiffon', bg='maroon')
     Titulo.place(x=230, y=25)
     
-    Eduardo = [random.randint(0,600),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
-    Max = [random.randint(0,600),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
-    Reyes = [random.randint(0,600),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
-    Jill = [random.randint(0,600),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
-    XChampion = [random.randint(0,600),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
-    Meteor = [random.randint(0,600),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
-    Mysterio = [random.randint(0,600),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
-    Astrid = [random.randint(0,600),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
-    Peach = [random.randint(0,600),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
-    Sheeva = [random.randint(0,600),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
-    Riper = [random.randint(0,600),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
-    Ashoka = [random.randint(0,600),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
+    Eduardo = [random.randint(0,900),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
+    Max = [random.randint(0,900),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
+    Reyes = [random.randint(0,900),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
+    Jill = [random.randint(0,900),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
+    XChampion = [random.randint(0,900),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
+    Meteor = [random.randint(0,900),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
+    Mysterio = [random.randint(0,900),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
+    Astrid = [random.randint(0,900),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
+    Peach = [random.randint(0,900),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
+    Sheeva = [random.randint(0,900),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
+    Riper = [random.randint(0,900),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
+    Ashoka = [random.randint(0,900),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
     
     PScore = [Eduardo, Max, Reyes, Jill, XChampion, Meteor, Mysterio, Astrid, Peach, Sheeva, Riper, Ashoka] #LISTA DE PUNTOS
     PScore+=SaveRing
@@ -1239,8 +1238,7 @@ def scores_ring():
         return POrder
     
     PuntOrdenados = order(PScore)
-    save_points(PuntOrdenados,0)
-    OrderLista = read_points()
+    OrderLista = save_points(PuntOrdenados,0)
     
     Pos1 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-1], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
     Pos1.place(x=240, y=100)
@@ -1263,8 +1261,8 @@ def scores_ring():
     Pos7 = Label(Scores, width=25, text=OrderLista[lenn(OrderLista)-7], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
     Pos7.place(x=240, y=460)
 
-    
-    def back_scores():       #<== VOLVER AL MENU PRINCIPAL
+    #REGRESO AL MENU PRINCIPAL
+    def back_scores():       
         Scores.destroy()
         
     quit_scores = Button(Scores,text = 'Volver al inicio',command=back_scores)
@@ -1274,45 +1272,80 @@ def scores_ring():
 
 #//////////////////////////////////// PANTALLA DE INFORMACION /////////////////////////////////////////////////////////////////////
 
+#VENTANA DE INFORMACION
 def about():
     info = Toplevel()
-    info.minsize(700,500)
+    info.minsize(800,600)
     info.resizable(False, False)
     info.title('Galaxy Heroes')
     info.iconbitmap('Imagenes/Icono.ico')
     
-    C_info = Canvas(info,width=700,height=500,bg='white')
+    C_info = Canvas(info,width=800,height=600,bg='black')
     C_info.place(x=0,y=0)
 
-    C_info.image1 = Imagenes('Imagenes/Background/playbg.png')
-    imgCanvas_info = C_info.create_image(350,250,image= C_info.image1)    
-
-    #LABELS CON INFORMACION COMPLEMENTARIA
-    Label1 = Label(C_info,text = "Instituto Tecnológico de Costa Rica", font =('Times New Roman',12))
-    Label1.place(x=50,y=50)
-
-    Label2 = Label(C_info,text = "Ingeniería en Computadores", font =('Times New Roman',12))
-    Label2.place(x=50,y=100)
-
-    Label3 = Label(C_info,text = "Profesor: Milton Villegas Lemus", font =('Times New Roman',12))
-    Label3.place(x=50,y=150)
-
-    Label4 = Label(C_info,text = "Autores", font =('Times New Roman',12))
-    Label4.place(x=400,y=25)
-
-    Label5 = Label(C_info,text = "Max Garro Mora", font =('Times New Roman',12))
-    Label5.place(x=300,y=150)
-
-    Label6 = Label(C_info,text = "Eduardo Bolívar Minguet", font =('Times New Roman',12))
-    Label6.place(x=425,y=150)
+    C_info.image1 = Imagenes('Imagenes/Background/info.png')
+    imgCanvas_info = C_info.create_image(400,300,image= C_info.image1)
 
     maxgm = Imagenes('Imagenes/FOTO.png')
-    maxgm_image = C_info.create_image(350, 100, image=maxgm)
-
     eduardobm = Imagenes('Imagenes/FOTO2.png')
-    eduardobm_image = C_info.create_image(500, 100, image=eduardobm)
+    MoveImg = Imagenes('Imagenes/Background/Mov.png')
+    DispImg = Imagenes('Imagenes/Background/Dsp.png')
 
-    def back_about():       #<== VOLVER AL MENU PRINCIPAL
+    #LABELS CON INFORMACION COMPLEMENTARIA
+
+    Title = Label(C_info, width=30, text='Informacion complementaria', font=('Georgia',20), fg='gold',bg='maroon')
+    Title.place(x=175,y=20)
+    
+    Label1 = Label(C_info, width=30, text = "Instituto Tecnológico de Costa Rica", font =('Georgia',15), fg='lemonchiffon',bg='maroon')
+    Label1.place(x=50,y=90)
+
+    Label2 = Label(C_info,width=30, text = "Ingeniería en Computadores", font =('Georgia',15),fg='lemonchiffon',bg='maroon')
+    Label2.place(x=50,y=140)
+
+    Label3 = Label(C_info, width=30, text = "Profesor: Milton Villegas Lemus", font =('Georgia',15),fg='lemonchiffon',bg='maroon')
+    Label3.place(x=50,y=190)
+
+    Vrsn = Label(C_info, width=30, text='Version: 1.0', font=('Georgia',15),fg='lemonchiffon',bg='maroon')
+    Vrsn.place(x=50,y=240)
+
+    Date = Label(C_info, width=30, text='Fecha: 8/8/2020', font=('Georgia',15),fg='lemonchiffon',bg='maroon')
+    Date.place(x=50,y=290)
+
+    Label4 = Label(C_info, width=13, text = "Autores", font =('Georgia',15),fg='lemonchiffon',bg='maroon')
+    Label4.place(x=530,y=90)
+
+    Label5 = Label(C_info, width=13, text = "Max Garro", font =('Georgia',15),fg='lemonchiffon',bg='darkred')
+    Label5.place(x=450,y=210)
+    Carn1 = Label(C_info, width=13, text='2020024210', font=('Georgia',15),fg='lemonchiffon',bg='darkred')
+    Carn1.place(x=450, y=245)
+    
+    Label6 = Label(C_info, width=13, text = "Eduardo Bolívar", font =('Georgia',15),fg='lemonchiffon',bg='darkred')
+    Label6.place(x=610,y=210)
+    Carn2 = Label(C_info, width=13, text='2020158103', font=('Georgia',15),fg='lemonchiffon',bg='darkred')
+    Carn2.place(x=610, y=245)
+    
+    maxgm_image = C_info.create_image(520, 160, image=maxgm)
+
+    eduardobm_image = C_info.create_image(680, 160, image=eduardobm)
+
+    Teclas1 = Label(C_info, text='Controles', font=('Georgia',15),fg='lemonchiffon',bg='maroon')
+    Teclas1.place(x=150, y=370)
+
+    Move = C_info.create_image(120,490,image=MoveImg)
+    Disp = C_info.create_image(280,520,image=DispImg)
+
+    DescT = Label(C_info,text='Destrucción de asteroides', font=('Georgia',15),fg='lemonchiffon',bg='maroon')
+    DescT.place(x=450, y=320)
+    Desc = Label(C_info,text='La nave debe destruir la\n mayor cantidad de asteroides posible', font=('Georgia',12),fg='lemonchiffon',bg='darkslategrey')
+    Desc.place(x=450,y=370)
+
+    ManT = Label(C_info,text='Maniobras de prueba', font=('Georgia',15),fg='lemonchiffon',bg='maroon')
+    ManT.place(x=450, y=450)
+    Man = Label(C_info,text='La nave debe atravesar la\nmayor cantidad de anillos posible', font=('Georgia',12),fg='lemonchiffon',bg='darkslategrey')
+    Man.place(x=450, y=500)
+
+    #VOLVER AL MENU PRINCIPAL
+    def back_about():       
         info.destroy()
            
     quit_info = Button(info,text = 'Volver al inicio',command=back_about)
@@ -1320,7 +1353,8 @@ def about():
 
     info.mainloop()
 
-def salida():       #<== CERRAR DEL JUEGO
+#CIERRE DEL JUEGO
+def salida():       
     musica(1)
     Menu.destroy()
         
