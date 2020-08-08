@@ -12,7 +12,7 @@ import random
 OPEN=True
 POINTS=0
 SHOT=True
-PLAYERSHOW= []
+PLAYERSHOW=[]
 BATTERY=100
 SHOWNAME=''
 DIFF=2
@@ -22,7 +22,10 @@ DOWN=False
 RIGHT=False
 LEFT=False
 
-#////////////////// CARGAR IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
+SaveAst=[]
+SaveRing=[]
+
+#////////////////// CARGADO DE IMAGENES Y MULTIMEDIA ////////////////////////////////////////////
         
 #CARGADOR DE IMAGENES INMOVILES
 def Imagenes(Ubicacion):
@@ -52,18 +55,6 @@ def sprites(Ruta):
     x = glob.glob(Ruta)
     x.sort()
     return ImagenesAnim(x,[])
-
-#GUARDADO DE PUNTOS ACUMULADOS EN UN ARCHIVO SECUENCIAL 
-def enter_puntos():
-    global POINTS
-    print(POINTS)
-    updatetxt(str(POINTS) + "\n")
-
-#AUXILIAR DEL GUARDADO DE PUNTOS ACUMULADOS
-def updatetxt(Punto):
-    file = open("PUNTUACIONES.txt", "a")
-    file.write(Punto[0]+str(Punto[1]))
-    file.close()
 
 #////////////////////// VENTANA PRINCIPAL //////////////////////////////////////////////////////////////////////////////
 
@@ -128,7 +119,7 @@ def juego(Mode):
 
     #RETORNO AL MENU PRINCIPAL
     def back():
-        global OPEN, BATTERY, PLAYERSHOW, SHOWNAME, POINTS
+        global OPEN, BATTERY, PLAYERSHOW, SHOWNAME, POINTS,GUARD
         OPEN=False
         BATTERY=100
         PLAYERSHOW=[]
@@ -159,17 +150,35 @@ def juego(Mode):
         POINTS+=p
         Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
         Cont.place(x=350, y=50)
+
+    #PARTIDA GANADA
+    def winning(M):
+        global POINTS,OPEN,SHOWNAME,SaveAst,SaveRing
+        if OPEN==True:
+            if POINTS==2000:
+                Win = Label(Pant, width=25, text='YOU WIN!', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
+                Win.place(x=587.5, y=325)
+                OPEN=False
+                if M==1:
+                    SaveAst+=[[POINTS,SHOWNAME]]
+                elif M==2:
+                    SaveRing+=[[POINTS,SHOWNAME]]
+            else:
+                Thread(target=winning, args=(M,)).start()
         
     #FIN DE LA PARTIDA
-    def game_over():
-        global POINTS, OPEN
-        End = Label(Pant, width=25, text='FIN DEL JUEGO', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
+    def game_over(M):
+        global POINTS,OPEN,SHOWNAME,SaveAst,SaveRing
+        End = Label(Pant, width=25, text='GAME OVER!', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
         End.place(x=587.5, y=325)
         TotPun = Label(Pant, width=25, text='OBTUVISTE '+str(POINTS)+' PUNTOS', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
         TotPun.place(x=587.5, y=425)
-        enter_puntos()
         musica(1)
         OPEN=False
+        if M==1:
+            SaveAst+=[[POINTS,SHOWNAME]]
+        elif M==2:
+            SaveRing+=[[POINTS,SHOWNAME]]
 
     #AUMENTO PROGRESIVO DE LA DIFICULTAD
     def dificultad(): 
@@ -217,7 +226,6 @@ def juego(Mode):
     #ANIMACION DE LA NAVE PRINCIPAL
     def anim(i):    
         global OPEN
-        print('Nave')
         if i==2:
             i=0
         if OPEN==True:
@@ -299,12 +307,9 @@ def juego(Mode):
     #DISPARO DE LA NAVE PRINCIPAL
     def shooting(event):
         global SHOT
-        pg.mixer.init()
-        Shot = pg.mixer.Sound('Audio\\disparo.wav')
         if SHOT==True:
             Loc = Bg.coords('MYSHIP')
             Bg.create_image(Loc[0], Loc[1]-50, tags=('shot1'))
-            Shot.play()
             SHOT=False
             return mov_shot(0)
     def mov_shot(i):    #MOVIMIENTO DEL DISPARO
@@ -335,7 +340,6 @@ def juego(Mode):
         #GENERADOR ALEATORIO DE ASTEROIDES
         def generate_ast(t):        
             global OPEN, DIFF
-            print('Asteroide')
             if OPEN==True:
                 try:
                     Ast1 = Bg.create_image(random.randint(100,1100),random.randint(100,500), tags=('ast1')) #CREA LA IMAGEN DEL PRIMER ASTEROIDE
@@ -408,7 +412,7 @@ def juego(Mode):
             Ast = Bg.bbox(Tag)
             if Ship != None and Ast != None:
                 if (Ast[0]<Ship[0]<Ast[2] or Ast[0]<Ship[2]<Ast[2]) and (Ast[1]<Ship[3]<Ast[3] or Ast[1]<Ship[1]<Ast[3]):   #SE EVALUA EL CHOQUE DEL ASTEROIDE
-                    return game_over()
+                    return game_over(1)
             else:
                 return None
 
@@ -473,7 +477,8 @@ def juego(Mode):
                     return Bg.delete('ast9')
             else:
                 return None
-            
+
+        winning(1)
         Thread(target=generate_ast, args=(0,)).start()
 
     #///////////////////////////////////////////////////// MODO MANIOBRA DE PRUEBAS ///////////////////////////////////////////////////////////////////
@@ -557,7 +562,7 @@ def juego(Mode):
             if Ship!=None and Ring!=None:      #EVALUA LA COLISION DE CADA ANILLO
                 RingIn = (Ring[0]+10, Ring[1]+10, Ring[2]-10, Ring[3]-10)
                 if (Ship[0]<Ring[0]<RingIn[0]<Ship[2] or Ship[0]<RingIn[2]<Ring[2]<Ship[2]) and (Ship[1]<Ring[1]<RingIn[1]<Ship[3] or Ship[1]<RingIn[3]<Ring[3]<Ship[3]):
-                    return game_over()
+                    return game_over(2)
                 if RingIn[0]<Ship[0]<RingIn[2] and RingIn[1]<Ship[1]<RingIn[3]:
                     points(40)
                 else:
@@ -565,6 +570,7 @@ def juego(Mode):
             else:
                 return
 
+        winning(2)
         Thread(target=generate_ring, args=(0,)).start()
             
     #/////////////////////////////////////////// BATERIA /////////////////////////////////////////////////////////////////////
@@ -1108,6 +1114,7 @@ def lenn(Lista):
 #VENTANA DE MEJORES PUNTAJES DE DESTRUCCION DE ASTEROIDES
     
 def scores_ast():
+    global SaveAst
     Scores = Toplevel()
     Scores.minsize(700,500)
     Scores.resizable(False, False)
@@ -1123,27 +1130,29 @@ def scores_ast():
     Titulo = Label(Scores, text='Mejores puntajes:\nDestruccion de Asteroides', font=('Helvatica',18), fg='lemonchiffon', bg='maroon')
     Titulo.place(x=210, y=25)
     
-    Eduardo = [random.randint(0,900),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
-    Max = [random.randint(0,900),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
-    Reyes = [random.randint(0,900),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
-    Jill = [random.randint(0,900),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
-    XChampion = [random.randint(0,900),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
-    Meteor = [random.randint(0,900),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
-    Mysterio = [random.randint(0,900),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
-    Astrid = [random.randint(0,900),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
-    Peach = [random.randint(0,900),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
-    Sheeva = [random.randint(0,900),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
-    Riper = [random.randint(0,900),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
-    Ashoka = [random.randint(0,900),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
+    Eduardo = [random.randint(0,600),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
+    Max = [random.randint(0,600),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
+    Reyes = [random.randint(0,600),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
+    Jill = [random.randint(0,600),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
+    XChampion = [random.randint(0,600),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
+    Meteor = [random.randint(0,600),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
+    Mysterio = [random.randint(0,600),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
+    Astrid = [random.randint(0,600),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
+    Peach = [random.randint(0,600),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
+    Sheeva = [random.randint(0,600),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
+    Riper = [random.randint(0,600),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
+    Ashoka = [random.randint(0,600),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
     
     PScore = [Eduardo, Max, Reyes, Jill, XChampion, Meteor, Mysterio, Astrid, Peach, Sheeva, Riper, Ashoka] #LISTA DE PUNTAJES
-
+    PScore+=SaveAst
+    
     #GUARDAR PUNTOS EN DESTRUCCION DE ASTEROIDES
     def save_points(PScore, i):
-        if i==len(PScore):
+        if i==lenn(PScore):
             return read_points()
         else:
-            file = open('Puntajes\\Puntajes Asteroides.txt', 'a')
+            file = open('Puntajes\\Puntajes Asteroides.txt', 'r+')
+            file.readline()
             file.write(PScore[i][0]+'................'+str(PScore[i][1])+'\n')
             file.close()
             return save_points(PScore, i+1)
@@ -1156,30 +1165,29 @@ def scores_ast():
         return POrder
     
     PuntOrdenados = order(PScore)
+    save_points(PuntOrdenados,0)
     OrderLista = read_points()
-    if OrderLista==[]:
-        return save_points(PuntOrdenados,0)
-    else:
-        Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
-        Pos1.place(x=240, y=100)
+    
+    Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
+    Pos1.place(x=240, y=100)
 
-        Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
-        Pos2.place(x=240, y=160)
+    Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
+    Pos2.place(x=240, y=160)
 
-        Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
-        Pos3.place(x=240,y=220)
+    Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
+    Pos3.place(x=240,y=220)
 
-        Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
-        Pos4.place(x=240, y=280)
+    Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
+    Pos4.place(x=240, y=280)
 
-        Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
-        Pos5.place(x=240, y=340)
-        
-        Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
-        Pos6.place(x=240, y=400)
+    Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
+    Pos5.place(x=240, y=340)
+    
+    Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
+    Pos6.place(x=240, y=400)
 
-        Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
-        Pos7.place(x=240, y=460)
+    Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
+    Pos7.place(x=240, y=460)
     
     def back_scores():       #<== VOLVER AL MENU PRINCIPAL
         Scores.destroy()
@@ -1191,6 +1199,7 @@ def scores_ast():
 
 #VENTANA DE MEJORES PUNTAJES DE MANIOBRA DE PRUEBAS
 def scores_ring():
+    global SaveRing
     Scores = Toplevel()
     Scores.minsize(700,500)
     Scores.resizable(False, False)
@@ -1206,27 +1215,29 @@ def scores_ring():
     Titulo = Label(Scores, text='Mejores puntajes:\nManiobras de Prueba', font=('Helvatica',18), fg='lemonchiffon', bg='maroon')
     Titulo.place(x=230, y=25)
     
-    Eduardo = [random.randint(0,900),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
-    Max = [random.randint(0,900),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
-    Reyes = [random.randint(0,900),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
-    Jill = [random.randint(0,900),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
-    XChampion = [random.randint(0,900),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
-    Meteor = [random.randint(0,900),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
-    Mysterio = [random.randint(0,900),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
-    Astrid = [random.randint(0,900),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
-    Peach = [random.randint(0,900),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
-    Sheeva = [random.randint(0,900),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
-    Riper = [random.randint(0,900),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
-    Ashoka = [random.randint(0,900),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
+    Eduardo = [random.randint(0,600),'Eduardo']        #GENERA PUNTAJE ALEATORIO PARA EDUARDO
+    Max = [random.randint(0,600),'Max']                #GENERA PUNTAJE ALEATORIO PARA MAX
+    Reyes = [random.randint(0,600),'Reyes']            #GENERA PUNTAJE ALEATORIO PARA REYES
+    Jill = [random.randint(0,600),'Jill']              #GENERA PUNTAJE ALEATORIO PARA JILL
+    XChampion = [random.randint(0,600),'X Champion']   #GENERA PUNTAJE ALEATORIO PARA X CHAMPION
+    Meteor = [random.randint(0,600),'Meteor']          #GENERA PUNTAJE ALEATORIO PARA METEOR
+    Mysterio = [random.randint(0,600),'Mysterio']      #GENERA PUNTAJE ALEATORIO PARA MYSTERIO
+    Astrid = [random.randint(0,600),'Astrid']          #GENERA PUNTAJE ALEATORIO PARA ASTRID
+    Peach = [random.randint(0,600),'Peach']            #GENERA PUNTAJE ALEATORIO PARA PEACH
+    Sheeva = [random.randint(0,600),'Sheeva']          #GENERA PUNTAJE ALEATORIO PARA SHEEVA
+    Riper = [random.randint(0,600),'Riper']            #GENERA PUNTAJE ALEATORIO PARA RIPER
+    Ashoka = [random.randint(0,600),'Ashoka']          #GENERA PUNTAJE ALEATORIO PARA ASHOKA
     
     PScore = [Eduardo, Max, Reyes, Jill, XChampion, Meteor, Mysterio, Astrid, Peach, Sheeva, Riper, Ashoka] #LISTA DE PUNTOS
+    PScore+=SaveRing
 
     #GUARDA PUNTOS DE MANIOBRAS DE PRUEBA
     def save_points(PScore, i):
-        if i==len(PScore):
+        if i==lenn(PScore):
             return read_points()
         else:
-            file = open('Puntajes\\Puntajes Anillos.txt', 'a')
+            file = open('Puntajes\\Puntajes Anillos.txt', 'r+')
+            file.readline()
             file.write(PScore[i][0]+'................'+str(PScore[i][1])+'\n')
             file.close()
             return save_points(PScore, i+1)
@@ -1239,30 +1250,29 @@ def scores_ring():
         return POrder
     
     PuntOrdenados = order(PScore)
+    save_points(PuntOrdenados,0)
     OrderLista = read_points()
-    if OrderLista==[]:
-        return save_points(PuntOrdenados,0)
-    else:
-        Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
-        Pos1.place(x=240, y=100)
+    
+    Pos1 = Label(Scores, width=25, text=OrderLista[0], font=('Arial',15), fg='gold', bg='black')    #1ER LUGAR
+    Pos1.place(x=240, y=100)
 
-        Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
-        Pos2.place(x=240, y=160)
+    Pos2 = Label(Scores, width=25, text=OrderLista[1], font=('Arial',15), fg='gold', bg='black')    #2DO LUGAR
+    Pos2.place(x=240, y=160)
 
-        Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
-        Pos3.place(x=240,y=220)
+    Pos3 = Label(Scores, width=25, text=OrderLista[2], font=('Arial',15), fg='gold', bg='black')    #3ER LUGAR
+    Pos3.place(x=240,y=220)
 
-        Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
-        Pos4.place(x=240, y=280)
+    Pos4 = Label(Scores, width=25, text=OrderLista[3], font=('Arial',15), fg='gold', bg='black')    #4TO LUGAR
+    Pos4.place(x=240, y=280)
 
-        Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
-        Pos5.place(x=240, y=340)
-        
-        Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
-        Pos6.place(x=240, y=400)
+    Pos5 = Label(Scores, width=25, text=OrderLista[4], font=('Arial',15), fg='gold', bg='black')    #5TO LUGAR
+    Pos5.place(x=240, y=340)
+    
+    Pos6 = Label(Scores, width=25, text=OrderLista[5], font=('Arial',15), fg='gold', bg='black')    #6TO LUGAR
+    Pos6.place(x=240, y=400)
 
-        Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
-        Pos7.place(x=240, y=460)
+    Pos7 = Label(Scores, width=25, text=OrderLista[6], font=('Arial',15), fg='gold', bg='black')    #7MO LUGAR
+    Pos7.place(x=240, y=460)
 
     
     def back_scores():       #<== VOLVER AL MENU PRINCIPAL
