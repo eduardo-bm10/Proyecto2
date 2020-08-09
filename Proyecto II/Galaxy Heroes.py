@@ -92,6 +92,29 @@ mov_fondo()
 
 #INICIO DE LA JUGABILIDAD/GAMEPLAY
 def juego(Mode):
+    """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion juego(Mode)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe 1 y 2. Ambos para el respectivo modo de juego.
+Restricciones: ninguna
+Salidas: Despliega la ventana de juego y llama a las funciones del modo dependiendo del parametro.
+
+****************************************************************************************************************"""
     Pant = Toplevel()
     Pant.minsize(1200,650)
     Pant.resizable(False, False)
@@ -146,6 +169,29 @@ def juego(Mode):
 
     #ACUMULADOR DE PUNTOS DE PARTIDA ACTUAL
     def points(p):
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion points(p)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe la cantidad de puntos.
+Restricciones: Ninguan
+Salidas: Suma y acumula la cantidad de puntos en la variable global.
+
+****************************************************************************************************************"""
         global POINTS
         POINTS+=p
         Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
@@ -153,6 +199,29 @@ def juego(Mode):
 
     #PARTIDA GANADA
     def winning(M):
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion winning(M)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe 1 o 2, que corresponden a los modos de juego.
+Restricciones: La variable OPEN debe estar True y la cantidad maxima de puntaje debe ser alcanzada.
+Salidas: Retorna un label informando que se ha ganado la partida y guarda el puntaje en el modo de juego respectivo.
+
+****************************************************************************************************************"""
         global POINTS,OPEN,SHOWNAME,SaveAst,SaveRing
         if OPEN==True:
             if POINTS==3000:
@@ -168,6 +237,29 @@ def juego(Mode):
         
     #FIN DE LA PARTIDA
     def game_over(M):
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion game_over(M)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe un 1 o un 2, que corresponde a alguno de los modos de juego.
+Restricciones: ninguna
+Salidas: retorna un Label que informa que se ha perdido el juego, y guarda el puntaje en el modo de juego respectivo.
+
+****************************************************************************************************************"""
         global POINTS,OPEN,SHOWNAME,SaveAst,SaveRing
         End = Label(Pant, width=25, text='GAME OVER!', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
         End.place(x=587.5, y=325)
@@ -224,7 +316,30 @@ def juego(Mode):
     #/////////////////////////////////// FUNCIONES DE MOVIMIENTO DE LA NAVE ////////////////////////////////////////////////
 
     #ANIMACION DE LA NAVE PRINCIPAL
-    def anim(i):    
+    def anim(i):
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion anim(i)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Contador que se usara como subindice para los sprites del personaje.
+Restricciones: La variable OPEN debe estar True, de lo contrario no se ejecuta.
+Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal.
+
+****************************************************************************************************************"""
         global OPEN
         if i==2:
             i=0
@@ -488,7 +603,30 @@ def juego(Mode):
         Anillos=sprites('Imagenes/Anillos/Ring*.png')
 
         #GENERADOR ALEATORIO DE ANILLOS
-        def generate_ring(t):       
+        def generate_ring(t):
+            """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion generate_ring(t)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe un contador en segundos menor que 5.
+Restricciones: La variable OPEN debe estar True, si no no se ejecuta.
+Salidas: genera una imagen del anillo y retorna la funcion ring_3D.
+
+****************************************************************************************************************"""
             global OPEN, DIFF
             if OPEN==True:
                 try:
@@ -542,7 +680,30 @@ def juego(Mode):
                     return None
 
         #EFECTO 3D DE LOS ANILLOS
-        def ring_3D(i, tag):        
+        def ring_3D(i, tag):
+            """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion ring_3D(i,tag)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe un subindice para los sprites y un tag para identificar la imagen respectiva.
+Restricciones: La variable OPEN debe estar True.
+Salidas: Realiza un itemconfig para cada sprite y retorna la funcion de colision.
+
+****************************************************************************************************************"""
             global OPEN
             if OPEN==True:
                 if i==20:
@@ -557,6 +718,29 @@ def juego(Mode):
 
         #COLISION DE LOS ANILLOS CONTRA LA NAVE
         def colision_ring(Tag):
+            """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion colision_ring(Tag)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe el nombre de la variable del anillo respectivo.
+Restricciones: Deben existir las imagenes de la nave principal y la del anillo
+Salidas: Retorna la funcion de fin de juego o suma puntos, dependiendo de cual condicion se cumpla.
+
+****************************************************************************************************************"""
             Ship = Bg.bbox(Spaceship)
             Ring = Bg.bbox(Tag)
             if Ship!=None and Ring!=None:      #EVALUA LA COLISION DE CADA ANILLO
@@ -579,6 +763,29 @@ def juego(Mode):
 
     #DURACION DE COMBUSTIBLE
     def empty_battery():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion empty_battery()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: La variable OPEN debe estar True, si no, no se ejecuta.
+Salidas: Disminuye en 1 la variable de la bateria hasta llegar a cero.
+
+****************************************************************************************************************"""
         global BATTERY, OPEN
         if OPEN==True:
             if BATTERY==0:
@@ -603,6 +810,29 @@ def juego(Mode):
 
     #GENERADOR DE BATERIAS FLOTANTES
     def generate_battery(t,r):
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                    Funcion generate_battery(t,r)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe un contador de tiempo, y un numero aleatorio con random.
+Restricciones: La variable OPEN debe estar True, de lo contrario no se ejecuta.
+Salidas: Genera una bateria en una posicion aleatoria de la pantalla.
+
+****************************************************************************************************************"""
         global OPEN
         if OPEN == True:
             if t == 25:
@@ -1280,10 +1510,10 @@ Fecha Última Modificación: Agosto 8/2020
 
 Entradas: Lista que contiene los puntajes de los pilotos.
 Restricciones: Deben haber resultados en el archivo .txt para que se muestren en pantalla
-Salidas: Retorna la lista de entrada ordena de menor puntaje a mayor puntaje
+Salidas: Retorna la lista de entrada ordenada de menor puntaje a mayor puntaje
 
 *********************************************************************************************************"""
-    return burbuja_aux(Lista,0,0,len(Lista),False)
+    return burbuja_aux(Lista,0,0,lenn(Lista),False)
 #AUXILIAR DEL ORDENAMIENTO
 def burbuja_aux(Lista,i,j,n,Swap):
     if i==n:
@@ -1368,9 +1598,28 @@ Salidas: Se despliega una ventana que muestra los resultados de los jugadores en
     #GUARDAR PUNTOS EN DESTRUCCION DE ASTEROIDES
     def save_points(Score, i):
         """
-*****************************************************************
-OLA K ASE
-*****************************************************************"""
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion save_points()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe la lista de puntajes a guardar, y el subindice para cada elemento de la lista.
+Restricciones: debe existir un archivo secuencial especificado.
+Salidas: guarda cada puntaje en la lista en el archivo secuencial.
+
+****************************************************************************************************************"""
         if i==lenn(Score):
             return read_points()
         else:
