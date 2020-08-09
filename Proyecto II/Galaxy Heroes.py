@@ -92,29 +92,6 @@ mov_fondo()
 
 #INICIO DE LA JUGABILIDAD/GAMEPLAY
 def juego(Mode):
-    """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion juego(Mode)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: Recibe 1 y 2. Ambos para el respectivo modo de juego.
-Restricciones: ninguna
-Salidas: Despliega la ventana de juego y llama a las funciones del modo dependiendo del parametro.
-
-****************************************************************************************************************"""
     Pant = Toplevel()
     Pant.minsize(1200,650)
     Pant.resizable(False, False)
@@ -169,29 +146,6 @@ Salidas: Despliega la ventana de juego y llama a las funciones del modo dependie
 
     #ACUMULADOR DE PUNTOS DE PARTIDA ACTUAL
     def points(p):
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion points(p)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: Recibe la cantidad de puntos.
-Restricciones: Ninguan
-Salidas: Suma y acumula la cantidad de puntos en la variable global.
-
-****************************************************************************************************************"""
         global POINTS
         POINTS+=p
         Cont = Label(Display, width=10, text='Puntos:'+str(POINTS), font=('Georgia',15), fg='lemonchiffon', bg='darkslategrey')
@@ -199,29 +153,6 @@ Salidas: Suma y acumula la cantidad de puntos en la variable global.
 
     #PARTIDA GANADA
     def winning(M):
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion winning(M)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: recibe 1 o 2, que corresponden a los modos de juego.
-Restricciones: La variable OPEN debe estar True y la cantidad maxima de puntaje debe ser alcanzada.
-Salidas: Retorna un label informando que se ha ganado la partida y guarda el puntaje en el modo de juego respectivo.
-
-****************************************************************************************************************"""
         global POINTS,OPEN,SHOWNAME,SaveAst,SaveRing
         if OPEN==True:
             if POINTS==3000:
@@ -237,29 +168,6 @@ Salidas: Retorna un label informando que se ha ganado la partida y guarda el pun
         
     #FIN DE LA PARTIDA
     def game_over(M):
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion game_over(M)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: recibe un 1 o un 2, que corresponde a alguno de los modos de juego.
-Restricciones: ninguna
-Salidas: retorna un Label que informa que se ha perdido el juego, y guarda el puntaje en el modo de juego respectivo.
-
-****************************************************************************************************************"""
         global POINTS,OPEN,SHOWNAME,SaveAst,SaveRing
         End = Label(Pant, width=25, text='GAME OVER!', font=('Times', 25), fg='ghostwhite', bg='darkslategray')
         End.place(x=587.5, y=325)
@@ -317,29 +225,6 @@ Salidas: retorna un Label que informa que se ha perdido el juego, y guarda el pu
 
     #ANIMACION DE LA NAVE PRINCIPAL
     def anim(i):
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion anim(i)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: Contador que se usara como subindice para los sprites del personaje.
-Restricciones: La variable OPEN debe estar True, de lo contrario no se ejecuta.
-Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal.
-
-****************************************************************************************************************"""
         global OPEN
         if i==2:
             i=0
@@ -353,29 +238,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
     #MOVIMIENTO DE LA NAVE HACIA ARRIBA
     def arriba():
-        """
-        ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    Funcion arriba()
-
-
-                    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                    Profesor: Milton Villegas Lemus
-                    Versión: 1.0
-                    Fecha Última Modificación: Agosto 8/2020
-
-                    Entradas: no tiene argumento de entrada.
-                    Restricciones: la global UP debe ser True.
-                    Salidas: por medio de coordenadas mueve hacia arriba a la imagen del jugador.
-
-        *****************************************************************************************"""
         global UP
         if UP==True:
             Ubi = Bg.coords('MYSHIP')
@@ -393,29 +255,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
     #MOVIMIENTO DE LA NAVE HACIA ABAJO
     def abajo():
-        """
-        ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    Funcion abajo()
-
-
-                    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                    Profesor: Milton Villegas Lemus
-                    Versión: 1.0
-                    Fecha Última Modificación: Agosto 8/2020
-
-                    Entradas: no tiene argumento de entrada.
-                    Restricciones: la global DOWN debe ser True.
-                    Salidas: por medio de coordenadas mueve hacia abajo a la imagen del jugador.
-
-        *****************************************************************************************"""
         global DOWN
         if DOWN==True:
             Ubi = Bg.coords('MYSHIP')
@@ -433,29 +272,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
     #MOVIMIENTO DE LA NAVE HACIA LA DERECHA
     def derecha():
-        """
-        ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    Funcion derecha()
-
-
-                    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                    Profesor: Milton Villegas Lemus
-                    Versión: 1.0
-                    Fecha Última Modificación: Agosto 8/2020
-
-                    Entradas: no tiene argumento de entrada.
-                    Restricciones: la global DOWN debe ser True.
-                    Salidas: por medio de coordenadas mueve hacia la derecha a la imagen del jugador.
-
-        *****************************************************************************************"""
         global RIGHT
         if RIGHT==True:
             Ubi = Bg.coords('MYSHIP')
@@ -473,29 +289,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
     #MOVIMIENTO DE LA NAVE HACIA LA IZQUIERDA
     def izquierda():
-        """
-        ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    Funcion izquierda()
-
-
-                    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                    Profesor: Milton Villegas Lemus
-                    Versión: 1.0
-                    Fecha Última Modificación: Agosto 8/2020
-
-                    Entradas: no tiene argumento de entrada.
-                    Restricciones: la global LEFT debe ser True.
-                    Salidas: por medio de coordenadas mueve hacia la izquierda a la imagen del jugador.
-
-        *****************************************************************************************"""
         global LEFT
         if LEFT==True:
             Ubi = Bg.coords('MYSHIP')
@@ -513,29 +306,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
     #DISPARO DE LA NAVE PRINCIPAL
     def shooting(event):
-        """
-        ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    Funcion shooting(event)
-
-
-                    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                    Profesor: Milton Villegas Lemus
-                    Versión: 1.0
-                    Fecha Última Modificación: Agosto 8/2020
-
-                    Entradas: evento del bind.
-                    Restricciones: la global SHOT debe ser True.
-                    Salidas: crea la imagen del disparo y retorna la función de movimiento de este.
-
-        *****************************************************************************************"""
         global SHOT
         if SHOT==True:
             Loc = Bg.coords('MYSHIP')
@@ -569,29 +339,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
         #GENERADOR ALEATORIO DE ASTEROIDES
         def generate_ast(t):
-            """
-            ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    Funcion generate_ast(t)
-
-
-                    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                    Profesor: Milton Villegas Lemus
-                    Versión: 1.0
-                    Fecha Última Modificación: Agosto 8/2020
-
-                    Entradas: t.
-                    Restricciones: la global OPEN sea True.
-                    Salidas: genera las imágenes de los asteroides.
-
-            *****************************************************************************************"""
             global OPEN, DIFF
             if OPEN==True:
                 try:
@@ -647,29 +394,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
         #EFECTO 3D DE LOS ASTEROIDES
         def ast_3D(i, tag):
-            """
-            ********************************************************************************************
-                                Instituto Tecnológico de Costa Rica
-
-
-
-
-                                Ingeniería en Computadores
-
-                                Funcion  ast_3D
-
-
-                        Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                        Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                        Profesor: Milton Villegas Lemus
-                        Versión: 1.0
-                        Fecha Última Modificación: Agosto 8/2020
-
-                        Entradas: recibe un subíndice para realizar un itemconfig y recibe el tag de la imagen.
-                        Restricciones: la global OPEN sea True.
-                        Salidas: intercambia los sprites del asteroide respectivo.
-
-            *****************************************************************************************"""
             global OPEN
             if OPEN==True:
                 if i==20:
@@ -684,29 +408,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
         #UN ASTEROIDE COLISIONA CONTRA LA NAVE
         def colision_ship_ast(Tag):
-            """
-            ********************************************************************************************
-                        Instituto Tecnológico de Costa Rica
-
-
-
-
-                        Ingeniería en Computadores
-
-                        Funcion colision_ship_ast(Tag)
-
-
-                        Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                        Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                        Profesor: Milton Villegas Lemus
-                        Versión: 1.0
-                        Fecha Última Modificación: Agosto 8/2020
-
-                        Entradas: tag de la imagen.
-                        Restricciones: deben existir las imágenes del asteroide y la nave.
-                        Salidas: mostrar al jugador un label, que dice que el juego se ha acabo, cuando se dé la colisión.
-
-            *****************************************************************************************"""
             Ship = Bg.bbox(Spaceship)
             Ast = Bg.bbox(Tag)
             if Ship != None and Ast != None:
@@ -717,29 +418,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
         #EL DISPARO COLISIONA CONTRA UN ASTEROIDE
         def colision_disp():
-            """
-            ********************************************************************************************
-                                Instituto Tecnológico de Costa Rica
-
-
-
-
-                                Ingeniería en Computadores
-
-                                Funcion colision_disp(Tag)
-
-
-                        Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                        Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                        Profesor: Milton Villegas Lemus
-                        Versión: 1.0
-                        Fecha Última Modificación: Agosto 8/2020
-
-                        Entradas: tag de la imagen.
-                        Restricciones: deben existir las imágenes del asteroide y disparo del jugador.
-                        Salidas: se elimina la imagen del asteroide y se le suman puntos al jugador.
-
-                *****************************************************************************************"""
             Disp=Bg.bbox('shot1')
             Ast1 = Bg.bbox('ast1')
             Ast2 = Bg.bbox('ast2')
@@ -811,29 +489,6 @@ Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal
 
         #GENERADOR ALEATORIO DE ANILLOS
         def generate_ring(t):
-            """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion generate_ring(t)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: Recibe un contador en segundos menor que 5.
-Restricciones: La variable OPEN debe estar True, si no no se ejecuta.
-Salidas: genera una imagen del anillo y retorna la funcion ring_3D.
-
-****************************************************************************************************************"""
             global OPEN, DIFF
             if OPEN==True:
                 try:
@@ -888,29 +543,6 @@ Salidas: genera una imagen del anillo y retorna la funcion ring_3D.
 
         #EFECTO 3D DE LOS ANILLOS
         def ring_3D(i, tag):
-            """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion ring_3D(i,tag)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: recibe un subindice para los sprites y un tag para identificar la imagen respectiva.
-Restricciones: La variable OPEN debe estar True.
-Salidas: Realiza un itemconfig para cada sprite y retorna la funcion de colision.
-
-****************************************************************************************************************"""
             global OPEN
             if OPEN==True:
                 if i==20:
@@ -925,29 +557,6 @@ Salidas: Realiza un itemconfig para cada sprite y retorna la funcion de colision
 
         #COLISION DE LOS ANILLOS CONTRA LA NAVE
         def colision_ring(Tag):
-            """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion colision_ring(Tag)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: Recibe el nombre de la variable del anillo respectivo.
-Restricciones: Deben existir las imagenes de la nave principal y la del anillo
-Salidas: Retorna la funcion de fin de juego o suma puntos, dependiendo de cual condicion se cumpla.
-
-****************************************************************************************************************"""
             Ship = Bg.bbox(Spaceship)
             Ring = Bg.bbox(Tag)
             if Ship!=None and Ring!=None:      #EVALUA LA COLISION DE CADA ANILLO
@@ -970,29 +579,6 @@ Salidas: Retorna la funcion de fin de juego o suma puntos, dependiendo de cual c
 
     #DURACION DE COMBUSTIBLE
     def empty_battery():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion empty_battery()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: La variable OPEN debe estar True, si no, no se ejecuta.
-Salidas: Disminuye en 1 la variable de la bateria hasta llegar a cero.
-
-****************************************************************************************************************"""
         global BATTERY, OPEN
         if OPEN==True:
             if BATTERY==0:
@@ -1017,29 +603,6 @@ Salidas: Disminuye en 1 la variable de la bateria hasta llegar a cero.
 
     #GENERADOR DE BATERIAS FLOTANTES
     def generate_battery(t,r):
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    Funcion generate_battery(t,r)
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: Recibe un contador de tiempo, y un numero aleatorio con random.
-Restricciones: La variable OPEN debe estar True, de lo contrario no se ejecuta.
-Salidas: Genera una bateria en una posicion aleatoria de la pantalla.
-
-****************************************************************************************************************"""
         global OPEN
         if OPEN == True:
             if t == 25:
@@ -1156,29 +719,6 @@ def select_juego2():
 
 #VENTANA DE SELECCION DE DIFICULTAD
 def dificultad(m):
-    """
-    ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                        Ingeniería en Computadores
-
-                            Funcion dificultad()
-
-
-    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-    Profesor: Milton Villegas Lemus
-    Versión: 1.0
-    Fecha Última Modificación: Agosto 8/2020
-
-    Entradas: m, que puede ser 1 o 2.
-    Restricciones: ninguna.
-    Salidas: despliega una ventana que muestra los botones de dificultades.
-
-    *****************************************************************************************"""
     dif = Toplevel()
     dif.minsize(500,400)
     dif.resizable(False, False)
@@ -1195,29 +735,6 @@ def dificultad(m):
     if m==1:
         #DIFICULTAD FACIL PARA DESTRUCCION DE ASTEROIDES
         def easy():
-            """
-                ********************************************************************************************
-                                Instituto Tecnológico de Costa Rica
-
-
-
-
-                                    Ingeniería en Computadores
-
-                                        Funcion easy()
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: no posee argumentos de entrada.
-                Restricciones: ninguna.
-                Salidas: se despliega la ventana del modo de juego escogido.
-
-                *****************************************************************************************"""
             global DIFF
             DIFF=1
             Dificulty.configure(text='Facil elegido')
@@ -1226,29 +743,6 @@ def dificultad(m):
 
         #DIFICULTAD NORMAL PARA DESTRUCCION DE ASTEROIDES
         def normal():
-            """
-                ********************************************************************************************
-                                Instituto Tecnológico de Costa Rica
-
-
-
-
-                                    Ingeniería en Computadores
-
-                                        Funcion normal()
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: no posee argumentos de entrada.
-                Restricciones: ninguna.
-                Salidas: se despliega la ventana del modo de juego escogido.
-
-                *****************************************************************************************"""
             global DIFF
             DIFF=2
             Dificulty.configure(text='Normal elegido')
@@ -1257,29 +751,6 @@ def dificultad(m):
 
         #DIFICULTAD DIFICIL PARA DESTRUCCION DE ASTEROIDES
         def hard():
-            """
-         ********************************************************************************************
-                        Instituto Tecnológico de Costa Rica
-
-
-
-
-                            Ingeniería en Computadores
-
-                            Funcion hard()
-
-
-            Versiones Lenguaje Python: 3.8.3 and 3.8.5
-            Autores: Eduardo Bolívar Minguet y Max Garro Mora
-            Profesor: Milton Villegas Lemus
-            Versión: 1.0
-            Fecha Última Modificación: Agosto 8/2020
-
-            Entradas: no posee argumentos de entrada.
-            Restricciones: ninguna.
-            Salidas: se despliega la ventana del modo de juego escogido.
-
-        *****************************************************************************************"""
             global DIFF
             DIFF=3
             Dificulty.configure(text='Dificil elegido')
@@ -1369,29 +840,6 @@ def config():
 
     #SELECCION DE EDUARDO
     def edu():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion edu()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: ninguna
-Salidas: modifica las variables globales para mostrar el nombre y foto de Eduardo.
-
-****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Eduardo Seleccionado')
         SHOWNAME=''
@@ -1399,29 +847,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Eduard
         SHOWNAME+='Eduardo'
     #SELECCION DE MAX
     def maX():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion maX()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: ninguna
-Salidas: modifica las variables globales para mostrar el nombre y foto de Max.
-
-****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Max Seleccionado')
         SHOWNAME=''
@@ -1429,29 +854,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Max.
         SHOWNAME+='Max'
     #SELECCION DE REYES
     def pilot1():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion pilot1()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: ninguna
-Salidas: modifica las variables globales para mostrar el nombre y foto de Reyes.
-
-****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Reyes Seleccionado')
         SHOWNAME=''
@@ -1459,29 +861,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Reyes.
         SHOWNAME+='Reyes'
     #SELECCION DE JILL
     def pilot2():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion pilot2()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: ninguna
-Salidas: modifica las variables globales para mostrar el nombre y foto de Jill.
-
-****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Jill Seleccionado')
         SHOWNAME=''
@@ -1489,29 +868,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Jill.
         SHOWNAME+='Jill'
     #SELECCION DE X CHAMPION
     def pilot3():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion pilot3()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: ninguna
-Salidas: modifica las variables globales para mostrar el nombre y foto de X Champion.
-
-****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('X Champion Seleccionado')
         SHOWNAME=''
@@ -1519,29 +875,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de X Cham
         SHOWNAME+='X Champion'
     #SELECCION DE METEOR
     def pilot4():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion pilot4()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: ninguna
-Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor.
-
-****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Meteor Seleccionado')
         SHOWNAME=''
@@ -1556,29 +889,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor
         SHOWNAME+='Mysterio'
     #SELECCION DE ASTRID
     def pilot6():
-        """
-        ********************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                Ingeniería en Computadores
-
-                Funcion pilot6()
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: no posee argumentos de entrada.
-                Restricciones: ninguna.
-                Salidas: modifica las variables globales para mostrar el nombre y la foto de Astrid.
-
-        *****************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Astrid seleccionada')
         SHOWNAME=''
@@ -1586,29 +896,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor
         SHOWNAME+='Astrid'
     #SELECCION DE PEACH
     def pilot7():
-        """
-        ********************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                Ingeniería en Computadores
-
-                Funcion pilot7()
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: no posee argumentos de entrada.
-                Restricciones: ninguna.
-                Salidas: modifica las variables globales para mostrar el nombre y la foto de Peach.
-
-        *****************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Peach seleccionada')
         SHOWNAME=''
@@ -1616,29 +903,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor
         SHOWNAME+='Peach'
     #SELECCION DE SHEEVA
     def pilot8():
-        """
-        ********************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                Ingeniería en Computadores
-
-                Funcion pilot8()
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: no posee argumentos de entrada.
-                Restricciones: ninguna.
-                Salidas: modifica las variables globales para mostrar el nombre y la foto de Sheeva.
-
-                *****************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Sheeva seleccionada')
         SHOWNAME=''
@@ -1646,29 +910,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor
         SHOWNAME+='Sheeva'
     #SELECCION DE RIPER
     def pilot9():
-        """
-        ********************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                Ingeniería en Computadores
-
-                Funcion pilot9()
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: no posee argumentos de entrada.
-                Restricciones: ninguna.
-                Salidas: modifica las variables globales para mostrar el nombre y la foto de Riper.
-
-        *****************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Riper seleccionado')
         SHOWNAME=''
@@ -1676,29 +917,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor
         SHOWNAME+='Riper'
     #SELECCION DE ASHOKA
     def pilot10():
-        """
-        ********************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                Ingeniería en Computadores
-
-                Funcion pilot10()
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: no posee argumentos de entrada.
-                Restricciones: ninguna.
-                Salidas: modifica las variables globales para mostrar el nombre y la foto de Astrid.
-
-        *****************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Ashoka seleccionada')
         SHOWNAME=''
@@ -1739,29 +957,6 @@ Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor
 
     #CAMBIAR A LA SEGUNDA PAGINA DE PILOTOS
     def next_page():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion next_page()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: Se requiere estar en la primera pagina de pilotos, de lo contrario, esta funcion no tendra efecto.
-Salidas: Crea los botones y Labels para mostrar la segunda pagina de pilotos
-
-****************************************************************************************************************"""
         nonlocal NEXT,ImgFondo
         if NEXT==True:
             Set2 = Canvas(Config, width=700, height=500, bg='white')
@@ -1813,29 +1008,6 @@ Salidas: Crea los botones y Labels para mostrar la segunda pagina de pilotos
 
     #RETORNO A LA PRIMERA PAGINA DE PILOTOS
     def back_page():
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion back_page()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: no posee argumentos de entrada. Solo salidas.
-Restricciones: Se requiere estar en la segunda pagina de pilotos, de lo contrario, esta funcion no tendra efecto.
-Salidas: Crea los botones y Labels para mostrar nuevamente la primera pagina de pilotos
-
-****************************************************************************************************************"""
         nonlocal NEXT,ImgFondo
         if NEXT==False:
             Set1 = Canvas(Config, width=700, height=500, bg='white')
@@ -1904,56 +1076,7 @@ Salidas: Crea los botones y Labels para mostrar nuevamente la primera pagina de 
 
 #ORDENAMIENTO DE LISTA
 def order(Lista):
-    """
-<<<<<<< HEAD
-    ********************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                Ingeniería en Computadores
-
-                Funcion order(Lista)
-
-
-                Versiones Lenguaje Python: 3.8.3 and 3.8.5
-                Autores: Eduardo Bolívar Minguet y Max Garro Mora
-                Profesor: Milton Villegas Lemus
-                Versión: 1.0
-                Fecha Última Modificación: Agosto 8/2020
-
-                Entradas: lista de puntajes.
-                Restricciones: deben haber resultados en el archivo .txt para que se muestren en pantalla.
-                Salidas: retorna la lista de entrada de mayor a menor puntaje .
-
-    *****************************************************************************************"""
-    return burbuja_aux(Lista,0,0,len(Lista),False)
-=======
-****************************************************************************************************
-            Instituto Tecnológico de Costa Rica
-
-
-
-            
-                Ingeniería en Computadores
-
-
-                
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: Lista que contiene los puntajes de los pilotos.
-Restricciones: Deben haber resultados en el archivo .txt para que se muestren en pantalla
-Salidas: Retorna la lista de entrada ordenada de menor puntaje a mayor puntaje
-
-*********************************************************************************************************"""
     return burbuja_aux(Lista,0,0,lenn(Lista),False)
->>>>>>> 3bae2411b2a39571d4497b0e2305c849ab7107fc
 #AUXILIAR DEL ORDENAMIENTO
 def burbuja_aux(Lista,i,j,n,Swap):
     if i==n:
@@ -1980,54 +1103,6 @@ def lenn(Lista):
 
 #VENTANA DE MEJORES PUNTAJES DE DESTRUCCION DE ASTEROIDES
 def scores_ast():
-    """
-<<<<<<< HEAD
-        ********************************************************************************************
-                        Instituto Tecnológico de Costa Rica
-
-
-
-
-                            Ingeniería en Computadores
-
-                                Funcion scores_ast()
-
-
-        Versiones Lenguaje Python: 3.8.3 and 3.8.5
-        Autores: Eduardo Bolívar Minguet y Max Garro Mora
-        Profesor: Milton Villegas Lemus
-        Versión: 1.0
-        Fecha Última Modificación: Agosto 8/2020
-
-        Entradas: no posee argumentos de entrada.
-        Restricciones: ninguna
-        Salidas: se despliega una ventana que muestra los resultados de los jugadores en el modo de juego "destrucción de asteroides".
-
-        *****************************************************************************************"""
-=======
-****************************************************************************************************
-            Instituto Tecnológico de Costa Rica
-
-
-
-            
-                Ingeniería en Computadores
-
-
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: No posee argumentos de entrada.
-Restricciones: ninguna
-Salidas: Se despliega una ventana que muestra los resultados de los jugadores en el modo de juego "destrucción de asteroides"
-
-*******************************************************************************************************************************"""
->>>>>>> 3bae2411b2a39571d4497b0e2305c849ab7107fc
     global SaveAst
     Scores = Toplevel()
     Scores.minsize(700,500)
@@ -2062,29 +1137,6 @@ Salidas: Se despliega una ventana que muestra los resultados de los jugadores en
     
     #GUARDAR PUNTOS EN DESTRUCCION DE ASTEROIDES
     def save_points(Score, i):
-        """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                        Funcion save_points()
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: recibe la lista de puntajes a guardar, y el subindice para cada elemento de la lista.
-Restricciones: debe existir un archivo secuencial especificado.
-Salidas: guarda cada puntaje en la lista en el archivo secuencial.
-
-****************************************************************************************************************"""
         if i==lenn(Score):
             return read_points()
         else:
@@ -2135,29 +1187,6 @@ Salidas: guarda cada puntaje en la lista en el archivo secuencial.
 
 #VENTANA DE MEJORES PUNTAJES DE MANIOBRA DE PRUEBAS
 def scores_ring():
-    """
-************************************************************************************************************
-            Instituto Tecnológico de Costa Rica
-
-
-
-            
-                Ingeniería en Computadores
-                
-
-            
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: No posee argumentos de entrada. Solo salidas.
-Restricciones: Ninguna
-Salidas: Despliegue de la ventana de puntajes de Maniobras de Prueba.
-
-*************************************************************************************************************"""
     global SaveRing
     Scores = Toplevel()
     Scores.minsize(700,500)
@@ -2245,54 +1274,6 @@ Salidas: Despliegue de la ventana de puntajes de Maniobras de Prueba.
 
 #VENTANA DE INFORMACION
 def about():
-    """
-<<<<<<< HEAD
-    ********************************************************************************************
-                    Instituto Tecnológico de Costa Rica
-
-
-
-
-                        Ingeniería en Computadores
-
-                            Funcion about()
-
-
-    Versiones Lenguaje Python: 3.8.3 and 3.8.5
-    Autores: Eduardo Bolívar Minguet y Max Garro Mora
-    Profesor: Milton Villegas Lemus
-    Versión: 1.0
-    Fecha Última Modificación: Agosto 8/2020
-
-    Entradas: no posee argumentos de entrada
-    Restricciones: Ninguna
-    Salidas: Despliega la ventana que muestra la información de los autores.
-
-    *****************************************************************************************"""
-=======
-****************************************************************************************************
-            Instituto Tecnológico de Costa Rica
-
-
-
-            
-                Ingeniería en Computadores
-
-
-                
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: No posee argumentos de entrada
-Restricciones: Ninguna
-Salidas: Despliega la ventana que muestra la información de los autores.
-
-*****************************************************************************************************"""
->>>>>>> 3bae2411b2a39571d4497b0e2305c849ab7107fc
     info = Toplevel()
     info.minsize(800,600)
     info.resizable(False, False)
@@ -2408,6 +1389,98 @@ quit()
 =======
 def mi_auto_doc():
     """
+    ********************************************************************************************
+                    Instituto Tecnológico de Costa Rica
+
+
+
+
+                        Ingeniería en Computadores
+
+                            Funcion about()
+
+
+    Versiones Lenguaje Python: 3.8.3 and 3.8.5
+    Autores: Eduardo Bolívar Minguet y Max Garro Mora
+    Profesor: Milton Villegas Lemus
+    Versión: 1.0
+    Fecha Última Modificación: Agosto 8/2020
+
+    Entradas: no posee argumentos de entrada
+    Restricciones: Ninguna
+    Salidas: Despliega la ventana que muestra la información de los autores.
+
+    *****************************************************************************************
+
+    ********************************************************************************************
+                    Instituto Tecnológico de Costa Rica
+
+
+
+
+                        Ingeniería en Computadores
+
+                            Funcion scores_ast()
+
+
+    Versiones Lenguaje Python: 3.8.3 and 3.8.5
+    Autores: Eduardo Bolívar Minguet y Max Garro Mora
+    Profesor: Milton Villegas Lemus
+    Versión: 1.0
+    Fecha Última Modificación: Agosto 8/2020
+
+    Entradas: no posee argumentos de entrada.
+    Restricciones: ninguna
+    Salidas: se despliega una ventana que muestra los resultados de los jugadores en el modo de juego "destrucción de asteroides".
+
+    *****************************************************************************************
+
+************************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+
+
+
+            
+                Ingeniería en Computadores
+                
+
+            
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: No posee argumentos de entrada. Solo salidas.
+Restricciones: Ninguna
+Salidas: Despliegue de la ventana de puntajes de Maniobras de Prueba.
+
+*************************************************************************************************************
+
+    ********************************************************************************************
+                    Instituto Tecnológico de Costa Rica
+
+
+
+
+                        Ingeniería en Computadores
+
+                            Funcion dificultad()
+
+
+    Versiones Lenguaje Python: 3.8.3 and 3.8.5
+    Autores: Eduardo Bolívar Minguet y Max Garro Mora
+    Profesor: Milton Villegas Lemus
+    Versión: 1.0
+    Fecha Última Modificación: Agosto 8/2020
+
+    Entradas: m, que puede ser 1 o 2.
+    Restricciones: ninguna.
+    Salidas: despliega una ventana que muestra los botones de dificultades.
+
+    *****************************************************************************************
+    
 **********************************************************************************************************
                 Instituto Tecnológico de Costa Rica
 
@@ -2417,7 +1490,7 @@ def mi_auto_doc():
                     Ingeniería en Computadores
 
 
-                        config()
+                        Funcion config()
 
                     
 
@@ -2431,9 +1504,888 @@ Fecha Última Modificación: Agosto 8/2020
 Entradas: No posee argumentos de entrada. Solo salidas.
 Restricciones: Ninguna
 Salidas: Despliega la ventana para la elección de los pilotos.
->>>>>>> 3bae2411b2a39571d4497b0e2305c849ab7107fc
 
-***********************************************************************************************************"""
+***********************************************************************************************************
+
+    ********************************************************************************************
+    Instituto Tecnológico de Costa Rica
+
+
+
+
+    Ingeniería en Computadores
+
+    Funcion order(Lista)
+
+
+    Versiones Lenguaje Python: 3.8.3 and 3.8.5
+    Autores: Eduardo Bolívar Minguet y Max Garro Mora
+    Profesor: Milton Villegas Lemus
+    Versión: 1.0
+    Fecha Última Modificación: Agosto 8/2020
+
+    Entradas: lista de puntajes.
+    Restricciones: deben haber resultados en el archivo .txt para que se muestren en pantalla.
+    Salidas: retorna la lista de entrada de mayor a menor puntaje .
+
+    *****************************************************************************************
+
+********************************************************************************************
+                    Instituto Tecnológico de Costa Rica
+
+
+
+
+                        Ingeniería en Computadores
+
+                            Funcion easy()
+
+
+    Versiones Lenguaje Python: 3.8.3 and 3.8.5
+    Autores: Eduardo Bolívar Minguet y Max Garro Mora
+    Profesor: Milton Villegas Lemus
+    Versión: 1.0
+    Fecha Última Modificación: Agosto 8/2020
+
+    Entradas: no posee argumentos de entrada.
+    Restricciones: ninguna.
+    Salidas: se despliega la ventana del modo de juego escogido.
+
+    *****************************************************************************************
+
+    ********************************************************************************************
+                    Instituto Tecnológico de Costa Rica
+
+
+
+
+                        Ingeniería en Computadores
+
+                            Funcion normal()
+
+
+    Versiones Lenguaje Python: 3.8.3 and 3.8.5
+    Autores: Eduardo Bolívar Minguet y Max Garro Mora
+    Profesor: Milton Villegas Lemus
+    Versión: 1.0
+    Fecha Última Modificación: Agosto 8/2020
+
+    Entradas: no posee argumentos de entrada.
+    Restricciones: ninguna.
+    Salidas: se despliega la ventana del modo de juego escogido.
+
+    *****************************************************************************************
+    
+ ********************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                    Funcion hard()
+
+
+    Versiones Lenguaje Python: 3.8.3 and 3.8.5
+    Autores: Eduardo Bolívar Minguet y Max Garro Mora
+    Profesor: Milton Villegas Lemus
+    Versión: 1.0
+    Fecha Última Modificación: Agosto 8/2020
+
+    Entradas: no posee argumentos de entrada.
+    Restricciones: ninguna.
+    Salidas: se despliega la ventana del modo de juego escogido.
+
+*****************************************************************************************
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion next_page()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: Se requiere estar en la primera pagina de pilotos, de lo contrario, esta funcion no tendra efecto.
+Salidas: Crea los botones y Labels para mostrar la segunda pagina de pilotos
+
+****************************************************************************************************************
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion back_page()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: Se requiere estar en la segunda pagina de pilotos, de lo contrario, esta funcion no tendra efecto.
+Salidas: Crea los botones y Labels para mostrar nuevamente la primera pagina de pilotos
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion edu()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Eduardo.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion maX()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Max.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot1()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Reyes.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot2()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Jill.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot3()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de X Champion.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot4()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor.
+
+****************************************************************************************************************
+
+
+********************************************************************************************
+        Instituto Tecnológico de Costa Rica
+
+
+
+
+        Ingeniería en Computadores
+
+        Funcion pilot6()
+
+
+        Versiones Lenguaje Python: 3.8.3 and 3.8.5
+        Autores: Eduardo Bolívar Minguet y Max Garro Mora
+        Profesor: Milton Villegas Lemus
+        Versión: 1.0
+        Fecha Última Modificación: Agosto 8/2020
+
+        Entradas: no posee argumentos de entrada.
+        Restricciones: ninguna.
+        Salidas: modifica las variables globales para mostrar el nombre y la foto de Astrid.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+        Instituto Tecnológico de Costa Rica
+
+
+
+
+        Ingeniería en Computadores
+
+        Funcion pilot7()
+
+
+        Versiones Lenguaje Python: 3.8.3 and 3.8.5
+        Autores: Eduardo Bolívar Minguet y Max Garro Mora
+        Profesor: Milton Villegas Lemus
+        Versión: 1.0
+        Fecha Última Modificación: Agosto 8/2020
+
+        Entradas: no posee argumentos de entrada.
+        Restricciones: ninguna.
+        Salidas: modifica las variables globales para mostrar el nombre y la foto de Peach.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+Instituto Tecnológico de Costa Rica
+
+
+
+
+Ingeniería en Computadores
+
+Funcion pilot8()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada.
+Restricciones: ninguna.
+Salidas: modifica las variables globales para mostrar el nombre y la foto de Sheeva.
+
+*****************************************************************************************
+
+        
+********************************************************************************************
+        Instituto Tecnológico de Costa Rica
+
+
+
+
+        Ingeniería en Computadores
+
+        Funcion pilot9()
+
+
+        Versiones Lenguaje Python: 3.8.3 and 3.8.5
+        Autores: Eduardo Bolívar Minguet y Max Garro Mora
+        Profesor: Milton Villegas Lemus
+        Versión: 1.0
+        Fecha Última Modificación: Agosto 8/2020
+
+        Entradas: no posee argumentos de entrada.
+        Restricciones: ninguna.
+        Salidas: modifica las variables globales para mostrar el nombre y la foto de Riper.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+        Instituto Tecnológico de Costa Rica
+
+
+
+
+        Ingeniería en Computadores
+
+        Funcion pilot10()
+
+
+        Versiones Lenguaje Python: 3.8.3 and 3.8.5
+        Autores: Eduardo Bolívar Minguet y Max Garro Mora
+        Profesor: Milton Villegas Lemus
+        Versión: 1.0
+        Fecha Última Modificación: Agosto 8/2020
+
+        Entradas: no posee argumentos de entrada.
+        Restricciones: ninguna.
+        Salidas: modifica las variables globales para mostrar el nombre y la foto de Ashoka.
+
+*****************************************************************************************
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion juego(Mode)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe 1 y 2. Ambos para el respectivo modo de juego.
+Restricciones: ninguna
+Salidas: Despliega la ventana de juego y llama a las funciones del modo dependiendo del parametro.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion anim(i)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Contador que se usara como subindice para los sprites del personaje.
+Restricciones: La variable OPEN debe estar True, de lo contrario no se ejecuta.
+Salidas: Realiza un itemconfig de la imagen del subindice para la nave principal.
+
+****************************************************************************************************************
+
+
+********************************************************************************************
+            Instituto Tecnológico de Costa Rica
+
+
+
+
+            Ingeniería en Computadores
+
+            Funcion arriba()
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: no tiene argumento de entrada.
+            Restricciones: la global UP debe ser True.
+            Salidas: por medio de coordenadas mueve hacia arriba a la imagen del jugador.
+
+*****************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion save_points()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe la lista de puntajes a guardar, y el subindice para cada elemento de la lista.
+Restricciones: debe existir un archivo secuencial especificado.
+Salidas: guarda cada puntaje en la lista en el archivo secuencial.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                    Funcion generate_battery(t,r)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe un contador de tiempo, y un numero aleatorio con random.
+Restricciones: La variable OPEN debe estar True, de lo contrario no se ejecuta.
+Salidas: Genera una bateria en una posicion aleatoria de la pantalla.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion empty_battery()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: La variable OPEN debe estar True, si no, no se ejecuta.
+Salidas: Disminuye en 1 la variable de la bateria hasta llegar a cero.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion colision_ring(Tag)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe el nombre de la variable del anillo respectivo.
+Restricciones: Deben existir las imagenes de la nave principal y la del anillo
+Salidas: Retorna la funcion de fin de juego o suma puntos, dependiendo de cual condicion se cumpla.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion ring_3D(i,tag)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe un subindice para los sprites y un tag para identificar la imagen respectiva.
+Restricciones: La variable OPEN debe estar True.
+Salidas: Realiza un itemconfig para cada sprite y retorna la funcion de colision.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion generate_ring(t)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe un contador en segundos menor que 5.
+Restricciones: La variable OPEN debe estar True, si no no se ejecuta.
+Salidas: genera una imagen del anillo y retorna la funcion ring_3D.
+
+****************************************************************************************************************
+
+
+********************************************************************************************
+                    Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                    Funcion colision_disp(Tag)
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: tag de la imagen.
+            Restricciones: deben existir las imágenes del asteroide y disparo del jugador.
+            Salidas: se elimina la imagen del asteroide y se le suman puntos al jugador.
+
+    *****************************************************************************************
+
+    
+********************************************************************************************
+            Instituto Tecnológico de Costa Rica
+
+
+
+
+            Ingeniería en Computadores
+
+            Funcion colision_ship_ast(Tag)
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: tag de la imagen.
+            Restricciones: deben existir las imágenes del asteroide y la nave.
+            Salidas: mostrar al jugador un label, que dice que el juego se ha acabo, cuando se dé la colisión.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+                    Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                    Funcion  ast_3D
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: recibe un subíndice para realizar un itemconfig y recibe el tag de la imagen.
+            Restricciones: la global OPEN sea True.
+            Salidas: intercambia los sprites del asteroide respectivo.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+        Instituto Tecnológico de Costa Rica
+
+
+
+
+        Ingeniería en Computadores
+
+        Funcion generate_ast(t)
+
+
+        Versiones Lenguaje Python: 3.8.3 and 3.8.5
+        Autores: Eduardo Bolívar Minguet y Max Garro Mora
+        Profesor: Milton Villegas Lemus
+        Versión: 1.0
+        Fecha Última Modificación: Agosto 8/2020
+
+        Entradas: t.
+        Restricciones: la global OPEN sea True.
+        Salidas: genera las imágenes de los asteroides.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+            Instituto Tecnológico de Costa Rica
+
+
+
+
+            Ingeniería en Computadores
+
+            Funcion shooting(event)
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: evento del bind.
+            Restricciones: la global SHOT debe ser True.
+            Salidas: crea la imagen del disparo y retorna la función de movimiento de este.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+            Instituto Tecnológico de Costa Rica
+
+
+
+
+            Ingeniería en Computadores
+
+            Funcion izquierda()
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: no tiene argumento de entrada.
+            Restricciones: la global LEFT debe ser True.
+            Salidas: por medio de coordenadas mueve hacia la izquierda a la imagen del jugador.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+            Instituto Tecnológico de Costa Rica
+
+
+
+
+            Ingeniería en Computadores
+
+            Funcion derecha()
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: no tiene argumento de entrada.
+            Restricciones: la global DOWN debe ser True.
+            Salidas: por medio de coordenadas mueve hacia la derecha a la imagen del jugador.
+
+*****************************************************************************************
+
+
+********************************************************************************************
+            Instituto Tecnológico de Costa Rica
+
+
+
+
+            Ingeniería en Computadores
+
+            Funcion abajo()
+
+
+            Versiones Lenguaje Python: 3.8.3 and 3.8.5
+            Autores: Eduardo Bolívar Minguet y Max Garro Mora
+            Profesor: Milton Villegas Lemus
+            Versión: 1.0
+            Fecha Última Modificación: Agosto 8/2020
+
+            Entradas: no tiene argumento de entrada.
+            Restricciones: la global DOWN debe ser True.
+            Salidas: por medio de coordenadas mueve hacia abajo a la imagen del jugador.
+
+*****************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion game_over(M)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe un 1 o un 2, que corresponde a alguno de los modos de juego.
+Restricciones: ninguna
+Salidas: retorna un Label que informa que se ha perdido el juego, y guarda el puntaje en el modo de juego respectivo.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion winning(M)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: recibe 1 o 2, que corresponden a los modos de juego.
+Restricciones: La variable OPEN debe estar True y la cantidad maxima de puntaje debe ser alcanzada.
+Salidas: Retorna un label informando que se ha ganado la partida y guarda el puntaje en el modo de juego respectivo.
+
+****************************************************************************************************************
+
+
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion points(p)
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: Recibe la cantidad de puntos.
+Restricciones: Ninguan
+Salidas: Suma y acumula la cantidad de puntos en la variable global.
+
+****************************************************************************************************************"""
     
     
 quit()
