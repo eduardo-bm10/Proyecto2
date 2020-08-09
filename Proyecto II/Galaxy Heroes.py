@@ -1384,3 +1384,2166 @@ Cerrar.place(x=490, y=600)
 Menu.mainloop()
 
 quit()
+
+def mi_auto_doc():
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función
+Entradas:
+Restricciones:
+Salidas:
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función 
+Entradas: 
+Restricciones: 
+Salidas: 
+
+    ****************************************************************************************************"""
+
