@@ -1058,7 +1058,6 @@ def dificultad(m):
     if m==2:
         #DIFICULTAD FACIL PARA MANIOBRA DE PRUEBAS
         def easy():
-
             global DIFF
             DIFF=1
             Dificulty.configure(text='Facil elegido')
