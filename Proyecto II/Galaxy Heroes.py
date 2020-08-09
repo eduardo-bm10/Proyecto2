@@ -806,29 +806,6 @@ def dificultad(m):
 
 #VENTANA DE CONFIGURACION Y SELECCION DE PILOTOS
 def config():
-    """
-**********************************************************************************************************
-                Instituto Tecnológico de Costa Rica
-
-
-
-
-                    Ingeniería en Computadores
-
-                    
-
-
-Versiones Lenguaje Python: 3.8.3 and 3.8.5
-Autores: Eduardo Bolívar Minguet y Max Garro Mora
-Profesor: Milton Villegas Lemus
-Versión: 1.0
-Fecha Última Modificación: Agosto 8/2020
-
-Entradas: No posee argumentos de entrada. Solo salidas.
-Restricciones: Ninguna
-Salidas: Despliega la ventana para la elección de los pilotos.
-
-***********************************************************************************************************"""
     Config = Toplevel()
     Config.minsize(700,500)
     Config.resizable(False, False)
@@ -863,6 +840,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
 
     #SELECCION DE EDUARDO
     def edu():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion edu()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Eduardo.
+
+****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Eduardo Seleccionado')
         SHOWNAME=''
@@ -870,6 +870,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
         SHOWNAME+='Eduardo'
     #SELECCION DE MAX
     def maX():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion maX()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Max.
+
+****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Max Seleccionado')
         SHOWNAME=''
@@ -877,6 +900,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
         SHOWNAME+='Max'
     #SELECCION DE REYES
     def pilot1():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot1()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Reyes.
+
+****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Reyes Seleccionado')
         SHOWNAME=''
@@ -884,6 +930,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
         SHOWNAME+='Reyes'
     #SELECCION DE JILL
     def pilot2():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot2()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Jill.
+
+****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Jill Seleccionado')
         SHOWNAME=''
@@ -891,6 +960,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
         SHOWNAME+='Jill'
     #SELECCION DE X CHAMPION
     def pilot3():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot3()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de X Champion.
+
+****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('X Champion Seleccionado')
         SHOWNAME=''
@@ -898,6 +990,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
         SHOWNAME+='X Champion'
     #SELECCION DE METEOR
     def pilot4():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion pilot4()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: ninguna
+Salidas: modifica las variables globales para mostrar el nombre y foto de Meteor.
+
+****************************************************************************************************************"""
         global PLAYERSHOW, SHOWNAME
         print('Meteor Seleccionado')
         SHOWNAME=''
@@ -980,6 +1095,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
 
     #CAMBIAR A LA SEGUNDA PAGINA DE PILOTOS
     def next_page():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion next_page()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: Se requiere estar en la primera pagina de pilotos, de lo contrario, esta funcion no tendra efecto.
+Salidas: Crea los botones y Labels para mostrar la segunda pagina de pilotos
+
+****************************************************************************************************************"""
         nonlocal NEXT,ImgFondo
         if NEXT==True:
             Set2 = Canvas(Config, width=700, height=500, bg='white')
@@ -1031,6 +1169,29 @@ Salidas: Despliega la ventana para la elección de los pilotos.
 
     #RETORNO A LA PRIMERA PAGINA DE PILOTOS
     def back_page():
+        """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+                        Funcion back_page()
+
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+Entradas: no posee argumentos de entrada. Solo salidas.
+Restricciones: Se requiere estar en la segunda pagina de pilotos, de lo contrario, esta funcion no tendra efecto.
+Salidas: Crea los botones y Labels para mostrar nuevamente la primera pagina de pilotos
+
+****************************************************************************************************************"""
         nonlocal NEXT,ImgFondo
         if NEXT==False:
             Set1 = Canvas(Config, width=700, height=500, bg='white')
@@ -1206,6 +1367,10 @@ Salidas: Se despliega una ventana que muestra los resultados de los jugadores en
     
     #GUARDAR PUNTOS EN DESTRUCCION DE ASTEROIDES
     def save_points(Score, i):
+        """
+*****************************************************************
+OLA K ASE
+*****************************************************************"""
         if i==lenn(Score):
             return read_points()
         else:
@@ -1498,12 +1663,21 @@ Cerrar.place(x=490, y=600)
 
 Menu.mainloop()
 
-quit()
-
 def mi_auto_doc():
-    """****************************************************************************************************
-            Instituto Tecnológico de Costa Rica
-            Ingeniería en Computadores
+    """
+**********************************************************************************************************
+                Instituto Tecnológico de Costa Rica
+
+
+
+
+                    Ingeniería en Computadores
+
+
+                        config()
+
+                    
+
 
 Versiones Lenguaje Python: 3.8.3 and 3.8.5
 Autores: Eduardo Bolívar Minguet y Max Garro Mora
@@ -1511,9 +1685,11 @@ Profesor: Milton Villegas Lemus
 Versión: 1.0
 Fecha Última Modificación: Agosto 8/2020
 
-función
-Entradas:
-Restricciones:
-Salidas:
+Entradas: No posee argumentos de entrada. Solo salidas.
+Restricciones: Ninguna
+Salidas: Despliega la ventana para la elección de los pilotos.
 
-    ****************************************************************************************************"""
+***********************************************************************************************************"""
+    
+    
+quit()
