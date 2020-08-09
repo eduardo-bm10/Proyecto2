@@ -1099,7 +1099,23 @@ Salidas: Despliega la ventana para la elección de los pilotos.
 
 #ORDENAMIENTO DE LISTA
 def order(Lista):
-        return burbuja_aux(Lista,0,0,len(Lista),False)
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función order
+Entradas: Lista
+Restricciones: Deben haber resultados en el archivo .txt para que se muestren en pantalla
+Salidas: ordena 
+
+    ****************************************************************************************************"""
+    return burbuja_aux(Lista,0,0,len(Lista),False)
 #AUXILIAR DEL ORDENAMIENTO
 def burbuja_aux(Lista,i,j,n,Swap):
     if i==n:
@@ -1126,6 +1142,22 @@ def lenn(Lista):
 
 #VENTANA DE MEJORES PUNTAJES DE DESTRUCCION DE ASTEROIDES
 def scores_ast():
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función scores_ast
+Entradas: no posee argumentos de entrada
+Restricciones: ninguna
+Salidas: se despliega una ventana que muestra los resultados de los jugadores en el modo de juego "destrucción de asteroides"
+
+    ****************************************************************************************************"""
     global SaveAst
     Scores = Toplevel()
     Scores.minsize(700,500)
@@ -1318,6 +1350,22 @@ Salidas: Despliegue de la ventana de puntajes de Maniobras de Prueba.
 
 #VENTANA DE INFORMACION
 def about():
+    """****************************************************************************************************
+            Instituto Tecnológico de Costa Rica
+            Ingeniería en Computadores
+
+Versiones Lenguaje Python: 3.8.3 and 3.8.5
+Autores: Eduardo Bolívar Minguet y Max Garro Mora
+Profesor: Milton Villegas Lemus
+Versión: 1.0
+Fecha Última Modificación: Agosto 8/2020
+
+función about
+Entradas: no posee argumentos de entrada
+Restricciones: Ninguna
+Salidas: Despliega la ventana que muestra la información de los autores.
+
+    *****************************************************************************************************"""
     info = Toplevel()
     info.minsize(800,600)
     info.resizable(False, False)
